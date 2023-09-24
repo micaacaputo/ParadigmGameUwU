@@ -8,14 +8,11 @@ namespace MyGame
 {
     public static class Comportamiento
     {
-        public static void follow(Character character, Enemy enemy,float fuerza)
+        public static void Follow(Character character, Enemy enemy,float fuerza)
         {
-            var A = (character.x + 0.5*character.radio)- (enemy.x+0.5*enemy.radio);
-            var B = (character.y + 0.5 * character.radio) - (enemy.y + 0.5 * enemy.radio);
-            var Mag = Math.Sqrt(A * A + B * B);
-            var X = (float)(A/Mag);
-            var Y = (float)(B/Mag);
-            Physics.AddForce(enemy, X*fuerza, Y*fuerza);
+            var vec = Physics.Res(character.Position, enemy.Position);
+            var vecNor = Physics.Nor(vec);
+            Physics.AddForce(enemy,Physics.Mul(vecNor,fuerza));
         }
     }
 }

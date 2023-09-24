@@ -10,7 +10,7 @@ namespace MyGame
 {
     public class Character
     {
-        public Vector2 Position { get; set; }
+        public  Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
 
@@ -30,8 +30,6 @@ namespace MyGame
         {
 
             Position = new Vector2(x, y);
-            Velocity = new Vector2(x, y);
-            Aceleration = new Vector2(x, y);
             this.radio = radio;
             this.r = r;
             this.w = w;
@@ -59,22 +57,22 @@ namespace MyGame
         {
             if (Engine.KeyPress(Engine.KEY_LEFT)) 
             {
-                Physics.AddForce(this , -100, 0);
+                Physics.AddForce(this , new Vector2(-100,0));
             }
 
             if (Engine.KeyPress(Engine.KEY_RIGHT)) 
             {
-                Physics.AddForce(this, 100, 0);
+                Physics.AddForce(this, new Vector2(100,0));
             }
 
             if (Engine.KeyPress(Engine.KEY_UP)) 
             {
-                Physics.AddForce(this, 0, -100);
+                Physics.AddForce(this, new Vector2(0,-100));
             }
 
             if (Engine.KeyPress(Engine.KEY_DOWN)) 
             {
-                Physics.AddForce(this, 0, 100);
+                Physics.AddForce(this, new Vector2(0,100));
             }
 
             if (Engine.KeyPress(Engine.KEY_ESC)) 

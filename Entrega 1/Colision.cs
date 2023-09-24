@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyGame.assets;
 
 namespace MyGame
 {
@@ -14,57 +15,58 @@ namespace MyGame
 
         public static void WallsCollision(Character character)
         {
-            if(character.x < 0) //Pared izquierda
+            if(character.Position.x < 0) //Pared izquierda
             {
-                character.x = 0;
-                character.velX = 0;
+                character.Position = new Vector2(0,character.Position.y);
+                character.Velocity = new Vector2(0,character.Velocity.y);
             }
-            if(character.x > widthCollision - 100) //Pared derecha
+            if(character.Position.x > widthCollision - 100) //Pared derecha
             {
-                character.x = widthCollision - 100;
-                character.velX = 0;
+                character.Position = new Vector2(widthCollision-100,character.Position.y);
+                character.Velocity = new Vector2(0,character.Velocity.y);
             }
-            if(character.y < 0) //Pared arriba
+            if(character.Position.y < 0) //Pared arriba
             {
-                character.y = 0;
-                character.velY = 0;
+                character.Position = new Vector2(character.Position.x,0);
+                character.Velocity = new Vector2(character.Velocity.x,0);
             }
-            if(character.y > heigthCollision - 100) //Pared abajo
+            if(character.Position.y > heigthCollision - 100) //Pared abajo
             {
-                character.y = heigthCollision - 100;
-                character.velY = 0;
+                character.Position = new Vector2(character.Position.x,heigthCollision-100);
+                character.Velocity = new Vector2(character.Velocity.x,0);
             }
         }
 
         public static void WallsCollisionEnemy(Enemy enemy)
         {
-            if (enemy.x < 0) //Pared izquierda
+            if(enemy.Position.x < 0) //Pared izquierda
             {
-                enemy.x = 1;
-                enemy.velX = 0;
+                enemy.Position = new Vector2(0,enemy.Position.y);
+                enemy.Velocity = new Vector2(0,enemy.Velocity.y);
             }
-            if (enemy.x > widthCollision - 105) //Pared derecha
+            if(enemy.Position.x > widthCollision - 100) //Pared derecha
             {
-                enemy.x = widthCollision - 105;
-                enemy.velX = 0;
+                enemy.Position = new Vector2(widthCollision-100,enemy.Position.y);
+                enemy.Velocity = new Vector2(0,enemy.Velocity.y);
             }
-            if (enemy.y < 0) //Pared arriba
+            if(enemy.Position.y < 0) //Pared arriba
             {
-                enemy.y = 1;
-                enemy.velY = 0;
+                enemy.Position = new Vector2(enemy.Position.x,0);
+                enemy.Velocity = new Vector2(enemy.Velocity.x,0);
             }
-            if (enemy.y > heigthCollision - 105) //Pared abajo
+            if(enemy.Position.y > heigthCollision - 100) //Pared abajo
             {
-                enemy.y = heigthCollision - 105;
-                enemy.velY = 0;
+                enemy.Position = new Vector2(enemy.Position.x,heigthCollision-100);
+                enemy.Velocity = new Vector2(enemy.Velocity.x,0);
             }
         }
 
         public static void CollisionPlayerEnemy(Character character, Enemy enemy)
         {
-            var A = (character.x + 0.5 * character.radio) - (enemy.x + 0.5 * enemy.radio);
-            var B = (character.y + 0.5 * character.radio) - (enemy.y + 0.5 * enemy.radio);
-            var Mag = Math.Sqrt(A * A + B * B);
+            var A = (float)((character.Position.x + 0.5 * character.radio) - (enemy.Position.x + 0.5 * enemy.radio));
+            var B = (float)((character.Position.y + 0.5 * character.radio) - (enemy.Position.y + 0.5 * enemy.radio));
+            var Mag = Physics.Mag(new Vector2(A,B));
+            
             if (Mag < character.radio + enemy.radio) {
 
                 

@@ -11,7 +11,7 @@ namespace MyGame
     {
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
-        public Vector2 Aceleration { get; set; }
+        public Vector2 Aceleration { get; set;}
         public float r { get; set; }
         public float w { get; set; }
         public float ar { get; set; }
@@ -26,10 +26,9 @@ namespace MyGame
         //Animation currentAnimation;
         //Animation idleAnimation;
 
-        public Enemy(int x, int y, float radio, string image, float mass = 1)
+        public Enemy(float x, float y, float radio, string image, float mass = 1)
         {
             Position = new Vector2(x, y);
-            Velocity = new Vector2(x, y);
 
             this.radio = radio;
             this.mass = mass;

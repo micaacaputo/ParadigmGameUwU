@@ -36,7 +36,7 @@ namespace MyGame
         private static void Initialize()
         {
             Engine.Initialize();
-            CharacterList.Add(new Character(0, 0, 0, 0,0,0,(float)37.5,0,0,0,1, "assets/Character/character.png"));
+            CharacterList.Add(new Character(0, 0, (float)37.5, 0,0,0,1, "assets/Character/character.png"));
             EnemyList.Add(new Enemy(500,500, (float)37.5, "assets/Enemy/enemy.png"));
             EnemyList.Add(new Enemy(300, 300, (float)37.5, "assets/Enemy/enemy.png"));
             EnemyList.Add(new Enemy(100, 100, (float)37.5, "assets/Enemy/enemy.png"));
@@ -58,7 +58,7 @@ namespace MyGame
                 enemy.Update();
                 Colision.WallsCollisionEnemy(enemy);
                 Colision.CollisionPlayerEnemy(CharacterList[0], enemy);
-                Comportamiento.follow(CharacterList[0], enemy, 100);
+                Comportamiento.Follow(CharacterList[0], enemy, 100);
                 Physics.PhysicsCalculate(enemy);
             }
 

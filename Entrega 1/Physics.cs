@@ -3,23 +3,63 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyGame.assets;
 
 namespace MyGame
 {
     public static class Physics
     {
+        //multiply
+        public static Vector2 Mul(Vector2 vector,float num)
+        {
+            return new Vector2(vector.x * num, vector.y * num);
+        }
+        public static Vector2 Mul(Vector2 vector,int num)
+        {
+            return new Vector2(vector.x * num, vector.y * num);
+        }
+        //Division
+        public static Vector2 Div(Vector2 vector, float num)
+        {
+            return new Vector2(vector.x / num, vector.y / num);
+        }
+        public static Vector2 Div(Vector2 vector, int num)
+        {
+            return new Vector2(vector.x / num, vector.y / num);
+        }
+        //Sum
+        public static Vector2 Sum(Vector2 vector1, Vector2 vector2)
+        {
+            return new Vector2(vector1.x + vector2.x, vector1.y + vector2.y);
+        }
+        //Subtraction
+        public static Vector2 Res(Vector2 vector1, Vector2 vector2)
+        {
+            return new Vector2(vector1.x - vector2.x, vector1.y - vector2.y);
+        }
+        //Magnitude
+        public static float Mag(Vector2 vector)
+        {
+            return (float)Math.Sqrt(vector.x * vector.x + vector.y * vector.y);
+        }
+        //Normalized
+        public static Vector2 Nor(Vector2 vector)
+        {
+            var magnitude = Mag(vector);
+            return new Vector2(vector.x / magnitude, vector.y / magnitude);
+        }
+        //Dot
+        public static float Dot(Vector2 vector1, Vector2 vector2)
+        {
+            return vector1.x * vector2.x + vector1.y * vector2.y;
+        }
         public static void PhysicsCalculate(Character character)
         {
             //MRUV
-            character.velX = character.velX + character.aceX * Program.DeltaTime;
-            character.velY = character.velY + character.aceY * Program.DeltaTime;
-
-            character.x = character.x + character.velX * Program.DeltaTime + character.aceX * 0.5f * Program.DeltaTime * Program.DeltaTime;
-            character.y = character.y + character.velY * Program.DeltaTime + character.aceY * 0.5f * Program.DeltaTime * Program.DeltaTime;
-
+            character.Velocity = Sum(character.Velocity, Mul(character.Aceleration, Program.DeltaTime));
+            character.Position = Sum(character.Position,Sum(Mul(character.Velocity, Program.DeltaTime),Mul(character.Aceleration,(0.5f * Program.DeltaTime * Program.DeltaTime)))); 
             //Seteo la aceleracion
-            character.aceX = 0;
-            character.aceY = 0;
+            character.Aceleration = new Vector2(0, 0);
 
             //MCU
             character.w = character.w + character.ar * Program.DeltaTime;
@@ -31,15 +71,10 @@ namespace MyGame
         public static void PhysicsCalculate(Enemy character)
         {
             //MRUV
-            character.velX = character.velX + character.aceX * Program.DeltaTime;
-            character.velY = character.velY + character.aceY * Program.DeltaTime;
-
-            character.x = (character.x + character.velX * Program.DeltaTime + character.aceX * 0.5f * Program.DeltaTime * Program.DeltaTime);
-            character.y = (character.y + character.velY * Program.DeltaTime + character.aceY * 0.5f * Program.DeltaTime * Program.DeltaTime);
-
+            character.Velocity = Sum(character.Velocity, Mul(character.Aceleration, Program.DeltaTime));
+            character.Position = Sum(character.Position,Sum(Mul(character.Velocity, Program.DeltaTime),Mul(character.Aceleration,(0.5f * Program.DeltaTime * Program.DeltaTime)))); 
             //Seteo la aceleracion
-            character.aceX = 0;
-            character.aceY = 0;
+            character.Aceleration = new Vector2(0, 0);
 
             //MCU
             character.w = character.w + character.ar * Program.DeltaTime;
@@ -49,15 +84,13 @@ namespace MyGame
             character.ar = 0;
         }
 
-        public static void AddForce(Character character, float forceX, float forceY)
+        public static void AddForce(Character character, Vector2 force)
         {
-            character.aceX = character.aceX + forceX / character.mass;
-            character.aceY = character.aceY + forceY / character.mass;
+            character.Aceleration = Sum(character.Aceleration, Div(force, character.mass));
         }
-        public static void AddForce(Enemy character, float forceX, float forceY)
+        public static void AddForce(Enemy character, Vector2 force)
         {
-            character.aceX = character.aceX + forceX / character.mass;
-            character.aceY = character.aceY + forceY / character.mass;
+            character.Aceleration = Sum(character.Aceleration, Div(force, character.mass));
         }
     }
 
