@@ -10,14 +10,10 @@ namespace MyGame
 {
     public class Character
     {
-
-        public float x;
-        public float y;
         public Vector2 Position { get; set; }
-        public float velX = 0;
-        public float velY = 0;
-        public float aceX = 0;
-        public float aceY = 0;
+        public Vector2 Velocity { get; set; }
+        public Vector2 Aceleration { get; set; }
+
         public float radio = 0;
         public float r;
         public float w;
@@ -30,15 +26,12 @@ namespace MyGame
         //Animation idleAnimation;
 
 
-        public Character(float x, float y, float velX, float velY, float aceX, float aceY, float radio, float r, float w, float ar, float mass, string image)
+        public Character(float x, float y, float radio, float r, float w, float ar, float mass, string image)
         {
-            this.x = x;
-            this.y = y;
+
             Position = new Vector2(x, y);
-            this.velX = velX;
-            this.velY = velY;
-            this.aceX = aceX;
-            this.aceY = aceY;
+            Velocity = new Vector2(x, y);
+            Aceleration = new Vector2(x, y);
             this.radio = radio;
             this.r = r;
             this.w = w;
@@ -97,7 +90,7 @@ namespace MyGame
         public void Render()
         {
             //Engine.Draw(currentAnimation.CurrentFrame, x, y);
-            Engine.Draw(image, x,y);
+            Engine.Draw(image, Position.x,Position.y);
         }
 
     }

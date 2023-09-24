@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MyGame.assets;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,12 +9,9 @@ namespace MyGame
 {
     public class Enemy
     {
-        public float x { get; set; }
-        public float y { get; set; }
-        public float velX { get; set; }
-        public float velY { get; set; }
-        public float aceX { get; set; }
-        public float aceY { get; set; }
+        public Vector2 Position { get; set; }
+        public Vector2 Velocity { get; set; }
+        public Vector2 Aceleration { get; set; }
         public float r { get; set; }
         public float w { get; set; }
         public float ar { get; set; }
@@ -30,8 +28,7 @@ namespace MyGame
 
         public Enemy(int x, int y, float radio, string image, float mass = 1)
         {
-            this.x = x;
-            this.y = y;
+            Position = new Vector2(x, y);
             this.radio = radio;
             this.mass = mass;
 
@@ -60,7 +57,7 @@ namespace MyGame
             //Engine.Draw(currentAnimation.CurrentFrame, x, y);
             if(isActive)
             {
-                Engine.Draw(image, x, y);
+                Engine.Draw(image, Position.x, Position.y);
             }
             
         }
