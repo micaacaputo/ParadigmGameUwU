@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MyGame.assets;
 
 namespace MyGame
 {
@@ -12,6 +13,7 @@ namespace MyGame
 
         public float x;
         public float y;
+        public Vector2 Position { get; set; }
         public float velX = 0;
         public float velY = 0;
         public float aceX = 0;
@@ -32,6 +34,7 @@ namespace MyGame
         {
             this.x = x;
             this.y = y;
+            Position = new Vector2(x, y);
             this.velX = velX;
             this.velY = velY;
             this.aceX = aceX;
