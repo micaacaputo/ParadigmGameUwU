@@ -29,6 +29,8 @@ namespace MyGame
         public Enemy(int x, int y, float radio, string image, float mass = 1)
         {
             Position = new Vector2(x, y);
+            Velocity = new Vector2(x, y);
+
             this.radio = radio;
             this.mass = mass;
 
