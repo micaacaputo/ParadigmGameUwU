@@ -68,6 +68,7 @@ namespace MyGame
             {  
                 bullet.Update();
                 Colision.WallsCollisionBullet(bullet);
+                Colision.CollisionBulletEnemy(bullet);
                 Physics.PhysicsCalculate(bullet);
             }
 

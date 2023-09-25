@@ -13,6 +13,8 @@ namespace MyGame
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
 
+        public float radio { get; set; }
+
         public bool isActive;
         private int speed = 400;
 
@@ -25,6 +27,7 @@ namespace MyGame
         {
             Position = position;
             Velocity = Physics.Mul(dir, speed);
+            radio = 29.5f;
             
             isActive = true;
             image = Engine.LoadImage("assets/Bullet/hachad.png");
