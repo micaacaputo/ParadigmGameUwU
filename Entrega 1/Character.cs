@@ -21,6 +21,7 @@ namespace MyGame
         public float ar;
         public float mass;
         public int health = 5;
+        private float timer = 1;
 
         IntPtr image;
         //Animation currentAnimation;
@@ -56,6 +57,8 @@ namespace MyGame
 
         public void Update()
         {
+            timer += Program.DeltaTime;
+            Shooting();
             if (Engine.KeyPress(Engine.KEY_LEFT)) 
             {
                 Physics.AddForce(this , new Vector2(-100,0));
@@ -76,7 +79,7 @@ namespace MyGame
                 Physics.AddForce(this, new Vector2(0,100));
             }
 
-            if (Engine.KeyPress(Engine.KEY_ESC)) 
+            if (Engine.KeyPress(Engine.KEY_ESP))
             {
                 // activar Bullet en la posicion actual del character
                 //Bullet.isActive(Position.x, Position.y);
@@ -91,6 +94,35 @@ namespace MyGame
         {
             //Engine.Draw(currentAnimation.CurrentFrame, x, y);
             Engine.Draw(image, Position.x,Position.y);
+        }
+
+        public void Shot(Vector2 dir)
+        {
+            int widthPlayer = 101;
+            int widthAxe = 15;
+            int heightPlayer = 38;
+            double heightAxe = 29.5;
+            Vector2 newPosition =new Vector2(Position.x+widthPlayer-widthAxe,(float)(Position.y+heightPlayer-heightAxe));
+            Program.BulletList.Add((new Bullet(newPosition, dir)));
+        }
+
+        public void Shooting()
+        {
+            foreach (Enemy enemy in Program.EnemyList)
+            {
+                if (enemy.isActive)
+                {
+                    Vector2 vec = Physics.Res(enemy.Position, Position);
+                    Vector2 dir = Physics.Nor(vec);
+                    float mag = Physics.Mag(vec);
+
+                    if (mag < 300 && timer > 1)
+                    {
+                        timer = 0;
+                        Shot(dir);
+                    }
+                }
+            }
         }
 
     }

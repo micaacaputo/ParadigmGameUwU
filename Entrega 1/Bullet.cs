@@ -11,20 +11,23 @@ namespace MyGame
     {
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
+        public Vector2 Aceleration { get; set; }
 
-        public bool isActive = false;
+        public bool isActive;
+        private int speed = 400;
 
         //private Character character;
-
+        private float timer;
 
         IntPtr image;
 
-        public Bullet(float x, float y, /*Character character,*/ string image)
+        public Bullet(Vector2 position, Vector2 dir)
         {
-
-            Position = new Vector2(x, y);
-            //this.character = character;
-            this.image = Engine.LoadImage(image);
+            Position = position;
+            Velocity = Physics.Mul(dir, speed);
+            
+            isActive = true;
+            image = Engine.LoadImage("assets/Bullet/hachad.png");
 
             //CreateAnimations();
             //currentAnimation = idleAnimation;
@@ -39,6 +42,8 @@ namespace MyGame
 
         public void Update()
         {
+            //timer += Program.DeltaTime;
+            
             //Vector2 characterPosition = character.Position;
             //currentAnimation.Update();
 
@@ -49,13 +54,21 @@ namespace MyGame
             }*/
         }
 
-        public void Render() {
+        public void Render() 
+        {
 
-                Engine.Draw(image, Position.x, Position.y);
+            Engine.Draw(image, Position.x, Position.y);
             
-            
+        }
+        /*
+        public void Autodestroy()
+        {
+            if (timer > 3)
+            {
+                //Destroy
             }
-
+        }
+        */
 
 }
 }

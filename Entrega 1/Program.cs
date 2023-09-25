@@ -42,7 +42,7 @@ namespace MyGame
             EnemyList.Add(new Enemy(500,500, (float)37.5, "assets/Enemy/enemy.png"));
             EnemyList.Add(new Enemy(300, 300, (float)37.5, "assets/Enemy/enemy.png"));
             EnemyList.Add(new Enemy(100, 100, (float)37.5, "assets/Enemy/enemy.png"));
-            BulletList.Add(new Bullet(200, 200,/*character,*/ "assets/Bullet/hachad.png"));
+            //BulletList.Add(new Bullet(200, 200,/*character,*/ "assets/Bullet/hachad.png"));
 
             _startTime = DateTime.Now;
         }
@@ -68,6 +68,7 @@ namespace MyGame
             {  
                 bullet.Update();
                 Colision.WallsCollisionBullet(bullet);
+                Physics.PhysicsCalculate(bullet);
             }
 
         }
