@@ -14,6 +14,7 @@ namespace MyGame
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
 
+
         public float radio = 0;
         public float r;
         public float w;
@@ -76,8 +77,9 @@ namespace MyGame
             }
 
             if (Engine.KeyPress(Engine.KEY_ESC)) 
-            { 
-                //que dispare ??
+            {
+                // activar Bullet en la posicion actual del character
+                //Bullet.isActive(Position.x, Position.y);
             }
 
             //currentAnimation.Update();

@@ -83,6 +83,32 @@ namespace MyGame
             }
         }
 
+        public static void WallsCollisionBullet(Bullet bullet)
+        {
+            if (bullet.Position.x < 0) //Pared izquierda
+            {
+                bullet.Position = new Vector2(0, bullet.Position.y);
+                bullet.Velocity = new Vector2(0, bullet.Velocity.y);
+            }
+            if (bullet.Position.x > widthCollision - 58) //Pared derecha
+            {
+                bullet.Position = new Vector2(widthCollision - 58, bullet.Position.y);
+                bullet.Velocity = new Vector2(0, bullet.Velocity.y);
+            }
+            if (bullet.Position.y < 0) //Pared arriba
+            {
+                bullet.Position = new Vector2(bullet.Position.x, 0);
+                bullet.Velocity = new Vector2(bullet.Velocity.x, 0);
+            }
+            if (bullet.Position.y > heigthCollision - 75) //Pared abajo
+            {
+                bullet.Position = new Vector2(bullet.Position.x, heigthCollision - 75);
+                bullet.Velocity = new Vector2(bullet.Velocity.x, 0);
+            }
+        }
+
+        //Hacer colision enemy - bullet
+
 
     }
 }

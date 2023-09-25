@@ -15,9 +15,11 @@ namespace MyGame
         static IntPtr image = Engine.LoadImage("assets/fondoPoo.png");
         static public List<Character> CharacterList = new List<Character>();
         static public List<Enemy> EnemyList = new List<Enemy>();
+        static public List<Bullet> BulletList = new List<Bullet>();
         private static DateTime _startTime;
         private static float _lastTimeFrame;
         public static float DeltaTime;
+
 
         static void Main(string[] args)
         {
@@ -40,6 +42,7 @@ namespace MyGame
             EnemyList.Add(new Enemy(500,500, (float)37.5, "assets/Enemy/enemy.png"));
             EnemyList.Add(new Enemy(300, 300, (float)37.5, "assets/Enemy/enemy.png"));
             EnemyList.Add(new Enemy(100, 100, (float)37.5, "assets/Enemy/enemy.png"));
+            BulletList.Add(new Bullet(200, 200,/*character,*/ "assets/Bullet/hachad.png"));
 
             _startTime = DateTime.Now;
         }
@@ -61,6 +64,11 @@ namespace MyGame
                 Comportamiento.Follow(CharacterList[0], enemy, 100);
                 Physics.PhysicsCalculate(enemy);
             }
+            foreach(Bullet bullet in BulletList) 
+            {  
+                bullet.Update();
+                Colision.WallsCollisionBullet(bullet);
+            }
 
         }
 
@@ -81,6 +89,10 @@ namespace MyGame
             foreach (Enemy enemy in EnemyList)
             {
                 enemy.Render();
+            }
+            foreach (Bullet bullet in BulletList)
+            {
+                bullet.Render();
             }
             Engine.Show();
         }

@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animation.cs" />
+    <Compile Include="Bullet.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Colision.cs" />
     <Compile Include="Comportamiento.cs" />
@@ -65,6 +66,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="assets\Bullet\hachad.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\Character\character.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
