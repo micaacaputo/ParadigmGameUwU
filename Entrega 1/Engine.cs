@@ -21,7 +21,7 @@ class Engine
 
     public static void Initialize()
     {
-        width = 1024;
+        width = 1360;
         height = 768;
         int colores = 24;
 

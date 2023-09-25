@@ -15,14 +15,14 @@ namespace MyGame
 
         public static void WallsCollision(Character character)
         {
-            if(character.Position.x < 0) //Pared izquierda
+            if(character.Position.x < 0-50) //Pared izquierda
             {
-                character.Position = new Vector2(0,character.Position.y);
+                character.Position = new Vector2(0-50,character.Position.y);
                 character.Velocity = new Vector2(0,character.Velocity.y);
             }
-            if(character.Position.x > widthCollision - 100) //Pared derecha
+            if(character.Position.x > widthCollision -150) //Pared derecha
             {
-                character.Position = new Vector2(widthCollision-100,character.Position.y);
+                character.Position = new Vector2(widthCollision -150 ,character.Position.y);
                 character.Velocity = new Vector2(0,character.Velocity.y);
             }
             if(character.Position.y < 0) //Pared arriba
@@ -30,9 +30,9 @@ namespace MyGame
                 character.Position = new Vector2(character.Position.x,0);
                 character.Velocity = new Vector2(character.Velocity.x,0);
             }
-            if(character.Position.y > heigthCollision - 100) //Pared abajo
+            if(character.Position.y > heigthCollision - 150) //Pared abajo
             {
-                character.Position = new Vector2(character.Position.x,heigthCollision-100);
+                character.Position = new Vector2(character.Position.x,heigthCollision-150);
                 character.Velocity = new Vector2(character.Velocity.x,0);
             }
         }

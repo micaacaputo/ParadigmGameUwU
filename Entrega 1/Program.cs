@@ -12,7 +12,7 @@ namespace MyGame
     class Program
     {
                     
-        static IntPtr image = Engine.LoadImage("assets/fondo.png");
+        static IntPtr image = Engine.LoadImage("assets/fondoPoo.png");
         static public List<Character> CharacterList = new List<Character>();
         static public List<Enemy> EnemyList = new List<Enemy>();
         private static DateTime _startTime;
@@ -36,7 +36,7 @@ namespace MyGame
         private static void Initialize()
         {
             Engine.Initialize();
-            CharacterList.Add(new Character(0, 0, (float)37.5, 0,0,0,1, "assets/Character/character.png"));
+            CharacterList.Add(new Character(0, 0, (float)37.5, 0,0,0,1, "assets/Character/player.png"));
             EnemyList.Add(new Enemy(500,500, (float)37.5, "assets/Enemy/enemy.png"));
             EnemyList.Add(new Enemy(300, 300, (float)37.5, "assets/Enemy/enemy.png"));
             EnemyList.Add(new Enemy(100, 100, (float)37.5, "assets/Enemy/enemy.png"));
