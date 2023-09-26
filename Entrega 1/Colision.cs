@@ -116,7 +116,7 @@ namespace MyGame
                 Vector2 vec = Physics.Res(enemy.Position, bullet.Position);
                 float magnitud = Physics.Mag(vec);
 
-                if( magnitud > 1 )
+                if( magnitud < bullet.radio + enemy.radio)
                 {
                     enemy.isActive = false;
                     bullet.isActive = false;

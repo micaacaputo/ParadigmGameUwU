@@ -81,8 +81,7 @@ namespace MyGame
 
             if (Engine.KeyPress(Engine.KEY_ESP))
             {
-                // activar Bullet en la posicion actual del character
-                //Bullet.isActive(Position.x, Position.y);
+                // futuro powerup
             }
 
             //currentAnimation.Update();
@@ -95,6 +94,25 @@ namespace MyGame
             //Engine.Draw(currentAnimation.CurrentFrame, x, y);
             Engine.Draw(image, Position.x,Position.y);
         }
+
+        /*public void Lose()
+        {
+            if (health == 0)
+            {
+                pantalla derrota
+            }
+        }
+
+        public void Win()
+        {
+            if (Program.EnemyList.Any())
+            {
+                pantalla victoria
+                Engine.Debug("ganaste wachin");
+            }
+        }
+        */
+
 
         public void Shot(Vector2 dir)
         {

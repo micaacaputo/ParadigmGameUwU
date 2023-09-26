@@ -18,8 +18,6 @@ namespace MyGame
         public bool isActive;
         private int speed = 400;
 
-        //private Character character;
-        private float timer;
 
         IntPtr image;
 
@@ -36,31 +34,19 @@ namespace MyGame
             //currentAnimation = idleAnimation;
         }
 
-        public void IsActive(Character Position)
-        {
-            //asignarle al bullet la posicion del character
-            //Bullet.Position = character.Position; o Vector2 characterPosition = character.Position;
-            //isActive = true;
-        }
-
         public void Update()
         {
-            //timer += Program.DeltaTime;
             
-            //Vector2 characterPosition = character.Position;
             //currentAnimation.Update();
 
-            /*if (Engine.KeyPress(Engine.KEY_ESC))
-            {
-                isActive = true;
-
-            }*/
         }
 
         public void Render() 
         {
-
-            Engine.Draw(image, Position.x, Position.y);
+            if (isActive)
+            {
+                Engine.Draw(image, Position.x, Position.y);
+            }
             
         }
         /*

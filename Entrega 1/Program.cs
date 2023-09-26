@@ -38,11 +38,11 @@ namespace MyGame
         private static void Initialize()
         {
             Engine.Initialize();
-            CharacterList.Add(new Character(0, 0, (float)37.5, 0,0,0,1, "assets/Character/player.png"));
-            EnemyList.Add(new Enemy(500,500, (float)37.5, "assets/Enemy/enemy.png"));
-            EnemyList.Add(new Enemy(300, 300, (float)37.5, "assets/Enemy/enemy.png"));
-            EnemyList.Add(new Enemy(100, 100, (float)37.5, "assets/Enemy/enemy.png"));
-            //BulletList.Add(new Bullet(200, 200,/*character,*/ "assets/Bullet/hachad.png"));
+            CharacterList.Add(new Character(600, 334, (float)37.5, 0,0,0,1, "assets/Character/player.png"));
+            EnemyList.Add(new Enemy(0,0, (float)37.5, "assets/Enemy/enemy.png"));
+            EnemyList.Add(new Enemy(0, 700, (float)37.5, "assets/Enemy/enemy.png"));
+            EnemyList.Add(new Enemy(1200, 0, (float)37.5, "assets/Enemy/enemy.png"));
+            EnemyList.Add(new Enemy(1200, 700, (float)37.5, "assets/Enemy/enemy.png"));
 
             _startTime = DateTime.Now;
         }
