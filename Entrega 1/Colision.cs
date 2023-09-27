@@ -63,8 +63,8 @@ namespace MyGame
 
         public static void CollisionPlayerEnemy(Character character, Enemy enemy)
         {
-            var A = (float)((character.Position.x + 0.5 * character.radio) - (enemy.Position.x + 0.5 * enemy.radio));
-            var B = (float)((character.Position.y + 0.5 * character.radio) - (enemy.Position.y + 0.5 * enemy.radio));
+            var A = (float)((character.Position.x + 101) - (enemy.Position.x + 0.5 * enemy.radio));
+            var B = (float)((character.Position.y + 38) - (enemy.Position.y + 0.5 * enemy.radio));
             var Mag = Physics.Mag(new Vector2(A, B));
 
             if (Mag < character.radio + enemy.radio) {

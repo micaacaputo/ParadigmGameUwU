@@ -61,22 +61,22 @@ namespace MyGame
             Shooting();
             if (Engine.KeyPress(Engine.KEY_LEFT)) 
             {
-                Physics.AddForce(this , new Vector2(-100,0));
+                Physics.AddForce(this , new Vector2(-300,0));
             }
 
             if (Engine.KeyPress(Engine.KEY_RIGHT)) 
             {
-                Physics.AddForce(this, new Vector2(100,0));
+                Physics.AddForce(this, new Vector2(300,0));
             }
 
             if (Engine.KeyPress(Engine.KEY_UP)) 
             {
-                Physics.AddForce(this, new Vector2(0,-100));
+                Physics.AddForce(this, new Vector2(0,-300));
             }
 
             if (Engine.KeyPress(Engine.KEY_DOWN)) 
             {
-                Physics.AddForce(this, new Vector2(0,100));
+                Physics.AddForce(this, new Vector2(0,300));
             }
 
             if (Engine.KeyPress(Engine.KEY_ESP))

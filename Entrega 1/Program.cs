@@ -3,6 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Linq;
 using System.Threading;
 using Tao.Sdl;
 
@@ -55,6 +56,7 @@ namespace MyGame
                 character.Update();
                 Colision.WallsCollision(character);
                 Physics.PhysicsCalculate(character);
+                Physics.Friction(character);
             }
             foreach (Enemy enemy in EnemyList)
             {

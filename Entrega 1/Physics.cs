@@ -101,6 +101,19 @@ namespace MyGame
         {
             character.Aceleration = Sum(character.Aceleration, Div(force, character.mass));
         }
+        public static void Friction(Character character)
+        {
+            var nor = Nor(character.Velocity);
+            var mag = Mag(nor);
+            if (mag > 0.1)
+            {
+                AddForce(character, Mul(nor, -200));
+            }
+            else
+            {
+                AddForce(character,Mul(character.Velocity,-10));
+            }
+        }
     }
 
 }
