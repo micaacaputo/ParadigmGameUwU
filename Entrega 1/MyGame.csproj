@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Animation.cs" />
     <Compile Include="Bullet.cs" />
+    <Compile Include="Camera.cs" />
     <Compile Include="Character.cs" />
     <Compile Include="Colision.cs" />
     <Compile Include="Comportamiento.cs" />

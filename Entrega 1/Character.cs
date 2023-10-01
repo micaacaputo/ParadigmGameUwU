@@ -28,11 +28,12 @@ namespace MyGame
         private float timer2 = 1;
 
         IntPtr image;
+        IntPtr image2;
         //Animation currentAnimation;
         //Animation idleAnimation;
 
 
-        public Character(float x, float y, float radio,  string image, int width, int height, float mass = 1, int ammo = 3)
+        public Character(float x, float y, float radio, int width, int height, float mass = 1, int ammo = 3)
         {
 
             Position = new Vector2(x, y);
@@ -42,7 +43,8 @@ namespace MyGame
             this.mass = mass;
             this.ammo = ammo;
 
-            this.image = Engine.LoadImage(image);
+            image = Engine.LoadImage("assets/Character/character.png");
+            image2 = Engine.LoadImage("assets/Character/body.png");
            //CreateAnimations();
            //currentAnimation = idleAnimation;
         }
@@ -103,6 +105,7 @@ namespace MyGame
         {
             //Engine.Draw(currentAnimation.CurrentFrame, x, y);
             Engine.Draw(image, Position.x,Position.y);
+            Engine.Draw(image2,Position.x - 26.5f,Position.y + 56);
         }
 
         /*public void Lose()
