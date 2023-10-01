@@ -25,6 +25,7 @@ namespace MyGame
 
         public int ammo { get; set; }
         private float timer = 1;
+        private float timer2 = 1;
 
         IntPtr image;
         //Animation currentAnimation;
@@ -61,6 +62,7 @@ namespace MyGame
         public void Update()
         {
             timer += Program.DeltaTime;
+            timer2 += Program.DeltaTime;
             Shooting();
             if (Engine.KeyPress(Engine.KEY_LEFT)) 
             {
@@ -84,7 +86,12 @@ namespace MyGame
 
             if (Engine.KeyPress(Engine.KEY_ESP))
             {
-                // futuro powerup
+                if (timer2 > 3)
+                {
+                    timer2 = 0;
+                    reload();
+                }
+                
             }
 
             //currentAnimation.Update();
@@ -158,16 +165,16 @@ namespace MyGame
             }
         }
 
-        /*public void reload()
+        public void reload()
         {
-            foreach (var bullet in Program.BulletList)
+            foreach (var bullet in Program.BulletListActive)
             {
-                if (bullet.isActive)
+                if (bullet.reached)
                 {
-                    
+                    bullet.comingBack = true;
                 }
             }
-        }*/
+        }
 
     }
 }

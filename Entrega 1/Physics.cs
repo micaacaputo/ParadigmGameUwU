@@ -101,6 +101,10 @@ namespace MyGame
         {
             character.Aceleration = Sum(character.Aceleration, Div(force, character.mass));
         }
+        public static void AddForce(Bullet character, Vector2 force)
+        {
+            character.Aceleration = Sum(character.Aceleration, Div(force, character.mass));
+        }
         public static void Friction(Character character)
         {
             var nor = Nor(character.Velocity);

@@ -113,14 +113,17 @@ namespace MyGame
             {
                 foreach (var enemy in Program.EnemyList)
                 {
-                    Vector2 vec = Physics.Res(enemy.Position, bullet.Position);
-                    float magnitud = Physics.Mag(vec);
-
-                    if( magnitud < bullet.radio + enemy.radio)
+                    if (enemy.isActive)
                     {
-                        enemy.isActive = false;
-                        bullet.Velocity = new Vector2(0,0);
+                        Vector2 vec = Physics.Res(enemy.Position, bullet.Position);
+                        float magnitud = Physics.Mag(vec);
 
+                        if (magnitud < bullet.radio + enemy.radio)
+                        {
+                            enemy.isActive = false;
+                            bullet.Velocity = new Vector2(0, 0);
+
+                        }
                     }
                 }
             }
@@ -138,6 +141,7 @@ namespace MyGame
                     bullet.isActive = false; 
                     bullet.Velocity = new Vector2(0,0);
                     bullet.reached = false;
+                    bullet.comingBack = false;
                     character.ammo++;
                 }
             }
