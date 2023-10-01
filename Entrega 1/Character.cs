@@ -14,13 +14,14 @@ namespace MyGame
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
 
-
-        public float radio = 0;
-        public float r;
-        public float w;
-        public float ar;
-        public float mass;
-        public int health = 5;
+        public int width { get; set; }
+        public int height { get; set; }
+        public float radio  { get; set; }
+        public float r { get; set; }
+        public float w { get; set; }
+        public float ar { get; set; }
+        public float mass { get; set; }
+        public int health { get; set; }
         private float timer = 1;
 
         IntPtr image;
@@ -28,14 +29,13 @@ namespace MyGame
         //Animation idleAnimation;
 
 
-        public Character(float x, float y, float radio, float r, float w, float ar, float mass, string image)
+        public Character(float x, float y, float radio,  string image, int width, int height, float mass = 1)
         {
 
             Position = new Vector2(x, y);
             this.radio = radio;
-            this.r = r;
-            this.w = w;
-            this.ar = ar;
+            this.width = width;
+            this.height = height;
             this.mass = mass;
 
             this.image = Engine.LoadImage(image);

@@ -39,11 +39,11 @@ namespace MyGame
         private static void Initialize()
         {
             Engine.Initialize();
-            CharacterList.Add(new Character(600, 334, (float)37.5, 0,0,0,1, "assets/Character/player.png"));
-            EnemyList.Add(new Enemy(0,0, (float)37.5, "assets/Enemy/enemy.png"));
-            EnemyList.Add(new Enemy(0, 700, (float)37.5, "assets/Enemy/enemy.png"));
-            EnemyList.Add(new Enemy(1200, 0, (float)37.5, "assets/Enemy/enemy.png"));
-            EnemyList.Add(new Enemy(1200, 700, (float)37.5, "assets/Enemy/enemy.png"));
+            CharacterList.Add(new Character(600, 334, (float)37.5, "assets/Character/player.png", 202, 76));
+            EnemyList.Add(new Enemy(0,0, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
+            EnemyList.Add(new Enemy(0, 700, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
+            EnemyList.Add(new Enemy(1200, 0, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
+            EnemyList.Add(new Enemy(1200, 700, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
 
             _startTime = DateTime.Now;
         }

@@ -15,24 +15,24 @@ namespace MyGame
 
         public static void WallsCollision(Character character)
         {
-            if (character.Position.x < 0 - 50) //Pared izquierda
+            if (character.Position.x < 0) //Pared izquierda
             {
-                character.Position = new Vector2(0 - 50, character.Position.y);
+                character.Position = new Vector2(0 + 1 , character.Position.y);
                 character.Velocity = new Vector2(0, character.Velocity.y);
             }
-            if (character.Position.x > widthCollision - 150) //Pared derecha
+            if (character.Position.x > widthCollision - character.width) //Pared derecha
             {
-                character.Position = new Vector2(widthCollision - 150, character.Position.y);
+                character.Position = new Vector2(widthCollision - character.width - 1, character.Position.y);
                 character.Velocity = new Vector2(0, character.Velocity.y);
             }
             if (character.Position.y < 0) //Pared arriba
             {
-                character.Position = new Vector2(character.Position.x, 0);
+                character.Position = new Vector2(character.Position.x ,0 + 1);
                 character.Velocity = new Vector2(character.Velocity.x, 0);
             }
-            if (character.Position.y > heigthCollision - 150) //Pared abajo
+            if (character.Position.y > heigthCollision - character.height) //Pared abajo
             {
-                character.Position = new Vector2(character.Position.x, heigthCollision - 150);
+                character.Position = new Vector2(character.Position.x, heigthCollision - character.height - 1);
                 character.Velocity = new Vector2(character.Velocity.x, 0);
             }
         }
@@ -41,30 +41,30 @@ namespace MyGame
         {
             if (enemy.Position.x < 0) //Pared izquierda
             {
-                enemy.Position = new Vector2(0, enemy.Position.y);
+                enemy.Position = new Vector2(0 + 1, enemy.Position.y);
                 enemy.Velocity = new Vector2(0, enemy.Velocity.y);
             }
-            if (enemy.Position.x > widthCollision - 100) //Pared derecha
+            if (enemy.Position.x > widthCollision - enemy.width) //Pared derecha
             {
-                enemy.Position = new Vector2(widthCollision - 100, enemy.Position.y);
+                enemy.Position = new Vector2(widthCollision - enemy.width - 1, enemy.Position.y);
                 enemy.Velocity = new Vector2(0, enemy.Velocity.y);
             }
             if (enemy.Position.y < 0) //Pared arriba
             {
-                enemy.Position = new Vector2(enemy.Position.x, 0);
+                enemy.Position = new Vector2(enemy.Position.x, 0 + 1);
                 enemy.Velocity = new Vector2(enemy.Velocity.x, 0);
             }
-            if (enemy.Position.y > heigthCollision - 100) //Pared abajo
+            if (enemy.Position.y > heigthCollision - enemy.height) //Pared abajo
             {
-                enemy.Position = new Vector2(enemy.Position.x, heigthCollision - 100);
+                enemy.Position = new Vector2(enemy.Position.x, heigthCollision - enemy.height - 1);
                 enemy.Velocity = new Vector2(enemy.Velocity.x, 0);
             }
         }
 
         public static void CollisionPlayerEnemy(Character character, Enemy enemy)
         {
-            var A = (float)((character.Position.x + 101) - (enemy.Position.x + 0.5 * enemy.radio));
-            var B = (float)((character.Position.y + 38) - (enemy.Position.y + 0.5 * enemy.radio));
+            var A = ((character.Position.x + 0.5f * character.width) - (enemy.Position.x + 0.5f * enemy.width));
+            var B = ((character.Position.y + 0.5f * character.height) - (enemy.Position.y + 0.5f * enemy.height));
             var Mag = Physics.Mag(new Vector2(A, B));
 
             if (Mag < character.radio + enemy.radio) {
