@@ -42,7 +42,8 @@ namespace MyGame
         private static void Initialize()
         {
             Engine.Initialize();
-            CharacterList.Add(new Character(600, 334, (float)37.5, "assets/Character/player.png", 202, 76));
+            CharacterList.Add(new Character(600, 334, (float)37.5, "assets/Character/character.png", 202, 76));
+            CharacterList.Add(new Character(573.5f, 390, (float)37.5, "assets/Character/body.png", 202, 76));
             EnemyList.Add(new Enemy(0,0, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
             EnemyList.Add(new Enemy(0, 700, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
             EnemyList.Add(new Enemy(1200, 0, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
