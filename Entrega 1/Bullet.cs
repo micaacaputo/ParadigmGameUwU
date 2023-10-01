@@ -13,7 +13,8 @@ namespace MyGame
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
 
-        public float radio { get; set; }
+        public float radio { get; private set; }
+        public bool reached { get; set; }
 
         public bool isActive;
         private int speed = 400;
@@ -26,8 +27,8 @@ namespace MyGame
             Position = position;
             Velocity = Physics.Mul(dir, speed);
             radio = 29.5f;
-            
-            isActive = true;
+            reached = false;
+            isActive = false;
             image = Engine.LoadImage("assets/Bullet/hachad.png");
 
             //CreateAnimations();
@@ -36,7 +37,10 @@ namespace MyGame
 
         public void Update()
         {
-            
+            if (Physics.Mag(Velocity) < 0.1 & !reached)
+            {
+                reached = true;
+            }
             //currentAnimation.Update();
 
         }

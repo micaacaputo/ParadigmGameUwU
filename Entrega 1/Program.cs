@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading;
+using MyGame.assets;
 using Tao.Sdl;
 
 namespace MyGame
@@ -16,7 +17,9 @@ namespace MyGame
         static IntPtr image = Engine.LoadImage("assets/fondoPoo.png");
         static public List<Character> CharacterList = new List<Character>();
         static public List<Enemy> EnemyList = new List<Enemy>();
-        static public List<Bullet> BulletList = new List<Bullet>();
+        static public List<Bullet> BulletListActive = new List<Bullet>();
+        static public List<Bullet> BulletListNotActive = new List<Bullet>();
+        static public List<Bullet> Bullets = new List<Bullet>();
         private static DateTime _startTime;
         private static float _lastTimeFrame;
         public static float DeltaTime;
@@ -44,6 +47,10 @@ namespace MyGame
             EnemyList.Add(new Enemy(0, 700, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
             EnemyList.Add(new Enemy(1200, 0, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
             EnemyList.Add(new Enemy(1200, 700, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
+            BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
+            BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
+            BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
+            BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
 
             _startTime = DateTime.Now;
         }
@@ -66,13 +73,26 @@ namespace MyGame
                 Comportamiento.Follow(CharacterList[0], enemy, 100);
                 Physics.PhysicsCalculate(enemy);
             }
-            foreach(Bullet bullet in BulletList) 
+            
+            foreach(Bullet bullet in BulletListActive) 
             {  
                 bullet.Update();
                 Colision.WallsCollisionBullet(bullet);
                 Colision.CollisionBulletEnemy(bullet);
+                Colision.CollisionBulletCharacter(bullet,CharacterList[0]);
                 Physics.PhysicsCalculate(bullet);
+                if (!bullet.isActive)
+                {
+                    Bullets.Add(bullet);
+                }
             }
+            foreach (var bullet in Bullets)
+            {
+                BulletListActive.Remove(bullet);
+                BulletListNotActive.Add(bullet);
+            }
+            Bullets.Clear();
+
 
         }
 
@@ -94,7 +114,7 @@ namespace MyGame
             {
                 enemy.Render();
             }
-            foreach (Bullet bullet in BulletList)
+            foreach (Bullet bullet in BulletListActive)
             {
                 bullet.Render();
             }

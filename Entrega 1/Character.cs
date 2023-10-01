@@ -22,6 +22,8 @@ namespace MyGame
         public float ar { get; set; }
         public float mass { get; set; }
         public int health { get; set; }
+
+        public int ammo { get; set; }
         private float timer = 1;
 
         IntPtr image;
@@ -29,7 +31,7 @@ namespace MyGame
         //Animation idleAnimation;
 
 
-        public Character(float x, float y, float radio,  string image, int width, int height, float mass = 1)
+        public Character(float x, float y, float radio,  string image, int width, int height, float mass = 1, int ammo = 3)
         {
 
             Position = new Vector2(x, y);
@@ -37,6 +39,7 @@ namespace MyGame
             this.width = width;
             this.height = height;
             this.mass = mass;
+            this.ammo = ammo;
 
             this.image = Engine.LoadImage(image);
            //CreateAnimations();
@@ -121,7 +124,15 @@ namespace MyGame
             int heightPlayer = 38;
             double heightAxe = 29.5;
             Vector2 newPosition =new Vector2(Position.x+widthPlayer-widthAxe,(float)(Position.y+heightPlayer-heightAxe));
-            Program.BulletList.Add((new Bullet(newPosition, dir)));
+            if (Program.BulletListNotActive.Any())
+            {
+                var bullet = Program.BulletListNotActive[0];
+                bullet.isActive = true;
+                bullet.Position = newPosition;
+                bullet.Velocity = Physics.Mul(dir, 500);
+                Program.BulletListActive.Add(bullet);
+                Program.BulletListNotActive.Remove(bullet);
+            }
         }
 
         public void Shooting()
@@ -137,11 +148,26 @@ namespace MyGame
                     if (mag < 300 && timer > 1)
                     {
                         timer = 0;
-                        Shot(dir);
+                        if (ammo > 0)
+                        {
+                            ammo--;
+                            Shot(dir);
+                        }
                     }
                 }
             }
         }
+
+        /*public void reload()
+        {
+            foreach (var bullet in Program.BulletList)
+            {
+                if (bullet.isActive)
+                {
+                    
+                }
+            }
+        }*/
 
     }
 }

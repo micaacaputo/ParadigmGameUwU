@@ -111,18 +111,35 @@ namespace MyGame
         {
             if (bullet.isActive)
             {
-            foreach (var enemy in Program.EnemyList)
-            {
-                Vector2 vec = Physics.Res(enemy.Position, bullet.Position);
-                float magnitud = Physics.Mag(vec);
-
-                if( magnitud < bullet.radio + enemy.radio)
+                foreach (var enemy in Program.EnemyList)
                 {
-                    enemy.isActive = false;
-                    bullet.isActive = false;
+                    Vector2 vec = Physics.Res(enemy.Position, bullet.Position);
+                    float magnitud = Physics.Mag(vec);
 
+                    if( magnitud < bullet.radio + enemy.radio)
+                    {
+                        enemy.isActive = false;
+                        bullet.Velocity = new Vector2(0,0);
+
+                    }
                 }
             }
+
+        }
+        public static void CollisionBulletCharacter(Bullet bullet, Character character)
+        {
+            if (bullet.isActive)
+            {
+                Vector2 vec = Physics.Res(character.Position , bullet.Position);
+                float magnitud = Physics.Mag(vec);
+
+                if( magnitud < bullet.radio + character.radio & bullet.reached) 
+                { 
+                    bullet.isActive = false; 
+                    bullet.Velocity = new Vector2(0,0);
+                    bullet.reached = false;
+                    character.ammo++;
+                }
             }
 
         }
