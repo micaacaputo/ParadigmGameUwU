@@ -62,7 +62,7 @@ namespace MyGame
             //Engine.Draw(currentAnimation.CurrentFrame, x, y);
             if(isActive)
             {
-                Engine.Draw(image, Position.x, Position.y);
+                Engine.Draw(image, Position.x- Program.camara.Position.x, Position.y- Program.camara.Position.y);
             }
             
         }

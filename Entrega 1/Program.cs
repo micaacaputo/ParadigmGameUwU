@@ -20,6 +20,7 @@ namespace MyGame
         static public List<Bullet> BulletListActive = new List<Bullet>();
         static public List<Bullet> BulletListNotActive = new List<Bullet>();
         static public List<Bullet> Bullets = new List<Bullet>();
+        static public Camera camara = new Camera();
         private static DateTime _startTime;
         private static float _lastTimeFrame;
         public static float DeltaTime;
@@ -57,7 +58,7 @@ namespace MyGame
 
         private static void Update()
         {
-
+            camara.Update();
             foreach (Character character in CharacterList)
             {
                 character.Update();
@@ -104,7 +105,7 @@ namespace MyGame
             _lastTimeFrame = currentTime;
 
             Engine.Clear();
-            Engine.Draw(image, 0, 0);
+            Engine.Draw(image, 0- camara.Position.x, 0- camara.Position.y);
 
             foreach (Character character in CharacterList)
             {
