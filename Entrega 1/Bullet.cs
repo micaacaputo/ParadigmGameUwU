@@ -21,7 +21,10 @@ namespace MyGame
         private int speed = 400;
 
         Animation currentAnimation;
-        Animation moovingAnimation;
+        Animation moovingAnimationL;
+        Animation moovingAnimationR;
+        Animation backAnimationR;
+        Animation backAnimationL;
 
 
         IntPtr image;
@@ -42,17 +45,44 @@ namespace MyGame
             image3 = Engine.LoadImage("assets/Bullet/axeFloorR.png");
 
             CreateAnimations();
-            currentAnimation = moovingAnimation;
+
         }
         private void CreateAnimations()
         {
-            List<IntPtr> moovingAxe = new List<IntPtr>();
+            List<IntPtr> moovingAxeL = new List<IntPtr>();
              for (int i = 1; i < 10; i++)
                 {
                  IntPtr frame = Engine.LoadImage($"assets/Animation/axe/leftAxe/{i}.png");
-                moovingAxe.Add(frame);
+                moovingAxeL.Add(frame);
                  }
-              moovingAnimation = new Animation("Moving Right Axes", moovingAxe, 0.01f, true);
+              moovingAnimationL = new Animation("Moving Right Axes", moovingAxeL, 0.03f, true);
+
+            List<IntPtr> moovingAxeR = new List<IntPtr>();
+            for (int i = 1; i < 10; i++)
+            {
+                IntPtr frame = Engine.LoadImage($"assets/Animation/axe/rightAxe/{i}.png");
+                moovingAxeR.Add(frame);
+            }
+            moovingAnimationR = new Animation("Moving Right Axes", moovingAxeR, 0.03f, true);
+
+
+            List<IntPtr> backAxeL = new List<IntPtr>();
+            for (int i = 1; i < 10; i++)
+            {
+                IntPtr frame = Engine.LoadImage($"assets/Animation/axe/leftAxe/back/{i}.png");
+                backAxeL.Add(frame);
+            }
+            backAnimationL = new Animation("Moving Right Axes", backAxeL, 0.03f, true);
+
+
+            List<IntPtr> backAxeR = new List<IntPtr>();
+            for (int i = 1; i < 10; i++)
+            {
+                IntPtr frame = Engine.LoadImage($"assets/Animation/axe/rightAxe/back/{i}.png");
+                backAxeR.Add(frame);
+            }
+            backAnimationR = new Animation("Moving Right Axes", backAxeR, 0.03f, true);
+
 
         }
 
@@ -76,6 +106,26 @@ namespace MyGame
                     var nor = Physics.Nor(vec);
                     Velocity = Physics.Mul(nor, 1250);
                 }
+
+                if (Velocity.x > 0)
+                {
+                    currentAnimation = backAnimationR;
+                }
+                else
+                {
+                    currentAnimation = backAnimationL;
+                }
+            }
+            if (!comingBack)
+            {
+                if (Velocity.x > 0)
+                {
+                    currentAnimation = moovingAnimationR;
+                }
+                else
+                {
+                    currentAnimation = moovingAnimationL;
+                }
             }
             currentAnimation.Update();
 
@@ -85,8 +135,7 @@ namespace MyGame
         {
             if (isActive)
             {
-                Engine.Draw(image, Position.x- Program.camara.Position.x, Position.y- Program.camara.Position.y);
-                Engine.Draw(currentAnimation.CurrentFrame, Position.x, Position.y);
+                Engine.Draw(currentAnimation.CurrentFrame, Position.x- Program.camara.Position.x, Position.y- Program.camara.Position.y);
             }
         }
         /*
