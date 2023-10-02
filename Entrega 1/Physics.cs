@@ -92,6 +92,15 @@ namespace MyGame
             character.Aceleration = new Vector2(0, 0);
             
         }
+        public static void PhysicsCalculate(Camera character)
+        {
+            //MRUV
+            character.Velocity = Sum(character.Velocity, Mul(character.Aceleration, Program.DeltaTime));
+            character.Position = Sum(character.Position,Sum(Mul(character.Velocity, Program.DeltaTime),Mul(character.Aceleration,(0.5f * Program.DeltaTime * Program.DeltaTime)))); 
+            //Seteo la aceleracion
+            character.Aceleration = new Vector2(0, 0);
+            
+        }
 
         public static void AddForce(Character character, Vector2 force)
         {

@@ -104,8 +104,8 @@ namespace MyGame
         public void Render()
         {
             //Engine.Draw(currentAnimation.CurrentFrame, x, y);
-            Engine.Draw(image, Position.x,Position.y);
-            Engine.Draw(image2,Position.x - 26.5f,Position.y + 56);
+            Engine.Draw(image, Position.x - Program.camara.Position.x,Position.y - Program.camara.Position.y);
+            Engine.Draw(image2,(Position.x - 26.5f)- Program.camara.Position.x,(Position.y + 56)- Program.camara.Position.y);
         }
 
         /*public void Lose()
