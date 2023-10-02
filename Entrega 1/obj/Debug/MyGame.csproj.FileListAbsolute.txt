@@ -115,10 +115,6 @@ C:\Users\micae\Desktop\xd\Entrega 1\obj\Debug\MyGame.csproj.CoreCompileInputs.ca
 C:\Users\micae\Desktop\xd\Entrega 1\obj\Debug\MyGame.csproj.CopyComplete
 C:\Users\micae\Desktop\xd\Entrega 1\obj\Debug\MyGame.exe
 C:\Users\micae\Desktop\xd\Entrega 1\obj\Debug\MyGame.pdb
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Ship\Idle\0.png
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Ship\Idle\1.png
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Ship\Idle\2.png
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Ship\Idle\3.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\obj\Debug\MyGame.csproj.AssemblyReference.cache
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\obj\Debug\MyGame.csproj.CoreCompileInputs.cache
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\obj\Debug\MyGame.csproj.CopyComplete
@@ -128,7 +124,6 @@ C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\MyGame.exe.config
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\MyGame.exe
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\MyGame.pdb
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Character\character.png
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Enemy\enemy.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Character\character.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Enemy\enemy.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Ship\Idle\0.png
@@ -242,3 +237,7 @@ C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Bullet\axeFloorL.pn
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Bullet\axeFloorR.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Bullet\axeFloorL.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Bullet\axeFloorR.png
+C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Enemy\enemy1.png
+C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Screen\defeat.png
+C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Screen\menu.png
+C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Screen\victory.png

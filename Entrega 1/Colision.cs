@@ -69,16 +69,14 @@ namespace MyGame
 
             if (Mag < character.radio + enemy.radio) {
 
-
                 timer += Program.DeltaTime;
                 if (timer > 1)
                 {
-                    character.health -= 1;
+                    character.HealthDown();
                     timer = 0;
-                    Console.WriteLine("vida: " + character.health);
 
                 }
-                enemy.isActive = false;
+                //enemy.isActive = false;
 
             }
         }

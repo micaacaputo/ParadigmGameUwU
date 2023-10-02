@@ -112,7 +112,7 @@ namespace MyGame
                 {
                     currentAnimation = backAnimationR;
                 }
-                else
+                else if(Velocity.x < 0)
                 {
                     currentAnimation = backAnimationL;
                 }
@@ -124,12 +124,13 @@ namespace MyGame
                     currentAnimation = moovingAnimationR;
                     
                 }
-                else
+                else if(Velocity.x < 0)
                 {
                     currentAnimation = moovingAnimationL;
                     
                 }
             }
+
             currentAnimation.Update();
 
         }

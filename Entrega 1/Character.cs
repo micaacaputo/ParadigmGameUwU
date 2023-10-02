@@ -42,6 +42,7 @@ namespace MyGame
             this.height = height;
             this.mass = mass;
             this.ammo = ammo;
+            health = 1;
 
             image = Engine.LoadImage("assets/Character/character.png");
             image2 = Engine.LoadImage("assets/Character/body.png");
@@ -108,23 +109,28 @@ namespace MyGame
             Engine.Draw(image2,(Position.x - 26.5f)- Program.camara.Position.x,(Position.y + 56)- Program.camara.Position.y);
         }
 
-        /*public void Lose()
+        public void HealthDown()
+        {
+                health--;
+                Dead();
+        }
+
+        public void Dead()
         {
             if (health == 0)
             {
-                pantalla derrota
+                GameManager.Instance.ChangeCondition(3);
             }
+            
         }
 
-        public void Win()
-        {
-            if (Program.EnemyList.Any())
-            {
-                pantalla victoria
-                Engine.Debug("ganaste wachin");
-            }
-        }
-        */
+        //public void Win()
+        //{
+        //    if (Program.EnemyList.Any())
+        //    {
+        //        GameManager.Instance.ChangeCondition(2);
+        //    }
+        //}
 
 
         public void Shot(Vector2 dir)

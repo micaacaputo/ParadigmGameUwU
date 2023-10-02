@@ -32,9 +32,9 @@ namespace MyGame
 
             while (true)
             {
-                Update();
+                GameManager.Instance.Update();
 
-                Render();
+                GameManager.Instance.Render();
 
                 Sdl.SDL_Delay(5);
             }
@@ -44,10 +44,10 @@ namespace MyGame
         {
             Engine.Initialize();
             CharacterList.Add(new Character(600, 334, (float)37.5, 202, 76));
-            EnemyList.Add(new Enemy(0,0, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
-            EnemyList.Add(new Enemy(0, 700, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
-            EnemyList.Add(new Enemy(1200, 0, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
-            EnemyList.Add(new Enemy(1200, 700, (float)37.5, "assets/Enemy/enemy.png", 75, 75));
+            EnemyList.Add(new Enemy(0,0, (float)37.5, "assets/Enemy/enemy1.png", 75, 75));
+            EnemyList.Add(new Enemy(0, 700, (float)37.5, "assets/Enemy/enemy1.png", 75, 75));
+            EnemyList.Add(new Enemy(1200, 0, (float)37.5, "assets/Enemy/enemy1.png", 75, 75));
+            EnemyList.Add(new Enemy(1200, 700, (float)37.5, "assets/Enemy/enemy1.png", 75, 75));
             BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
             BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
             BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
@@ -56,7 +56,7 @@ namespace MyGame
             _startTime = DateTime.Now;
         }
 
-        private static void Update()
+        public static void Update()
         {
             camara.Update();
             foreach (Character character in CharacterList)
@@ -97,14 +97,14 @@ namespace MyGame
 
         }
 
-        private static void Render()
+        public static void Render()
 
         {
             float currentTime = (float)(DateTime.Now - _startTime).TotalSeconds;
             DeltaTime = currentTime - _lastTimeFrame;
             _lastTimeFrame = currentTime;
 
-            Engine.Clear();
+            
             Engine.Draw(image, 0- camara.Position.x, 0- camara.Position.y);
 
             foreach (Character character in CharacterList)
@@ -119,7 +119,7 @@ namespace MyGame
             {
                 bullet.Render();
             }
-            Engine.Show();
+            
         }
 
     }
