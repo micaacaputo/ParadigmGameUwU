@@ -137,6 +137,14 @@ namespace MyGame
             if (Program.BulletListNotActive.Any())
             {
                 var bullet = Program.BulletListNotActive[0];
+                if (dir.x > 0)
+                {
+                    bullet.isRight = true;
+                }
+                else
+                {
+                    bullet.isRight = false;
+                }
                 bullet.isActive = true;
                 bullet.Position = newPosition;
                 bullet.Velocity = Physics.Mul(dir, 500);
@@ -162,6 +170,7 @@ namespace MyGame
                         {
                             ammo--;
                             Shot(dir);
+
                         }
                     }
                 }
