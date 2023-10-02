@@ -164,10 +164,7 @@ C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\obj\Debug\MyGame.csproj
 C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\obj\Debug\MyGame.csproj.CopyComplete
 C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\obj\Debug\MyGame.exe
 C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\obj\Debug\MyGame.pdb
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\axeFloorL.png
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\axeFloorR.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\1.png
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\10.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\2.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\3.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\4.png
@@ -177,7 +174,6 @@ C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftA
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\8.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\9.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\back\1.png
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\back\10.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\back\2.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\back\3.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\back\4.png
@@ -187,7 +183,6 @@ C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftA
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\back\8.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\leftAxe\back\9.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\1.png
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\10.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\2.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\3.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\4.png
@@ -197,7 +192,6 @@ C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\right
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\8.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\9.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\back\1.png
-C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\back\10.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\back\2.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\back\3.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\back\4.png
@@ -250,3 +244,5 @@ C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\ass
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\back\8.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\axe\rightAxe\back\9.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Character\body.png
+C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Bullet\axeFloorL.png
+C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Bullet\axeFloorR.png

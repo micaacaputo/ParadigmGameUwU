@@ -69,16 +69,13 @@
     <Folder Include="assets\Animation\character\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\Animation\axe\axeFloorL.png">
+    <Content Include="assets\Bullet\axeFloorL.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\Animation\axe\axeFloorR.png">
+    <Content Include="assets\Bullet\axeFloorR.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\Animation\axe\leftAxe\1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="assets\Animation\axe\leftAxe\10.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\Animation\axe\leftAxe\2.png">
@@ -108,9 +105,6 @@
     <Content Include="assets\Animation\axe\leftAxe\back\1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\Animation\axe\leftAxe\back\10.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="assets\Animation\axe\leftAxe\back\2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -138,9 +132,6 @@
     <Content Include="assets\Animation\axe\rightAxe\1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\Animation\axe\rightAxe\10.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="assets\Animation\axe\rightAxe\2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -166,9 +157,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\Animation\axe\rightAxe\back\1.png">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="assets\Animation\axe\rightAxe\back\10.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\Animation\axe\rightAxe\back\2.png">

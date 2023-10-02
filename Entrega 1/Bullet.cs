@@ -20,8 +20,13 @@ namespace MyGame
         public bool isActive;
         private int speed = 400;
 
+        Animation currentAnimation;
+        Animation moovingAnimation;
+
 
         IntPtr image;
+        IntPtr image2;
+        IntPtr image3;
 
         public Bullet(Vector2 position, Vector2 dir)
         {
@@ -33,9 +38,22 @@ namespace MyGame
             isActive = false;
             mass = 1;
             image = Engine.LoadImage("assets/Bullet/hachad.png");
+            image2 = Engine.LoadImage("assets/Bullet/axeFloorL.png");
+            image3 = Engine.LoadImage("assets/Bullet/axeFloorR.png");
 
-            //CreateAnimations();
-            //currentAnimation = idleAnimation;
+            CreateAnimations();
+            currentAnimation = moovingAnimation;
+        }
+        private void CreateAnimations()
+        {
+            List<IntPtr> moovingAxe = new List<IntPtr>();
+             for (int i = 1; i < 10; i++)
+                {
+                 IntPtr frame = Engine.LoadImage($"assets/Animation/axe/leftAxe/{i}.png");
+                moovingAxe.Add(frame);
+                 }
+              moovingAnimation = new Animation("Moving Right Axes", moovingAxe, 0.01f, true);
+
         }
 
         public void Update()
@@ -59,17 +77,16 @@ namespace MyGame
                     Velocity = Physics.Mul(nor, 1250);
                 }
             }
-            //currentAnimation.Update();
+            currentAnimation.Update();
 
         }
 
-        public void Render() 
+        public void Render()
         {
             if (isActive)
             {
-                Engine.Draw(image, Position.x, Position.y);
+                Engine.Draw(currentAnimation.CurrentFrame, Position.x, Position.y);
             }
-            
         }
         /*
         public void Autodestroy()
@@ -81,5 +98,5 @@ namespace MyGame
         }
         */
 
-}
+    }
 }
