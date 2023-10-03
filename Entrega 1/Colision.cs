@@ -9,9 +9,9 @@ namespace MyGame
 {
     public static class Colision
     {
-        private static int widthCollision = Engine.GetWidth();
-        private static int heigthCollision = Engine.GetHeight();
-        private static float timer = 0;
+        public static int widthCollision = 2720;
+        public static int heigthCollision = 1538;
+        private static int correction = 27;
 
         public static void WallsCollision(Character character)
         {
@@ -25,14 +25,14 @@ namespace MyGame
                 character.Position = new Vector2(widthCollision - character.width - 1, character.Position.y);
                 character.Velocity = new Vector2(0, character.Velocity.y);
             }
-            if (character.Position.y < 0) //Pared arriba
+            if (character.Position.y < 0 - correction) //Pared arriba
             {
-                character.Position = new Vector2(character.Position.x ,0 + 1);
+                character.Position = new Vector2(character.Position.x ,0 + 1 - correction);
                 character.Velocity = new Vector2(character.Velocity.x, 0);
             }
-            if (character.Position.y > heigthCollision - character.height) //Pared abajo
+            if (character.Position.y > heigthCollision - character.height - correction) //Pared abajo
             {
-                character.Position = new Vector2(character.Position.x, heigthCollision - character.height - 1);
+                character.Position = new Vector2(character.Position.x, heigthCollision - character.height - 1 - correction);
                 character.Velocity = new Vector2(character.Velocity.x, 0);
             }
         }
@@ -63,22 +63,26 @@ namespace MyGame
 
         public static void CollisionPlayerEnemy(Character character, Enemy enemy)
         {
-            var A = ((character.Position.x + 0.5f * character.width) - (enemy.Position.x + 0.5f * enemy.width));
-            var B = ((character.Position.y + 0.5f * character.height) - (enemy.Position.y + 0.5f * enemy.height));
-            var Mag = Physics.Mag(new Vector2(A, B));
+            if (enemy.isActive)
+            {
+                var A = ((character.Position.x + 0.5f * character.width  - (enemy.Position.x + 0.5f * enemy.width)));
+                var B = ((character.Position.y + correction + 0.5f * character.height - (enemy.Position.y + 0.5f * enemy.height)));
+                var Mag = Physics.Mag(new Vector2(A, B));
 
-            if (Mag < character.radio + enemy.radio) {
+                if (Mag < character.radio + enemy.radio) {
 
-                timer += Program.DeltaTime;
-                if (timer > 1)
-                {
-                    character.HealthDown();
-                    timer = 0;
+                
+                    if (enemy.timer > 1)
+                    {
+                        character.HealthDown();
+                        enemy.timer = 0;
+
+                    }
+                    //enemy.isActive = false;
 
                 }
-                //enemy.isActive = false;
-
             }
+            
         }
 
         public static void WallsCollisionBullet(Bullet bullet)
@@ -113,10 +117,12 @@ namespace MyGame
                 {
                     if (enemy.isActive)
                     {
-                        Vector2 vec = Physics.Res(enemy.Position, bullet.Position);
-                        float magnitud = Physics.Mag(vec);
+                        
+                        var A = ((bullet.Position.x + 0.5f * bullet.width  - (enemy.Position.x + 0.5f * enemy.width)));
+                        var B = ((bullet.Position.y + 0.5f * bullet.height - (enemy.Position.y + 0.5f * enemy.height)));
+                        var Mag = Physics.Mag(new Vector2(A, B));
 
-                        if (magnitud < bullet.radio + enemy.radio)
+                        if (Mag < bullet.radius + enemy.radio)
                         {
                             enemy.isActive = false;
                             bullet.Velocity = new Vector2(0, 0);
@@ -131,10 +137,11 @@ namespace MyGame
         {
             if (bullet.isActive)
             {
-                Vector2 vec = Physics.Res(character.Position , bullet.Position);
-                float magnitud = Physics.Mag(vec);
+                var A = ((bullet.Position.x + 0.5f * bullet.width  - (character.Position.x + 0.5f * character.width)));
+                var B = ((bullet.Position.y + 0.5f * bullet.height - (character.Position.y + correction + 0.5f * character.height)));
+                var Mag = Physics.Mag(new Vector2(A, B));
 
-                if( magnitud < bullet.radio + character.radio & bullet.reached) 
+                if( Mag < bullet.radius + character.radio & bullet.reached) 
                 { 
                     bullet.isActive = false; 
                     bullet.Velocity = new Vector2(0,0);

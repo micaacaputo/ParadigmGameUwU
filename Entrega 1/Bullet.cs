@@ -13,12 +13,14 @@ namespace MyGame
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
         public float mass { get; set; }
-        public float radio { get; private set; }
+        public float radius { get; private set; }
         public bool reached { get; set; }
         public bool comingBack { get; set; }
         public bool isRight { get; set; }
+        public int width { get; set; }
+        public int height { get; set; }
 
-        public bool isActive;
+        public bool isActive { get; set; }
         private int speed = 400;
 
         Animation currentAnimation;
@@ -36,10 +38,12 @@ namespace MyGame
         {
             Position = position;
             Velocity = Physics.Mul(dir, speed);
-            radio = 29.5f;
+            radius = 27;
             reached = false;
             comingBack = false;
             isActive = false;
+            width = 38;
+            height = 38;
             mass = 1;
             image = Engine.LoadImage("assets/Bullet/hachad.png");
             image2 = Engine.LoadImage("assets/Bullet/axeFloorL.png");
@@ -158,15 +162,7 @@ namespace MyGame
 
             }
         }
-        /*
-        public void Autodestroy()
-        {
-            if (timer > 3)
-            {
-                //Destroy
-            }
-        }
-        */
+       
 
     }
 }

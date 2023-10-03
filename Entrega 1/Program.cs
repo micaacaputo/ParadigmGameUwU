@@ -32,6 +32,9 @@ namespace MyGame
 
             while (true)
             {
+                float currentTime = (float)(DateTime.Now - _startTime).TotalSeconds;
+                DeltaTime = currentTime - _lastTimeFrame;
+                _lastTimeFrame = currentTime;
                 GameManager.Instance.Update();
 
                 GameManager.Instance.Render();
@@ -43,12 +46,11 @@ namespace MyGame
         private static void Initialize()
         {
             Engine.Initialize();
-            CharacterList.Add(new Character(600, 334, (float)37.5, 202, 76));
-            EnemyList.Add(new Enemy(0,0, (float)37.5, "assets/Enemy/enemy1.png", 75, 75));
-            EnemyList.Add(new Enemy(0, 700, (float)37.5, "assets/Enemy/enemy1.png", 75, 75));
-            EnemyList.Add(new Enemy(1200, 0, (float)37.5, "assets/Enemy/enemy1.png", 75, 75));
-            EnemyList.Add(new Enemy(1200, 700, (float)37.5, "assets/Enemy/enemy1.png", 75, 75));
-            BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
+            CharacterList.Add(new Character(600, 334, 37, 74, 74));
+            EnemyList.Add(new Enemy(0,0, 43, "assets/Enemy/enemy1.png", 86, 86));
+            EnemyList.Add(new Enemy(0, 700, 43, "assets/Enemy/enemy1.png", 86, 86));
+            EnemyList.Add(new Enemy(1200, 0, 43, "assets/Enemy/enemy1.png", 86, 86));
+            EnemyList.Add(new Enemy(1200, 700, 43, "assets/Enemy/enemy1.png", 86, 86));
             BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
             BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
             BulletListNotActive.Add(new Bullet(new Vector2(0,0), new Vector2(0,0)));
@@ -71,7 +73,8 @@ namespace MyGame
                 enemy.Update();
                 Colision.WallsCollisionEnemy(enemy);
                 Colision.CollisionPlayerEnemy(CharacterList[0], enemy);
-                Comportamiento.Follow(CharacterList[0], enemy, 100);
+                Comportamiento.Follow(CharacterList[0], enemy, 480);
+                Physics.Friction(enemy);
                 Physics.PhysicsCalculate(enemy);
             }
             
@@ -100,12 +103,14 @@ namespace MyGame
         public static void Render()
 
         {
-            float currentTime = (float)(DateTime.Now - _startTime).TotalSeconds;
-            DeltaTime = currentTime - _lastTimeFrame;
-            _lastTimeFrame = currentTime;
+            
 
             
-            Engine.Draw(image, 0- camara.Position.x, 0- camara.Position.y);
+            Engine.Draw(image, 0 - camara.Position.x, 0 - camara.Position.y);
+            Engine.Draw(image, 0 - camara.Position.x, 0 + 768 - camara.Position.y);
+            Engine.Draw(image, 0 + 1360 - camara.Position.x, 0 - camara.Position.y);
+            Engine.Draw(image, 0 + 1360 - camara.Position.x, 0 + 768 - camara.Position.y);
+            
 
             foreach (Character character in CharacterList)
             {

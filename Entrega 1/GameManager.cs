@@ -44,8 +44,14 @@ namespace MyGame
                 case 1:
                     Program.Update();
                     break;
+                case 3:
+                    if (Engine.KeyPress(Engine.KEY_R))
+                    {
+                        ChangeCondition(0);
+
+                    }
+                    break;
                 case 4:
-                    
                     if (Engine.KeyPress(Engine.KEY_R))
                     {
                         ChangeCondition(0);

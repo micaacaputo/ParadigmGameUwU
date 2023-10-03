@@ -20,7 +20,8 @@ namespace MyGame
         public float mass { get; set; }
         public float radio { get; private set; }
         public int health { get; set; }
-
+        
+        public float timer { get; set; }
         public bool isActive = true;
         
 
@@ -36,6 +37,7 @@ namespace MyGame
             this.mass = mass;
             this.width = width;
             this.height = height;
+            timer = 1;
 
             this.image = Engine.LoadImage(image);
             //CreateAnimations();
@@ -56,6 +58,7 @@ namespace MyGame
         public void Update()
         {
             //currentAnimation.Update();
+            timer += Program.DeltaTime;
         }
         public void Render()
         {

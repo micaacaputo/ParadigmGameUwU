@@ -9,16 +9,6 @@ class Engine
     static IntPtr screen;
     public static int width, height;
 
-    public static int GetWidth()
-    {
-        return width;
-    }
-
-    public static int GetHeight()
-    {
-        return height;
-    }
-
     public static void Initialize()
     {
         width = 1360;

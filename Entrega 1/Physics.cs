@@ -127,6 +127,15 @@ namespace MyGame
                 AddForce(character,Mul(character.Velocity,-10));
             }
         }
+        public static void Friction(Enemy character)
+        {
+            var nor = Nor(character.Velocity);
+            var mag = Mag(nor);
+            if (mag > 0.1)
+            {
+                AddForce(character, Mul(nor, -300));
+            }
+        }
     }
 
 }

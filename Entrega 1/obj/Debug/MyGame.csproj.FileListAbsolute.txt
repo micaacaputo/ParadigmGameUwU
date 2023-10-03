@@ -125,11 +125,6 @@ C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\MyGame.exe
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\MyGame.pdb
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Character\character.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Character\character.png
-C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Enemy\enemy.png
-C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Ship\Idle\0.png
-C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Ship\Idle\1.png
-C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Ship\Idle\2.png
-C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Ship\Idle\3.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\MyGame.exe.config
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\MyGame.exe
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\MyGame.pdb
@@ -241,3 +236,7 @@ C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Enemy\enemy1.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Screen\defeat.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Screen\menu.png
 C:\Users\micae\Desktop\Paradigmas\Entrega 1\bin\Debug\assets\Screen\victory.png
+C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Enemy\enemy1.png
+C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Screen\defeat.png
+C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Screen\menu.png
+C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Screen\victory.png
