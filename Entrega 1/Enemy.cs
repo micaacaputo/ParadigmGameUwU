@@ -14,14 +14,10 @@ namespace MyGame
         public Vector2 Aceleration { get; set;}
         public int width { get; set; }
         public int height { get; set; }
-        public float r { get; set; }
-        public float w { get; set; }
-        public float ar { get; set; }
         public float mass { get; set; }
-        public float radio { get; private set; }
-        public int health { get; set; }
-        
+        public float radius { get; private set; }
         public float timer { get; set; }
+
         public bool isActive = true;
         
 
@@ -29,11 +25,11 @@ namespace MyGame
         //Animation currentAnimation;
         //Animation idleAnimation;
 
-        public Enemy(float x, float y, float radio, string image, int width, int height, float mass = 1)
+        public Enemy(float x, float y, float radius, string image, int width, int height, float mass = 1)
         {
             Position = new Vector2(x, y);
 
-            this.radio = radio;
+            this.radius = radius;
             this.mass = mass;
             this.width = width;
             this.height = height;

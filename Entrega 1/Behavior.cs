@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    public static class Comportamiento
+    public static class Behavior
     {
         public static void Follow(Character character, Enemy enemy,float fuerza)
         {

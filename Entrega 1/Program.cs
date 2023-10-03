@@ -64,16 +64,16 @@ namespace MyGame
             foreach (Character character in CharacterList)
             {
                 character.Update();
-                Colision.WallsCollision(character);
+                Collision.WallsCollision(character);
                 Physics.PhysicsCalculate(character);
                 Physics.Friction(character);
             }
             foreach (Enemy enemy in EnemyList)
             {
                 enemy.Update();
-                Colision.WallsCollisionEnemy(enemy);
-                Colision.CollisionPlayerEnemy(CharacterList[0], enemy);
-                Comportamiento.Follow(CharacterList[0], enemy, 480);
+                Collision.WallsCollisionEnemy(enemy);
+                Collision.CollisionPlayerEnemy(CharacterList[0], enemy);
+                Behavior.Follow(CharacterList[0], enemy, 480);
                 Physics.Friction(enemy);
                 Physics.PhysicsCalculate(enemy);
             }
@@ -81,9 +81,9 @@ namespace MyGame
             foreach(Bullet bullet in BulletListActive) 
             {  
                 bullet.Update();
-                Colision.WallsCollisionBullet(bullet);
-                Colision.CollisionBulletEnemy(bullet);
-                Colision.CollisionBulletCharacter(bullet,CharacterList[0]);
+                Collision.WallsCollisionBullet(bullet);
+                Collision.CollisionBulletEnemy(bullet);
+                Collision.CollisionBulletCharacter(bullet,CharacterList[0]);
                 Physics.PhysicsCalculate(bullet);
                 if (!bullet.isActive)
                 {

@@ -13,13 +13,9 @@ namespace MyGame
         public  Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
-
         public int width { get; set; }
         public int height { get; set; }
-        public float radio  { get; set; }
-        public float r { get; set; }
-        public float w { get; set; }
-        public float ar { get; set; }
+        public float radius  { get; set; }
         public float mass { get; set; }
         public int health { get; set; }
 
@@ -33,11 +29,11 @@ namespace MyGame
         //Animation idleAnimation;
 
 
-        public Character(float x, float y, float radio, int width, int height, float mass = 1, int ammo = 3)
+        public Character(float x, float y, float radius, int width, int height, float mass = 1, int ammo = 3)
         {
 
             Position = new Vector2(x, y);
-            this.radio = radio;
+            this.radius = radius;
             this.width = width;
             this.height = height;
             this.mass = mass;

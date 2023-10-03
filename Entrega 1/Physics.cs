@@ -61,12 +61,6 @@ namespace MyGame
             //Seteo la aceleracion
             character.Aceleration = new Vector2(0, 0);
 
-            //MCU
-            character.w = character.w + character.ar * Program.DeltaTime;
-
-            //Seteo la aceleracion
-            character.w = 0;
-            character.ar = 0;
         }
         public static void PhysicsCalculate(Enemy character)
         {
@@ -76,12 +70,6 @@ namespace MyGame
             //Seteo la aceleracion
             character.Aceleration = new Vector2(0, 0);
 
-            //MCU
-            character.w = character.w + character.ar * Program.DeltaTime;
-
-            //Seteo la aceleracion
-            character.w = 0;
-            character.ar = 0;
         }
         public static void PhysicsCalculate(Bullet character)
         {
