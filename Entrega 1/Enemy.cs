@@ -30,7 +30,6 @@ namespace MyGame
             Position = new Vector2(x, y);
 
             this.radius = radius;
-            this.mass = mass;
             this.width = width;
             this.height = height;
             timer = 1;

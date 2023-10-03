@@ -65,22 +65,22 @@ namespace MyGame
             Shooting();
             if (Engine.KeyPress(Engine.KEY_LEFT)) 
             {
-                Physics.AddForce(this , new Vector2(-300,0));
+                Physics.AddForce(this , new Vector2(-400,0));
             }
 
             if (Engine.KeyPress(Engine.KEY_RIGHT)) 
             {
-                Physics.AddForce(this, new Vector2(300,0));
+                Physics.AddForce(this, new Vector2(400,0));
             }
 
             if (Engine.KeyPress(Engine.KEY_UP)) 
             {
-                Physics.AddForce(this, new Vector2(0,-300));
+                Physics.AddForce(this, new Vector2(0,-400));
             }
 
             if (Engine.KeyPress(Engine.KEY_DOWN)) 
             {
-                Physics.AddForce(this, new Vector2(0,300));
+                Physics.AddForce(this, new Vector2(0,400));
             }
 
             if (Engine.KeyPress(Engine.KEY_ESP))
@@ -113,7 +113,7 @@ namespace MyGame
 
         public void Dead()
         {
-            if (health < 0)
+            if (health <= 0)
             {
                 GameManager.Instance.ChangeCondition(3);
             }
