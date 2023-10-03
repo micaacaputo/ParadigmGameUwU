@@ -100,7 +100,7 @@ namespace MyGame
 
             if (comingBack)
             {
-                var vec = Physics.Res(Program.CharacterList[0].Position, Position);
+                var vec = Physics.Res(WaveController.CharacterList[0].Position, Position);
                 var mag = Physics.Mag(vec);
                 if ( mag > 100)
                 {
@@ -147,17 +147,17 @@ namespace MyGame
                 {
                     if (isRight)
                     {
-                        Engine.Draw(image3, Position.x - Program.camara.Position.x, Position.y - Program.camara.Position.y);
+                        Engine.Draw(image3, Position.x - WaveController.camera.Position.x, Position.y - WaveController.camera.Position.y);
                     }
                     else
                     {
-                        Engine.Draw(image2, Position.x - Program.camara.Position.x, Position.y - Program.camara.Position.y);
+                        Engine.Draw(image2, Position.x - WaveController.camera.Position.x, Position.y - WaveController.camera.Position.y);
                     }
                     
                 }
                 else
                 {
-                    Engine.Draw(currentAnimation.CurrentFrame, Position.x - Program.camara.Position.x, Position.y - Program.camara.Position.y);
+                    Engine.Draw(currentAnimation.CurrentFrame, Position.x - WaveController.camera.Position.x, Position.y - WaveController.camera.Position.y);
                 }
 
             }

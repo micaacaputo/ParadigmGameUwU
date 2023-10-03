@@ -101,8 +101,8 @@ namespace MyGame
         public void Render()
         {
             //Engine.Draw(currentAnimation.CurrentFrame, x, y);
-            Engine.Draw(image, Position.x - Program.camara.Position.x,Position.y - Program.camara.Position.y);
-            Engine.Draw(image2,(Position.x - 26)- Program.camara.Position.x,(Position.y + 56)- Program.camara.Position.y);
+            Engine.Draw(image, Position.x - WaveController.camera.Position.x,Position.y - WaveController.camera.Position.y);
+            Engine.Draw(image2,(Position.x - 26)- WaveController.camera.Position.x,(Position.y + 56)- WaveController.camera.Position.y);
         }
 
         public void HealthDown()
@@ -136,9 +136,9 @@ namespace MyGame
             int heightPlayer = 38;
             double heightAxe = 29.5;
             Vector2 newPosition =new Vector2(Position.x+widthPlayer-widthAxe,(float)(Position.y+heightPlayer-heightAxe));
-            if (Program.BulletListNotActive.Any())
+            if (WaveController.BulletListNotActive.Any())
             {
-                var bullet = Program.BulletListNotActive[0];
+                var bullet = WaveController.BulletListNotActive[0];
                 if (dir.x > 0)
                 {
                     bullet.isRight = true;
@@ -150,14 +150,14 @@ namespace MyGame
                 bullet.isActive = true;
                 bullet.Position = newPosition;
                 bullet.Velocity = Physics.Mul(dir, 500);
-                Program.BulletListActive.Add(bullet);
-                Program.BulletListNotActive.Remove(bullet);
+                WaveController.BulletListActive.Add(bullet);
+                WaveController.BulletListNotActive.Remove(bullet);
             }
         }
 
         public void Shooting()
         {
-            foreach (Enemy enemy in Program.EnemyList)
+            foreach (Enemy enemy in WaveController.EnemyList)
             {
                 if (enemy.isActive)
                 {
@@ -181,7 +181,7 @@ namespace MyGame
 
         public void reload()
         {
-            foreach (var bullet in Program.BulletListActive)
+            foreach (var bullet in WaveController.BulletListActive)
             {
                 if (bullet.reached)
                 {

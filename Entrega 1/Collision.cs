@@ -112,7 +112,7 @@ namespace MyGame
         {
             if (bullet.isActive)
             {
-                foreach (var enemy in Program.EnemyList)
+                foreach (var enemy in WaveController.EnemyList)
                 {
                     if (enemy.isActive)
                     {

@@ -30,6 +30,11 @@ namespace MyGame
         {
             gameCondition = cc;
         }
+
+        public void Initialize()
+        {
+            WaveController.Initialize();
+        }
         public void Update()
        {
 
@@ -42,7 +47,7 @@ namespace MyGame
                     }
                     break;
                 case 1:
-                    Program.Update();
+                    WaveController.Update();
                     break;
                 case 3:
                     if (Engine.KeyPress(Engine.KEY_R))
@@ -73,7 +78,7 @@ namespace MyGame
                     Engine.Draw(menu, 0, 0);
                     break;
                 case 1:
-                    Program.Render();
+                    WaveController.Render();
                     break;
                 case 2:
                     Engine.Draw(victory, 0, 0);
