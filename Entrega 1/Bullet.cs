@@ -12,27 +12,25 @@ namespace MyGame
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
-        public float mass { get; set; }
-        public float radius { get; private set; }
+        public float mass { get; }
+        public float radius { get; }
         public bool reached { get; set; }
         public bool comingBack { get; set; }
         public bool isRight { get; set; }
-        public int width { get; set; }
-        public int height { get; set; }
+        public int width { get; }
+        public int height { get; }
 
         public bool isActive { get; set; }
         private int speed = 400;
 
-        Animation currentAnimation;
-        Animation moovingAnimationL;
-        Animation moovingAnimationR;
-        Animation backAnimationR;
-        Animation backAnimationL;
-
-
-        IntPtr image;
-        IntPtr image2;
-        IntPtr image3;
+        private Animation currentAnimation;
+        private Animation moovingAnimationL;
+        private Animation moovingAnimationR;
+        private Animation backAnimationR;
+        private Animation backAnimationL;
+        
+        private IntPtr image2;
+        private IntPtr image3;
 
         public Bullet(Vector2 position, Vector2 dir)
         {
@@ -45,7 +43,6 @@ namespace MyGame
             width = 38;
             height = 38;
             mass = 1;
-            image = Engine.LoadImage("assets/Bullet/hachad.png");
             image2 = Engine.LoadImage("assets/Bullet/axeFloorL.png");
             image3 = Engine.LoadImage("assets/Bullet/axeFloorR.png");
 

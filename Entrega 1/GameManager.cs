@@ -15,6 +15,7 @@ namespace MyGame
         private IntPtr defeat = Engine.LoadImage("assets/Screen/defeat.png");
         private int gameCondition = 0;
         private int score;
+        
         public Action OnRestart;
         public static GameManager Instance
         {

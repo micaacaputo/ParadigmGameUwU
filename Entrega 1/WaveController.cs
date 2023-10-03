@@ -10,12 +10,12 @@ namespace MyGame
     public static class WaveController
     {
         static IntPtr image = Engine.LoadImage("assets/fondoPoo.png");
-        static public List<Character> CharacterList = new List<Character>();
-        static public List<Enemy> EnemyList = new List<Enemy>();
-        static public List<Bullet> BulletListActive = new List<Bullet>();
-        static public List<Bullet> BulletListNotActive = new List<Bullet>();
-        static public List<Bullet> Bullets = new List<Bullet>();
-        static public Camera camera = new Camera();
+        public static List<Character> CharacterList = new List<Character>();
+        public static List<Enemy> EnemyList = new List<Enemy>();
+        public static List<Bullet> BulletListActive = new List<Bullet>();
+        public static List<Bullet> BulletListNotActive = new List<Bullet>();
+        private static List<Bullet> Bullets = new List<Bullet>();
+        public static Camera camera = new Camera();
         private static float timer;
         private static bool Enemies;
         
@@ -23,6 +23,7 @@ namespace MyGame
         public static void Initialize()
         {
             GameManager.Instance.OnRestart += Restart;
+            camera.Position = new Vector2(1360, 769);
             Enemies = true;
             Engine.Initialize();
             CharacterList.Add(new Character(1360, 769, 37, 74, 74));

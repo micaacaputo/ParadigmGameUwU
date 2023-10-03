@@ -12,13 +12,13 @@ namespace MyGame
         public Vector2 Position { get; set; }
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set;}
-        public int width { get; set; }
-        public int height { get; set; }
-        public float mass { get; set; }
-        public float radius { get; private set; }
+        public int width { get; }
+        public int height { get; }
+        public float mass { get; }
+        public float radius { get; }
         public float timer { get; set; }
 
-        public bool isActive = true;
+        public bool isActive { get; set; }
         
 
         IntPtr image;
