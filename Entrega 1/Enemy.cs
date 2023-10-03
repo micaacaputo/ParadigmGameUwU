@@ -25,7 +25,7 @@ namespace MyGame
         //Animation currentAnimation;
         //Animation idleAnimation;
 
-        public Enemy(float x, float y, float radius, string image, int width, int height, float mass = 1)
+        public Enemy(float x, float y, float radius, string image, int width, int height, bool isActive = true)
         {
             Position = new Vector2(x, y);
 
@@ -34,6 +34,8 @@ namespace MyGame
             this.width = width;
             this.height = height;
             timer = 1;
+            mass = 1;
+            this.isActive = isActive;
 
             this.image = Engine.LoadImage(image);
             //CreateAnimations();

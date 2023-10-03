@@ -14,6 +14,8 @@ namespace MyGame
         private IntPtr victory = Engine.LoadImage("assets/Screen/victory.png");
         private IntPtr defeat = Engine.LoadImage("assets/Screen/defeat.png");
         private int gameCondition = 0;
+        private int score;
+        public Action OnRestart;
         public static GameManager Instance
         {
             get
@@ -34,6 +36,7 @@ namespace MyGame
         public void Initialize()
         {
             WaveController.Initialize();
+            Collision.OnEnemyDesable += ScoreUp;
         }
         public void Update()
        {
@@ -49,16 +52,20 @@ namespace MyGame
                 case 1:
                     WaveController.Update();
                     break;
-                case 3:
+                case 2:
                     if (Engine.KeyPress(Engine.KEY_R))
                     {
+                        OnRestart?.Invoke();
+                        score = 0;
                         ChangeCondition(0);
 
                     }
                     break;
-                case 4:
+                case 3:
                     if (Engine.KeyPress(Engine.KEY_R))
                     {
+                        OnRestart?.Invoke();
+                        score = 0;
                         ChangeCondition(0);
 
                     }
@@ -86,15 +93,19 @@ namespace MyGame
                 case 3:
                     Engine.Draw(defeat, 0, 0);
                     break;
-                case 4:
-                    Engine.Draw(menu, 0, 0);
-                    break;
 
             }
             Engine.Show();
         }
 
-
+       private void ScoreUp()
+       {
+           score++;
+           if (score == WaveController.EnemyList.Count())
+           {
+               ChangeCondition(2);
+           }
+       }
 
     }
 

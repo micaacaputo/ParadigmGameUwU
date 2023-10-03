@@ -60,7 +60,7 @@ namespace MyGame
                  IntPtr frame = Engine.LoadImage($"assets/Animation/axe/leftAxe/{i}.png");
                 moovingAxeL.Add(frame);
              }
-             moovingAnimationL = new Animation("Moving Right Axes", moovingAxeL, 0.03f, true);
+             moovingAnimationL = new Animation("Moving Left Axes", moovingAxeL, 0.03f, true);
 
             List<IntPtr> moovingAxeR = new List<IntPtr>();
             for (int i = 1; i < 10; i++)
@@ -77,7 +77,7 @@ namespace MyGame
                 IntPtr frame = Engine.LoadImage($"assets/Animation/axe/leftAxe/back/{i}.png");
                 backAxeL.Add(frame);
             }
-            backAnimationL = new Animation("Moving Right Axes", backAxeL, 0.03f, true);
+            backAnimationL = new Animation("Moving Back Left Axes", backAxeL, 0.03f, true);
 
 
             List<IntPtr> backAxeR = new List<IntPtr>();
@@ -86,14 +86,14 @@ namespace MyGame
                 IntPtr frame = Engine.LoadImage($"assets/Animation/axe/rightAxe/back/{i}.png");
                 backAxeR.Add(frame);
             }
-            backAnimationR = new Animation("Moving Right Axes", backAxeR, 0.03f, true);
+            backAnimationR = new Animation("Moving Back Right Axes", backAxeR, 0.03f, true);
 
 
         }
 
         public void Update()
         {
-            if (Physics.Mag(Velocity) < 0.1 & !reached)
+            if (Physics.Mag(Velocity) < 0.01 & !reached)
             {
                 reached = true;
             }
@@ -102,9 +102,13 @@ namespace MyGame
             {
                 var vec = Physics.Res(WaveController.CharacterList[0].Position, Position);
                 var mag = Physics.Mag(vec);
-                if ( mag > 100)
+                if ( mag > 300)
                 {
                     Velocity = Physics.Mul(vec, 3.5f);   
+                }
+                else if ( mag > 200)
+                {
+                    Velocity = Physics.Mul(vec, 5f);   
                 }
                 else
                 {

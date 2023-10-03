@@ -113,7 +113,7 @@ namespace MyGame
 
         public void Dead()
         {
-            if (health == 0)
+            if (health < 0)
             {
                 GameManager.Instance.ChangeCondition(3);
             }
@@ -131,14 +131,12 @@ namespace MyGame
 
         public void Shot(Vector2 dir)
         {
-            int widthPlayer = 101;
-            int widthAxe = 15;
-            int heightPlayer = 38;
-            double heightAxe = 29.5;
-            Vector2 newPosition =new Vector2(Position.x+widthPlayer-widthAxe,(float)(Position.y+heightPlayer-heightAxe));
+
+
             if (WaveController.BulletListNotActive.Any())
             {
                 var bullet = WaveController.BulletListNotActive[0];
+                Vector2 newPosition =new Vector2(Position.x+width-bullet.width, Position.y+height-bullet.height + 27);
                 if (dir.x > 0)
                 {
                     bullet.isRight = true;

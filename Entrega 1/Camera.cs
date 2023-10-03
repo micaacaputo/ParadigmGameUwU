@@ -8,6 +8,11 @@ namespace MyGame
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
 
+        public Camera()
+        {
+            Position = new Vector2(1360, 769);
+        }
+
         public void Update()
         {
             var objective = Physics.Res(WaveController.CharacterList[0].Position,

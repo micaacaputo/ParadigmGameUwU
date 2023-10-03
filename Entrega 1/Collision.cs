@@ -12,6 +12,7 @@ namespace MyGame
         public static int widthCollision = 2720;
         public static int heigthCollision = 1538;
         private static int correction = 27;
+        public static Action OnEnemyDesable;
 
         public static void WallsCollision(Character character)
         {
@@ -123,6 +124,7 @@ namespace MyGame
 
                         if (Mag < bullet.radius + enemy.radius)
                         {
+                            OnEnemyDesable?.Invoke();
                             enemy.isActive = false;
                             bullet.Velocity = new Vector2(0, 0);
 
