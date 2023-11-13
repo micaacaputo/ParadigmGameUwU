@@ -75,7 +75,7 @@ namespace MyGame
                 
                     if (enemy.timer > 1)
                     {
-                        character.HealthDown();
+                        character.HealthController.HealthDown();
                         enemy.timer = 0;
 
                     }

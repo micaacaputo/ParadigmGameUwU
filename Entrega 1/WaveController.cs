@@ -120,7 +120,12 @@ namespace MyGame
             }
             foreach (Character character in CharacterList)
             {
-                character.Render();
+                Vector2 position = new Vector2( character.Position.x - WaveController.camera.Position.x,
+                    character.Position.y - WaveController.camera.Position.y);
+                Renderer.RenderImage(character.image,position);
+                Vector2 position2 = new Vector2(character.Position.x - 26 - WaveController.camera.Position.x,
+                    (character.Position.y + 56) - WaveController.camera.Position.y);
+                Renderer.RenderImage(character.image2,position2);
             }
 
         }
