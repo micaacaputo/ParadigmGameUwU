@@ -8,20 +8,13 @@ using MyGame.assets;
 
 namespace MyGame
 {
-    public class Character
+    public class Character : GameObject
     {
-        public  Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; }
-        public Vector2 Aceleration { get; set; }
-        public int width { get; }
-        public int height { get; }
-        public float radius  { get; }
-        public float mass { get; }
         public int health { get; set; }
 
         public int ammo { get; set; }
-        private float timer = 1;
-        private float timer2 = 1;
+        public InputCharacterController InputCharacterController;
+        public ShootController ShootController;
 
         IntPtr image;
         IntPtr image2;
@@ -39,6 +32,8 @@ namespace MyGame
             this.mass = mass;
             this.ammo = ammo;
             health = 1;
+            InputCharacterController = new InputCharacterController();
+            ShootController = new ShootController();
 
             image = Engine.LoadImage("assets/Character/character.png");
             image2 = Engine.LoadImage("assets/Character/body.png");
@@ -60,42 +55,9 @@ namespace MyGame
 
         public void Update()
         {
-            timer += Program.DeltaTime;
-            timer2 += Program.DeltaTime;
-            Shooting();
-            if (Engine.KeyPress(Engine.KEY_LEFT)) 
-            {
-                Physics.AddForce(this , new Vector2(-400,0));
-            }
-
-            if (Engine.KeyPress(Engine.KEY_RIGHT)) 
-            {
-                Physics.AddForce(this, new Vector2(400,0));
-            }
-
-            if (Engine.KeyPress(Engine.KEY_UP)) 
-            {
-                Physics.AddForce(this, new Vector2(0,-400));
-            }
-
-            if (Engine.KeyPress(Engine.KEY_DOWN)) 
-            {
-                Physics.AddForce(this, new Vector2(0,400));
-            }
-
-            if (Engine.KeyPress(Engine.KEY_ESP))
-            {
-                if (timer2 > 3)
-                {
-                    timer2 = 0;
-                    reload();
-                }
-                
-            }
-
+            ShootController.Update(this);
+            InputCharacterController.Update(this, ShootController);
             //currentAnimation.Update();
-
-           
         }
 
         public void Render()
@@ -129,64 +91,11 @@ namespace MyGame
         //}
 
 
-        public void Shot(Vector2 dir)
-        {
+        
 
+        
 
-            if (WaveController.BulletListNotActive.Any())
-            {
-                var bullet = WaveController.BulletListNotActive[0];
-                Vector2 newPosition =new Vector2(Position.x+width-bullet.width, Position.y+height-bullet.height + 27);
-                if (dir.x > 0)
-                {
-                    bullet.isRight = true;
-                }
-                else
-                {
-                    bullet.isRight = false;
-                }
-                bullet.isActive = true;
-                bullet.Position = newPosition;
-                bullet.Velocity = Physics.Mul(dir, 500);
-                WaveController.BulletListActive.Add(bullet);
-                WaveController.BulletListNotActive.Remove(bullet);
-            }
-        }
-
-        public void Shooting()
-        {
-            foreach (Enemy enemy in WaveController.EnemyList)
-            {
-                if (enemy.isActive)
-                {
-                    Vector2 vec = Physics.Res(enemy.Position, Position);
-                    Vector2 dir = Physics.Nor(vec);
-                    float mag = Physics.Mag(vec);
-
-                    if (mag < 300 && timer > 1)
-                    {
-                        timer = 0;
-                        if (ammo > 0)
-                        {
-                            ammo--;
-                            Shot(dir);
-
-                        }
-                    }
-                }
-            }
-        }
-
-        public void reload()
-        {
-            foreach (var bullet in WaveController.BulletListActive)
-            {
-                if (bullet.reached)
-                {
-                    bullet.comingBack = true;
-                }
-            }
-        }
+        
 
     }
 }

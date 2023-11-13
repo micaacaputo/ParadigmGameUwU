@@ -7,18 +7,11 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    public class Bullet
+    public class Bullet : GameObject
     {
-        public Vector2 Position { get; set; }
-        public Vector2 Velocity { get; set; }
-        public Vector2 Aceleration { get; set; }
-        public float mass { get; }
-        public float radius { get; }
         public bool reached { get; set; }
         public bool comingBack { get; set; }
         public bool isRight { get; set; }
-        public int width { get; }
-        public int height { get; }
 
         public bool isActive { get; set; }
         private int speed = 400;
