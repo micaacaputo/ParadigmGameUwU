@@ -10,14 +10,10 @@ namespace MyGame
     public class Enemy : GameObject
     {
         public float timer { get; set; }
-
         public bool isActive { get; set; }
-        
-
-        IntPtr image;
+        public IntPtr image;
         //Animation currentAnimation;
         //Animation idleAnimation;
-
         public Enemy(float x, float y, float radius, string image, int width, int height, bool isActive = true)
         {
             Position = new Vector2(x, y);
@@ -44,21 +40,10 @@ namespace MyGame
             idleAnimation = new Animation("Idle", idleTextures, 0.1f, true);
 
         }*/
-
         public void Update()
         {
             //currentAnimation.Update();
             timer += Program.DeltaTime;
         }
-        public void Render()
-        {
-            //Engine.Draw(currentAnimation.CurrentFrame, x, y);
-            if(isActive)
-            {
-                Engine.Draw(image, Position.x- WaveController.camera.Position.x, Position.y- WaveController.camera.Position.y);
-            }
-            
-        }
-
     }
 }

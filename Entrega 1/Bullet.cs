@@ -15,12 +15,12 @@ namespace MyGame
 
         public bool isActive { get; set; }
         private int speed = 400;
-
-        private Animation currentAnimation;
-        private Animation moovingAnimationL;
-        private Animation moovingAnimationR;
-        private Animation backAnimationR;
-        private Animation backAnimationL;
+        public BulletBehavior BulletBehavior;
+        public Animation currentAnimation;
+        public Animation moovingAnimationL;
+        public Animation moovingAnimationR;
+        public Animation backAnimationR;
+        public Animation backAnimationL;
         
         private IntPtr image2;
         private IntPtr image3;
@@ -38,7 +38,7 @@ namespace MyGame
             mass = 1;
             image2 = Engine.LoadImage("assets/Bullet/axeFloorL.png");
             image3 = Engine.LoadImage("assets/Bullet/axeFloorR.png");
-
+            BulletBehavior = new BulletBehavior();
             CreateAnimations();
 
         }
@@ -83,52 +83,8 @@ namespace MyGame
 
         public void Update()
         {
-            if (Physics.Mag(Velocity) < 0.01 & !reached)
-            {
-                reached = true;
-            }
-
-            if (comingBack)
-            {
-                var vec = Physics.Res(WaveController.CharacterList[0].Position, Position);
-                var mag = Physics.Mag(vec);
-                if ( mag > 300)
-                {
-                    Velocity = Physics.Mul(vec, 3.5f);   
-                }
-                else if ( mag > 200)
-                {
-                    Velocity = Physics.Mul(vec, 5f);   
-                }
-                else
-                {
-                    var nor = Physics.Nor(vec);
-                    Velocity = Physics.Mul(nor, 1250);
-                }
-
-                if (Velocity.x > 0)
-                {
-                    currentAnimation = backAnimationR;
-                }
-                else if(Velocity.x < 0)
-                {
-                    currentAnimation = backAnimationL;
-                }
-            }
-            if (!comingBack)
-            {
-                if (Velocity.x > 0)
-                {
-                    currentAnimation = moovingAnimationR;
-                    
-                }
-                else if(Velocity.x < 0)
-                {
-                    currentAnimation = moovingAnimationL;
-                    
-                }
-            }
-
+            
+            BulletBehavior.Update(this);
             currentAnimation.Update();
 
         }

@@ -116,7 +116,12 @@ namespace MyGame
             }   
             foreach (Enemy enemy in EnemyList)
             {
-                enemy.Render();
+                if (enemy.isActive)
+                {
+                    Vector2 position = new Vector2(enemy.Position.x - WaveController.camera.Position.x,
+                        enemy.Position.y - WaveController.camera.Position.y);
+                    Renderer.RenderImage(enemy.image,position);
+                }
             }
             foreach (Character character in CharacterList)
             {
