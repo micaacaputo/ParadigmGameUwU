@@ -36,7 +36,7 @@ namespace MyGame
 
         public void Initialize()
         {
-            WaveController.Initialize();
+            LevelController.Initialize();
             Collision.OnEnemyDesable += ScoreUp;
         }
         public void Update()
@@ -51,7 +51,7 @@ namespace MyGame
                     }
                     break;
                 case 1:
-                    WaveController.Update();
+                    LevelController.Update();
                     break;
                 case 2:
                     if (Engine.KeyPress(Engine.KEY_R))
@@ -86,7 +86,7 @@ namespace MyGame
                     Engine.Draw(menu, 0, 0);
                     break;
                 case 1:
-                    WaveController.Render();
+                    LevelController.Render();
                     break;
                 case 2:
                     Engine.Draw(victory, 0, 0);
@@ -102,7 +102,7 @@ namespace MyGame
        private void ScoreUp()
        {
            score++;
-           if (score == WaveController.EnemyList.Count())
+           if (score == LevelController.EnemyList.Count())
            {
                ChangeCondition(2);
            }

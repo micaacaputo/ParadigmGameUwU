@@ -14,7 +14,7 @@ namespace MyGame
         }
         public void reload()
         {
-            foreach (var bullet in WaveController.BulletListActive)
+            foreach (var bullet in LevelController.BulletListActive)
             {
                 if (bullet.reached)
                 {
@@ -24,7 +24,7 @@ namespace MyGame
         }
         public void Shooting(Character character)
         {
-            foreach (Enemy enemy in WaveController.EnemyList)
+            foreach (Enemy enemy in LevelController.EnemyList)
             {
                 if (enemy.isActive)
                 {
@@ -49,9 +49,9 @@ namespace MyGame
         {
 
 
-            if (WaveController.BulletListNotActive.Any())
+            if (LevelController.BulletListNotActive.Any())
             {
-                var bullet = WaveController.BulletListNotActive[0];
+                var bullet = LevelController.BulletListNotActive[0];
                 Vector2 newPosition =new Vector2(character.Position.x+character.width-bullet.width, character.Position.y+character.height-bullet.height + 27);
                 if (dir.x > 0)
                 {
@@ -64,8 +64,8 @@ namespace MyGame
                 bullet.isActive = true;
                 bullet.Position = newPosition;
                 bullet.Velocity = Physics.Mul(dir, 500);
-                WaveController.BulletListActive.Add(bullet);
-                WaveController.BulletListNotActive.Remove(bullet);
+                LevelController.BulletListActive.Add(bullet);
+                LevelController.BulletListNotActive.Remove(bullet);
             }
         }
     }

@@ -11,7 +11,7 @@
 
             if (bullet.comingBack)
             {
-                var vec = Physics.Res(WaveController.CharacterList[0].Position, bullet.Position);
+                var vec = Physics.Res(LevelController.CharacterList[0].Position, bullet.Position);
                 var mag = Physics.Mag(vec);
                 if ( mag > 300)
                 {

@@ -14,13 +14,13 @@ namespace MyGame
         public IntPtr image;
         //Animation currentAnimation;
         //Animation idleAnimation;
-        public Enemy(float x, float y, float radius, string image, int width, int height, bool isActive = true)
+        public Enemy(float x, float y, string image, bool isActive = true)
         {
             Position = new Vector2(x, y);
 
-            this.radius = radius;
-            this.width = width;
-            this.height = height;
+            radius = 43;
+            width = 86;
+            height = 86;
             timer = 1;
             mass = 1;
             this.isActive = isActive;

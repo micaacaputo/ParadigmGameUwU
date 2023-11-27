@@ -97,17 +97,17 @@ namespace MyGame
                 {
                     if (isRight)
                     {
-                        Engine.Draw(image3, Position.x - WaveController.camera.Position.x, Position.y - WaveController.camera.Position.y);
+                        Engine.Draw(image3, Position.x - LevelController.camera.Position.x, Position.y - LevelController.camera.Position.y);
                     }
                     else
                     {
-                        Engine.Draw(image2, Position.x - WaveController.camera.Position.x, Position.y - WaveController.camera.Position.y);
+                        Engine.Draw(image2, Position.x - LevelController.camera.Position.x, Position.y - LevelController.camera.Position.y);
                     }
                     
                 }
                 else
                 {
-                    Engine.Draw(currentAnimation.CurrentFrame, Position.x - WaveController.camera.Position.x, Position.y - WaveController.camera.Position.y);
+                    Engine.Draw(currentAnimation.CurrentFrame, Position.x - LevelController.camera.Position.x, Position.y - LevelController.camera.Position.y);
                 }
 
             }
