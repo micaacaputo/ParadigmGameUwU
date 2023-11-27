@@ -44,6 +44,11 @@ namespace MyGame
             BulletListNotActive.Add(new Bullet(new Vector2(0, 0), new Vector2(0, 0)));
             BulletListNotActive.Add(new Bullet(new Vector2(0, 0), new Vector2(0, 0)));
             BulletListNotActive.Add(new Bullet(new Vector2(0, 0), new Vector2(0, 0)));
+            foreach (var bullet in BulletListNotActive)
+            {
+                IBulletBehavioreable bulletBehavioreable = new BulletBehavior(bullet);
+                bullet.AssignDependencies(bulletBehavioreable);
+            }
 
 
         }
