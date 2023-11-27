@@ -336,3 +336,7 @@ C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animat
 C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\character\2.png
 C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\character\3.png
 C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\character\4.png
+C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\character\1.png
+C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\character\2.png
+C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\character\3.png
+C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\character\4.png

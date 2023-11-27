@@ -15,6 +15,8 @@ namespace MyGame
         private IInputeable InputCharacterController;
         private IShooteable ShootController;
         public IHealthControllerable HealthController;
+        public Renderer Renderer;
+        public ICollider Collider;
         public IntPtr image;
         public IntPtr image2;
         Animation currentAnimation;
@@ -29,7 +31,7 @@ namespace MyGame
             this.mass = mass;
             this.ammo = ammo;
             health = 1;
-    
+            Renderer = new Renderer();
             image = Engine.LoadImage("assets/Character/character.png");
             image2 = Engine.LoadImage("assets/Character/body.png");
            CreateAnimations();
@@ -53,11 +55,14 @@ namespace MyGame
             movingAnimation.Update();
         }
 
-        public void AssignDependencies(IInputeable inputeable, IShooteable shooteable, IHealthControllerable healthControllerable)
+        public void AssignDependencies(IInputeable inputeable, IShooteable shooteable, IHealthControllerable healthControllerable, ICollider newCollider)
         {
             InputCharacterController = inputeable;
             ShootController = shooteable;
             HealthController = healthControllerable;
+            Collider = newCollider;
+            Collider.AssignProps(width,height,radius);
+            
         }
     }
 }

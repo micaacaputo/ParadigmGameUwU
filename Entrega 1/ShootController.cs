@@ -57,7 +57,7 @@ namespace MyGame
             if (LevelController.BulletListNotActive.Any())
             {
                 var bullet = LevelController.BulletListNotActive[0];
-                Vector2 newPosition =new Vector2(character.Position.x+character.width-bullet.width, character.Position.y+character.height-bullet.height + 27);
+                Vector2 newPosition =new Vector2(character.Position.x+character.Collider.width-bullet.Collider.width, character.Position.y+character.Collider.height-bullet.Collider.height + 27);
                 if (dir.x > 0)
                 {
                     bullet.isRight = true;

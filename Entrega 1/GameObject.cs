@@ -8,9 +8,9 @@ namespace MyGame
         public Vector2 Velocity { get; set; }
         public Vector2 Aceleration { get; set; }
         public float mass { get; set; }
-        public float radius { get; set;}
-        public int width { get; set;}
-        public int height { get; set;}
+        protected float radius { get; set;}
+        protected int width { get; set;}
+        protected int height { get; set;}
 
     }
 }

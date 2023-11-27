@@ -11,7 +11,9 @@ namespace MyGame
     {
         public float timer { get; set; }
         public bool isActive { get; set; }
+        public Renderer Renderer;
         public IntPtr image;
+        public ICollider Collider;
         //Animation currentAnimation;
         //Animation idleAnimation;
         public Enemy(float x, float y, string image, bool isActive = true)
@@ -24,7 +26,7 @@ namespace MyGame
             timer = 1;
             mass = 1;
             this.isActive = isActive;
-
+            Renderer = new Renderer();
             this.image = Engine.LoadImage(image);
             //CreateAnimations();
             //currentAnimation = idleAnimation;
@@ -44,6 +46,12 @@ namespace MyGame
         {
             //currentAnimation.Update();
             timer += Program.DeltaTime;
+        }
+        public void AssignDependencies(ICollider newCollider)
+        {
+            Collider = newCollider;
+            Collider.AssignProps(width,height,radius);
+            
         }
     }
 }

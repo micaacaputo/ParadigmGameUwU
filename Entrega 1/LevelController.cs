@@ -16,6 +16,7 @@ namespace MyGame
         public static List<Bullet> BulletListNotActive = new List<Bullet>();
         public static List<Bullet> Bullets = new List<Bullet>();
         public static Camera camera = new Camera();
+        private static Renderer Renderer = new Renderer();
         
 
         public static void Initialize()
@@ -26,11 +27,49 @@ namespace MyGame
             WaveController.Enemies = true;
             Engine.Initialize();
             
+            CreateCharacter();
+            CreateEnemies();
+            CreateBullets();
+        }
+        public static void Update()
+        {
+            PhysicsAplication.Update();
+            WaveController.Update();
+        }
+        public static void Render()
+        {
+            RenderBack();
+            RenderBullets();
+            RenderEnemies();
+            RenderCharacter();
+
+        }
+        
+        
+        // Métodos de creación
+        private static void CreateCharacter()
+        {
             CharacterList.Add(new Character(1360, 769, 37, 74, 74));
             IShooteable shootController = new ShootController(CharacterList[0]);
             IInputeable inputController = new InputCharacterController(CharacterList[0], shootController);
             IHealthControllerable healthControllerable = new HealthController(CharacterList[0]);
-            CharacterList[0].AssignDependencies(inputController,shootController, healthControllerable);
+            ICollider collider = new Collider2D();
+            CharacterList[0].AssignDependencies(inputController, shootController, healthControllerable, collider);
+        }
+
+        private static void CreateBullets()
+        {
+            BulletListNotActive.AddRange(BulletFactory.InitialBullets()); 
+            foreach (var bullet in BulletListNotActive)
+            {
+                IBulletBehavioreable bulletBehavioreable = new BulletBehavior(bullet);
+                ICollider collider = new Collider2D();
+                bullet.AssignDependencies(bulletBehavioreable, collider);
+            }
+        }
+
+        private static void CreateEnemies()
+        {
             EnemyList.Add(EnemyFactory.CreateEnemy(0, 513, "assets/Enemy/enemy1.png"));
             EnemyList.Add(EnemyFactory.CreateEnemy(0, 1026, "assets/Enemy/enemy1.png"));
             EnemyList.Add(EnemyFactory.CreateEnemy(2720, 513, "assets/Enemy/enemy1.png"));
@@ -40,57 +79,80 @@ namespace MyGame
             EnemyList.Add(EnemyFactory.CreateEnemy(2720, 769, "assets/Enemy/enemy1.png", false));
             EnemyList.Add(EnemyFactory.CreateEnemy(1360, 0, "assets/Enemy/enemy1.png", false));
             EnemyList.Add(EnemyFactory.CreateEnemy(1360, 1538, "assets/Enemy/enemy1.png", false));
-            
-            BulletListNotActive.Add(new Bullet(new Vector2(0, 0), new Vector2(0, 0)));
-            BulletListNotActive.Add(new Bullet(new Vector2(0, 0), new Vector2(0, 0)));
-            BulletListNotActive.Add(new Bullet(new Vector2(0, 0), new Vector2(0, 0)));
-            foreach (var bullet in BulletListNotActive)
+
+            foreach (var enemy in EnemyList)
             {
-                IBulletBehavioreable bulletBehavioreable = new BulletBehavior(bullet);
-                bullet.AssignDependencies(bulletBehavioreable);
+                ICollider collider = new Collider2D();
+                enemy.AssignDependencies(collider);
             }
-
-
         }
 
         
-
-        public static void Update()
+        // Métodos de Renderizado
+        private static void RenderCharacter()
         {
-            PhysicsAplication.Update();
-            WaveController.Update();
-        }
-        public static void Render() // Esto vuela (Renderer)
-        {
-            Engine.Draw(image, 0 - camera.Position.x, 0 - camera.Position.y);
-            Engine.Draw(image, 0 - camera.Position.x, 0 + 768 - camera.Position.y);
-            Engine.Draw(image, 0 + 1360 - camera.Position.x, 0 - camera.Position.y);
-            Engine.Draw(image, 0 + 1360 - camera.Position.x, 0 + 768 - camera.Position.y);
-
-            foreach (Bullet bullet in BulletListActive)
+            foreach (Character character in CharacterList)
             {
-                bullet.Render();
+                Vector2 position = new Vector2(character.Position.x - camera.Position.x,
+                    character.Position.y - camera.Position.y);
+                character.Renderer.RenderImage(character.image, position);
+                Vector2 position2 = new Vector2(character.Position.x - 26 - camera.Position.x,
+                    (character.Position.y + 56) - camera.Position.y);
+                character.Renderer.RenderImage(character.image2, position2);
             }
+        }
+
+        private static void RenderEnemies()
+        {
             foreach (Enemy enemy in EnemyList)
             {
                 if (enemy.isActive)
                 {
                     Vector2 position = new Vector2(enemy.Position.x - camera.Position.x,
                         enemy.Position.y - camera.Position.y);
-                    Renderer.RenderImage(enemy.image, position);
+                    enemy.Renderer.RenderImage(enemy.image, position);
                 }
             }
-            foreach (Character character in CharacterList)
-            {
-                Vector2 position = new Vector2(character.Position.x - camera.Position.x,
-                    character.Position.y - camera.Position.y);
-                Renderer.RenderImage(character.image, position);
-                Vector2 position2 = new Vector2(character.Position.x - 26 - camera.Position.x,
-                    (character.Position.y + 56) - camera.Position.y);
-                Renderer.RenderImage(character.image2, position2);
-            }
-
         }
+
+        private static void RenderBullets()
+        {
+            foreach (Bullet bullet in BulletListActive)
+            {
+                if (bullet.isActive)
+                {
+                    if (bullet.Velocity == new Vector2(0, 0))
+                    {
+                        if (bullet.isRight)
+                        {
+                            bullet.Renderer.RenderImage(bullet.image3, bullet.Position.x - camera.Position.x,
+                                bullet.Position.y - camera.Position.y);
+                        }
+                        else
+                        {
+                            bullet.Renderer.RenderImage(bullet.image2, bullet.Position.x - camera.Position.x,
+                                bullet.Position.y - camera.Position.y);
+                        }
+                    }
+                    else
+                    {
+                        bullet.Renderer.RenderImage(bullet.currentAnimation.CurrentFrame, bullet.Position.x - camera.Position.x,
+                            bullet.Position.y - camera.Position.y);
+                    }
+                }
+            }
+        }
+
+        private static void RenderBack()
+        {
+            Renderer.RenderImage(image, 0 - camera.Position.x, 0 - camera.Position.y);
+            Renderer.RenderImage(image, 0 - camera.Position.x, 0 + 768 - camera.Position.y);
+            Renderer.RenderImage(image, 0 + 1360 - camera.Position.x, 0 - camera.Position.y);
+            Renderer.RenderImage(image, 0 + 1360 - camera.Position.x, 0 + 768 - camera.Position.y);
+        }
+        
+        
+        //Metodos de Restart
         private static void Restart()
         {
             Relocate(0, true, 0, 513);

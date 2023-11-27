@@ -16,14 +16,16 @@ namespace MyGame
         public bool isActive { get; set; }
         private int speed = 400;
         public IBulletBehavioreable BulletBehavior;
+        public ICollider Collider;
+        public Renderer Renderer;
         public Animation currentAnimation;
         public Animation moovingAnimationL;
         public Animation moovingAnimationR;
         public Animation backAnimationR;
         public Animation backAnimationL;
         
-        private IntPtr image2;
-        private IntPtr image3;
+        public IntPtr image2;
+        public IntPtr image3;
 
         public Bullet(Vector2 position, Vector2 dir)
         {
@@ -36,15 +38,18 @@ namespace MyGame
             width = 38;
             height = 38;
             mass = 1;
+            Renderer = new Renderer();
             image2 = Engine.LoadImage("assets/Bullet/axeFloorL.png");
             image3 = Engine.LoadImage("assets/Bullet/axeFloorR.png");
             CreateAnimations();
 
         }
 
-        public void AssignDependencies(IBulletBehavioreable bulletBehavior)
+        public void AssignDependencies(IBulletBehavioreable bulletBehavior, ICollider newCollider)
         {
             BulletBehavior = bulletBehavior;
+            Collider = newCollider;
+            Collider.AssignProps(width,height,radius);
         }
         private void CreateAnimations()
         {
@@ -92,31 +97,5 @@ namespace MyGame
             currentAnimation.Update();
 
         }
-
-        public void Render()
-        {
-            if (isActive)
-            {
-                if (Velocity == new Vector2(0, 0))
-                {
-                    if (isRight)
-                    {
-                        Engine.Draw(image3, Position.x - LevelController.camera.Position.x, Position.y - LevelController.camera.Position.y);
-                    }
-                    else
-                    {
-                        Engine.Draw(image2, Position.x - LevelController.camera.Position.x, Position.y - LevelController.camera.Position.y);
-                    }
-                    
-                }
-                else
-                {
-                    Engine.Draw(currentAnimation.CurrentFrame, Position.x - LevelController.camera.Position.x, Position.y - LevelController.camera.Position.y);
-                }
-
-            }
-        }
-       
-
     }
 }

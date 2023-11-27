@@ -53,6 +53,7 @@
     <Compile Include="BulletFactory.cs" />
     <Compile Include="Camera.cs" />
     <Compile Include="Character.cs" />
+    <Compile Include="Collider2D.cs" />
     <Compile Include="Collision.cs" />
     <Compile Include="Behavior.cs" />
     <Compile Include="Enemy.cs" />
@@ -61,8 +62,10 @@
     <Compile Include="Engine.cs" />
     <Compile Include="GameManager.cs" />
     <Compile Include="GameObject.cs" />
+    <Compile Include="GenericObjectPool.cs" />
     <Compile Include="HealthController.cs" />
     <Compile Include="IBulletBehavioreable.cs" />
+    <Compile Include="ICollider.cs" />
     <Compile Include="IHealthControllerable.cs" />
     <Compile Include="IInputeable.cs" />
     <Compile Include="InputCharacterController.cs" />
