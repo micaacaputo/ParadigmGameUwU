@@ -6,11 +6,16 @@ namespace MyGame
     public class ShootController
     {
         private float timer = 1;
+        private Character character;
 
-        public void Update(Character character)
+        public ShootController(Character chara)
+        {
+            character = chara;
+        }
+        public void Update()
         {
             timer += Program.DeltaTime;
-            Shooting(character);
+            Shooting();
         }
         public void reload()
         {
@@ -22,7 +27,7 @@ namespace MyGame
                 }
             }
         }
-        public void Shooting(Character character)
+        public void Shooting()
         {
             foreach (Enemy enemy in LevelController.EnemyList)
             {
@@ -38,14 +43,14 @@ namespace MyGame
                         if (character.ammo > 0)
                         {
                             character.ammo--;
-                            Shot(dir, character);
+                            Shot(dir);
 
                         }
                     }
                 }
             }
         }
-        public void Shot(Vector2 dir, Character character)
+        public void Shot(Vector2 dir)
         {
 
 

@@ -29,8 +29,8 @@ namespace MyGame
             this.mass = mass;
             this.ammo = ammo;
             health = 1;
-            InputCharacterController = new InputCharacterController();
-            ShootController = new ShootController();
+            InputCharacterController = new InputCharacterController(this, ShootController);
+            ShootController = new ShootController(this);
             HealthController = new HealthController(this);
 
             image = Engine.LoadImage("assets/Character/character.png");
@@ -51,8 +51,8 @@ namespace MyGame
         }*/
         public void Update()
         {
-            ShootController.Update(this);
-            InputCharacterController.Update(this, ShootController);
+            ShootController.Update();
+            InputCharacterController.Update();
             //currentAnimation.Update();
         }
     }

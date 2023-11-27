@@ -2,7 +2,13 @@
 {
     public class BulletBehavior
     {
-        public void Update(Bullet bullet)
+        private Bullet bullet;
+
+        public BulletBehavior(Bullet bul)
+        {
+            bullet = bul;
+        }
+        public void Update()
         {
             if (Physics.Mag(bullet.Velocity) < 0.01 & !bullet.reached)
             {

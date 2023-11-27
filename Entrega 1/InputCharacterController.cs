@@ -4,10 +4,16 @@ namespace MyGame
 {
     public class InputCharacterController
     {
-        
+        private Character character;
+        private ShootController shootController;
         private float timer2 = 1;
 
-        public void Update(Character character, ShootController shootController)
+        public InputCharacterController(Character chara, ShootController shot)
+        {
+            character = chara;
+            shootController = shot;
+        }
+        public void Update()
         {
             
             timer2 += Program.DeltaTime;

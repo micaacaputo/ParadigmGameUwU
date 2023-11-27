@@ -38,7 +38,7 @@ namespace MyGame
             mass = 1;
             image2 = Engine.LoadImage("assets/Bullet/axeFloorL.png");
             image3 = Engine.LoadImage("assets/Bullet/axeFloorR.png");
-            BulletBehavior = new BulletBehavior();
+            BulletBehavior = new BulletBehavior(this);
             CreateAnimations();
 
         }
@@ -84,7 +84,7 @@ namespace MyGame
         public void Update()
         {
             
-            BulletBehavior.Update(this);
+            BulletBehavior.Update();
             currentAnimation.Update();
 
         }
