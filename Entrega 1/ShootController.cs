@@ -17,7 +17,7 @@ namespace MyGame
             timer += Program.DeltaTime;
             Shooting();
         }
-        public void reload()
+        public void Reload()
         {
             foreach (var bullet in LevelController.BulletListActive)
             {

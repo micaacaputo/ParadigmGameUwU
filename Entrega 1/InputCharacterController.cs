@@ -4,10 +4,15 @@ namespace MyGame
 {
     public class InputCharacterController : IInputeable
     {
-        public Character character;
-        public ShootController shootController;
+        private Character character;
+        private IShooteable shootController;
         private float timer2 = 1;
-        
+
+        public InputCharacterController(Character character, IShooteable shootController)
+        {
+            this.character = character;
+            this.shootController = shootController;
+        }
         public void InputUpdate()
         {
             
@@ -37,19 +42,10 @@ namespace MyGame
                 if (timer2 > 3)
                 {
                     timer2 = 0;
-                    shootController.reload();
+                    shootController.Reload();
                 }
                 
             }
-        }
-
-        public void AssignCharacter(Character character)
-        {
-            this.character = character;
-        }
-        public void AssignShootController(ShootController shootController)
-        {
-            this.shootController = shootController;
         }
     }
 }

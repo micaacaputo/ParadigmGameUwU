@@ -12,14 +12,14 @@ namespace MyGame
     {
         public int health { get; set; }
         public int ammo { get; set; }
-        public IInputeable InputCharacterController;
-        public IShooteable ShootController;
+        private IInputeable InputCharacterController;
+        private IShooteable ShootController;
         public HealthController HealthController;
         public IntPtr image;
         public IntPtr image2;
         //Animation currentAnimation;
         //Animation idleAnimation;
-        public Character(float x, float y, float radius, int width, int height, IInputeable inputController, IShooteable shootController, int mass = 1, int ammo = 3)
+        public Character(float x, float y, float radius, int width, int height, int mass = 1, int ammo = 3)
         {
 
             Position = new Vector2(x, y);
@@ -29,10 +29,8 @@ namespace MyGame
             this.mass = mass;
             this.ammo = ammo;
             health = 1;
-            InputCharacterController = inputController;
-            ShootController = shootController;
             HealthController = new HealthController(this);
-
+    
             image = Engine.LoadImage("assets/Character/character.png");
             image2 = Engine.LoadImage("assets/Character/body.png");
            //CreateAnimations();
@@ -54,6 +52,12 @@ namespace MyGame
             ShootController.ShootUpdate();
             InputCharacterController.InputUpdate();
             //currentAnimation.Update();
+        }
+
+        public void AssignDependecies(IInputeable inputeable, IShooteable shooteable)
+        {
+            InputCharacterController = inputeable;
+            ShootController = shooteable;
         }
     }
 }
