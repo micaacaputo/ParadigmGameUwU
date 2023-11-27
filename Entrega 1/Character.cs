@@ -14,7 +14,7 @@ namespace MyGame
         public int ammo { get; set; }
         private IInputeable InputCharacterController;
         private IShooteable ShootController;
-        public HealthController HealthController;
+        public IHealthControllerable HealthController;
         public IntPtr image;
         public IntPtr image2;
         //Animation currentAnimation;
@@ -29,7 +29,6 @@ namespace MyGame
             this.mass = mass;
             this.ammo = ammo;
             health = 1;
-            HealthController = new HealthController(this);
     
             image = Engine.LoadImage("assets/Character/character.png");
             image2 = Engine.LoadImage("assets/Character/body.png");
@@ -54,10 +53,11 @@ namespace MyGame
             //currentAnimation.Update();
         }
 
-        public void AssignDependecies(IInputeable inputeable, IShooteable shooteable)
+        public void AssignDependecies(IInputeable inputeable, IShooteable shooteable, IHealthControllerable healthControllerable)
         {
             InputCharacterController = inputeable;
             ShootController = shooteable;
+            HealthController = healthControllerable;
         }
     }
 }

@@ -62,6 +62,7 @@
     <Compile Include="GameManager.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="HealthController.cs" />
+    <Compile Include="IHealthControllerable.cs" />
     <Compile Include="IInputeable.cs" />
     <Compile Include="InputCharacterController.cs" />
     <Compile Include="IShooteable.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace MyGame
 {
-    public class HealthController
+    public class HealthController : IHealthControllerable
     {
         public Character Character;
 

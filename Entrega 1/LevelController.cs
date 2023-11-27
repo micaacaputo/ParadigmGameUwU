@@ -29,7 +29,8 @@ namespace MyGame
             CharacterList.Add(new Character(1360, 769, 37, 74, 74));
             IShooteable shootController = new ShootController(CharacterList[0]);
             IInputeable inputController = new InputCharacterController(CharacterList[0], shootController);
-            CharacterList[0].AssignDependecies(inputController,shootController);
+            IHealthControllerable healthControllerable = new HealthController(CharacterList[0]);
+            CharacterList[0].AssignDependecies(inputController,shootController, healthControllerable);
             EnemyList.Add(EnemyFactory.CreateEnemy(0, 513, "assets/Enemy/enemy1.png"));
             EnemyList.Add(EnemyFactory.CreateEnemy(0, 1026, "assets/Enemy/enemy1.png"));
             EnemyList.Add(EnemyFactory.CreateEnemy(2720, 513, "assets/Enemy/enemy1.png"));
