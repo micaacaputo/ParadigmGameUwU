@@ -82,9 +82,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\Animation\character\" />
-  </ItemGroup>
-  <ItemGroup>
+    <Content Include="assets\Animation\character\1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\Animation\character\2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\Animation\character\3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="assets\Animation\character\4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\Bullet\axeFloorL.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

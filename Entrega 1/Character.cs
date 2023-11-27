@@ -17,8 +17,8 @@ namespace MyGame
         public IHealthControllerable HealthController;
         public IntPtr image;
         public IntPtr image2;
-        //Animation currentAnimation;
-        //Animation idleAnimation;
+        Animation currentAnimation;
+        Animation movingAnimation;
         public Character(float x, float y, float radius, int width, int height, int mass = 1, int ammo = 3)
         {
 
@@ -32,25 +32,25 @@ namespace MyGame
     
             image = Engine.LoadImage("assets/Character/character.png");
             image2 = Engine.LoadImage("assets/Character/body.png");
-           //CreateAnimations();
-           //currentAnimation = idleAnimation;
+           CreateAnimations();
+           currentAnimation = movingAnimation;
         }
-       /*private void CreateAnimations()
+       private void CreateAnimations()
         {
-            List<IntPtr> idleTextures = new List<IntPtr>();
-            for (int i = 0; i < 4; i++)
+            List<IntPtr> movingTextures = new List<IntPtr>();
+            for (int i = 1; i < 5; i++)
             {
-                IntPtr frame = Engine.LoadImage($"assets/Ship/Idle/{i}.png");
-                idleTextures.Add(frame);
+                IntPtr frame = Engine.LoadImage($"assets/Animation/character/{i}.png");
+                movingTextures.Add(frame);
             }
-            idleAnimation = new Animation("Idle", idleTextures, 0.1f, true);
+            movingAnimation = new Animation("Move", movingTextures, 1, true);
 
-        }*/
+        }
         public void Update()
         {
             ShootController.ShootUpdate();
             InputCharacterController.InputUpdate();
-            //currentAnimation.Update();
+            movingAnimation.Update();
         }
 
         public void AssignDependencies(IInputeable inputeable, IShooteable shooteable, IHealthControllerable healthControllerable)
