@@ -10,11 +10,20 @@
         }
         public void Update()
         {
+            CheckIfReached();
+            UseAnimation();
+        }
+
+        public void CheckIfReached()
+        {
             if (Physics.Mag(bullet.Velocity) < 0.01 & !bullet.reached)
             {
                 bullet.reached = true;
             }
+        }
 
+        public void UseAnimation()
+        {
             if (bullet.comingBack)
             {
                 var vec = Physics.Res(LevelController.CharacterList[0].Position, bullet.Position);
