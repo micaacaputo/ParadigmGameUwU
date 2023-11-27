@@ -53,7 +53,7 @@ namespace MyGame
             //currentAnimation.Update();
         }
 
-        public void AssignDependecies(IInputeable inputeable, IShooteable shooteable, IHealthControllerable healthControllerable)
+        public void AssignDependencies(IInputeable inputeable, IShooteable shooteable, IHealthControllerable healthControllerable)
         {
             InputCharacterController = inputeable;
             ShootController = shooteable;

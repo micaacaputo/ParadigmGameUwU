@@ -15,7 +15,7 @@ namespace MyGame
 
         public bool isActive { get; set; }
         private int speed = 400;
-        public BulletBehavior BulletBehavior;
+        public IBulletBehavioreable BulletBehavior;
         public Animation currentAnimation;
         public Animation moovingAnimationL;
         public Animation moovingAnimationR;
@@ -38,9 +38,13 @@ namespace MyGame
             mass = 1;
             image2 = Engine.LoadImage("assets/Bullet/axeFloorL.png");
             image3 = Engine.LoadImage("assets/Bullet/axeFloorR.png");
-            BulletBehavior = new BulletBehavior(this);
             CreateAnimations();
 
+        }
+
+        public void AssignDependencies(IBulletBehavioreable bulletBehavior)
+        {
+            BulletBehavior = bulletBehavior;
         }
         private void CreateAnimations()
         {
@@ -84,7 +88,7 @@ namespace MyGame
         public void Update()
         {
             
-            BulletBehavior.Update();
+            BulletBehavior.BehaviorUpdate();
             currentAnimation.Update();
 
         }

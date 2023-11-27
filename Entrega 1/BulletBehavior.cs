@@ -1,6 +1,6 @@
 ﻿namespace MyGame
 {
-    public class BulletBehavior
+    public class BulletBehavior : IBulletBehavioreable
     {
         private Bullet bullet;
 
@@ -8,13 +8,13 @@
         {
             bullet = bul;
         }
-        public void Update()
+        public void BehaviorUpdate()
         {
             CheckIfReached();
             UseAnimation();
         }
 
-        public void CheckIfReached()
+        private void CheckIfReached()
         {
             if (Physics.Mag(bullet.Velocity) < 0.01 & !bullet.reached)
             {
@@ -22,7 +22,7 @@
             }
         }
 
-        public void UseAnimation()
+        private void UseAnimation()
         {
             if (bullet.comingBack)
             {

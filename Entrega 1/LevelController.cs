@@ -30,7 +30,7 @@ namespace MyGame
             IShooteable shootController = new ShootController(CharacterList[0]);
             IInputeable inputController = new InputCharacterController(CharacterList[0], shootController);
             IHealthControllerable healthControllerable = new HealthController(CharacterList[0]);
-            CharacterList[0].AssignDependecies(inputController,shootController, healthControllerable);
+            CharacterList[0].AssignDependencies(inputController,shootController, healthControllerable);
             EnemyList.Add(EnemyFactory.CreateEnemy(0, 513, "assets/Enemy/enemy1.png"));
             EnemyList.Add(EnemyFactory.CreateEnemy(0, 1026, "assets/Enemy/enemy1.png"));
             EnemyList.Add(EnemyFactory.CreateEnemy(2720, 513, "assets/Enemy/enemy1.png"));
@@ -40,7 +40,7 @@ namespace MyGame
             EnemyList.Add(EnemyFactory.CreateEnemy(2720, 769, "assets/Enemy/enemy1.png", false));
             EnemyList.Add(EnemyFactory.CreateEnemy(1360, 0, "assets/Enemy/enemy1.png", false));
             EnemyList.Add(EnemyFactory.CreateEnemy(1360, 1538, "assets/Enemy/enemy1.png", false));
-
+            
             BulletListNotActive.Add(new Bullet(new Vector2(0, 0), new Vector2(0, 0)));
             BulletListNotActive.Add(new Bullet(new Vector2(0, 0), new Vector2(0, 0)));
             BulletListNotActive.Add(new Bullet(new Vector2(0, 0), new Vector2(0, 0)));
