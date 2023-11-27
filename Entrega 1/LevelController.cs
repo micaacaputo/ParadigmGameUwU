@@ -16,6 +16,7 @@ namespace MyGame
         public static List<Bullet> BulletListNotActive = new List<Bullet>();
         public static List<Bullet> Bullets = new List<Bullet>();
         public static Camera camera = new Camera();
+        public static IInputeable inputController = new InputCharacterController();
 
         public static void Initialize()
         {
@@ -23,7 +24,7 @@ namespace MyGame
             camera.Position = new Vector2(1360, 769);
             WaveController.Enemies = true;
             Engine.Initialize();
-            CharacterList.Add(new Character(1360, 769, 37, 74, 74));
+            CharacterList.Add(new Character(1360, 769, 37, 74, 74, inputController, shootController));
             EnemyList.Add(EnemyFactory.CreateEnemy(0, 513, "assets/Enemy/enemy1.png"));
             EnemyList.Add(EnemyFactory.CreateEnemy(0, 1026, "assets/Enemy/enemy1.png"));
             EnemyList.Add(EnemyFactory.CreateEnemy(2720, 513, "assets/Enemy/enemy1.png"));
@@ -40,6 +41,9 @@ namespace MyGame
 
 
         }
+
+        public static IShooteable shootController { get; set; }
+
         public static void Update()
         {
             PhysicsAplication.Update();

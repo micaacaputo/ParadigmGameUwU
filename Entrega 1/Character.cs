@@ -12,14 +12,14 @@ namespace MyGame
     {
         public int health { get; set; }
         public int ammo { get; set; }
-        public InputCharacterController InputCharacterController;
-        public ShootController ShootController;
+        public IInputeable InputCharacterController;
+        public IShooteable ShootController;
         public HealthController HealthController;
         public IntPtr image;
         public IntPtr image2;
         //Animation currentAnimation;
         //Animation idleAnimation;
-        public Character(float x, float y, float radius, int width, int height, float mass = 1, int ammo = 3)
+        public Character(float x, float y, float radius, int width, int height, IInputeable inputController, IShooteable shootController, int mass = 1, int ammo = 3)
         {
 
             Position = new Vector2(x, y);
@@ -29,8 +29,8 @@ namespace MyGame
             this.mass = mass;
             this.ammo = ammo;
             health = 1;
-            InputCharacterController = new InputCharacterController(this, ShootController);
-            ShootController = new ShootController(this);
+            InputCharacterController = inputController;
+            ShootController = shootController;
             HealthController = new HealthController(this);
 
             image = Engine.LoadImage("assets/Character/character.png");
@@ -51,8 +51,8 @@ namespace MyGame
         }*/
         public void Update()
         {
-            ShootController.Update();
-            InputCharacterController.Update();
+            ShootController.ShootUpdate();
+            InputCharacterController.InputUpdate();
             //currentAnimation.Update();
         }
     }

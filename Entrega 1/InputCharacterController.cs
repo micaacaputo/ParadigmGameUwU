@@ -2,18 +2,13 @@
 
 namespace MyGame
 {
-    public class InputCharacterController
+    public class InputCharacterController : IInputeable
     {
-        private Character character;
-        private ShootController shootController;
+        public Character character;
+        public ShootController shootController;
         private float timer2 = 1;
-
-        public InputCharacterController(Character chara, ShootController shot)
-        {
-            character = chara;
-            shootController = shot;
-        }
-        public void Update()
+        
+        public void InputUpdate()
         {
             
             timer2 += Program.DeltaTime;
@@ -46,6 +41,15 @@ namespace MyGame
                 }
                 
             }
+        }
+
+        public void AssignCharacter(Character character)
+        {
+            this.character = character;
+        }
+        public void AssignShootController(ShootController shootController)
+        {
+            this.shootController = shootController;
         }
     }
 }

@@ -3,7 +3,7 @@ using MyGame.assets;
 
 namespace MyGame
 {
-    public class ShootController
+    public class ShootController : IShooteable
     {
         private float timer = 1;
         private Character character;
@@ -12,7 +12,7 @@ namespace MyGame
         {
             character = chara;
         }
-        public void Update()
+        public void ShootUpdate()
         {
             timer += Program.DeltaTime;
             Shooting();
