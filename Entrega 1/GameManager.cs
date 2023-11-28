@@ -14,7 +14,7 @@ namespace MyGame
         private IntPtr victory = Engine.LoadImage("assets/Screen/victory.png");
         private IntPtr defeat = Engine.LoadImage("assets/Screen/defeat.png");
         private int gameCondition = 0;
-        private int score;
+        public int score;
         public static IntPtr gameFont;
         
         public Action OnRestart;
