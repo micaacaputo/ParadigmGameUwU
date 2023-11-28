@@ -23,11 +23,16 @@ namespace MyGame
         private static Renderer Renderer = new Renderer();
         private static int EnemigosParaRecompensa = 5;
         private static int ContadorRecompensas = EnemigosParaRecompensa;
-        
+        private static Random random = new Random();
+        private static bool lifeEarned = false;
+        private static bool axeEarned = false;
+        private static float rewardUITimer = 0;
+        private static Vector2 rewardUIPosition;
         
 
         public static void Initialize()
         {
+            rewardUIPosition = new Vector2(680 - 207, 768 - 117);
             Collision.OnEnemyDesable += DecreaseEnemyNumber;
             GameManager.Instance.OnRestart += Restart;
             camera.Position = new Vector2(1360, 769);
@@ -40,24 +45,10 @@ namespace MyGame
         }
         public static void Update()
         {
+            rewardUITimer += Program.DeltaTime;
             PhysicsAplication.Update();
             WaveController.Update();
-            if (GameManager.Instance.score > ContadorRecompensas)
-            {
-                ContadorRecompensas += EnemigosParaRecompensa;
-                
-                Random random = new Random();
-                double probabilidad = random.NextDouble();
-                switch (probabilidad <= 0.5)
-                {
-                    case true:
-                        CharacterList[0].HealthController.HealthUp();
-                        break;
-                    case false:
-                        CharacterList[0].ammo++;
-                        break;
-                }
-            }
+            RewardUpdate();
         }
         public static void Render()
         {
@@ -71,10 +62,57 @@ namespace MyGame
             Engine.DrawText("Wave: " + WaveController.Wave, 1200, 20, 183, 90, 249, GameManager.gameFont);
             Renderer.RenderImage(axeHud, 585, 20);
             Renderer.RenderImage(healthHud, 735, 20);
-            
+            RewardUIRender();
         }
-        
-        
+
+        private static void RewardUIRender()
+        {
+            if (axeEarned)
+            {
+                if (rewardUITimer < 1)
+                {
+                    Renderer.RenderImage(extraAxe, rewardUIPosition);
+                }
+                else
+                {
+                    axeEarned = false;
+                }
+            }
+
+            if (lifeEarned)
+            {
+                if (rewardUITimer < 1)
+                {
+                    Renderer.RenderImage(extraLife, rewardUIPosition);
+                }
+                else
+                {
+                    lifeEarned = false;
+                }
+            }
+        }
+
+        private static void RewardUpdate()
+        {
+            if (GameManager.Instance.score > ContadorRecompensas)
+            {
+                ContadorRecompensas += EnemigosParaRecompensa;
+                double probabilidad = random.NextDouble();
+                switch (probabilidad <= 0.5)
+                {
+                    case true:
+                        CharacterList[0].HealthController.HealthUp();
+                        lifeEarned = true;
+                        rewardUITimer = 0;
+                        break;
+                    case false:
+                        CharacterList[0].ammo++;
+                        axeEarned = true;
+                        rewardUITimer = 0;
+                        break;
+                }
+            }
+        }
         // Métodos de creación
         private static void CreateCharacter()
         {

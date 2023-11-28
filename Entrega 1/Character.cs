@@ -21,6 +21,7 @@ namespace MyGame
         public Animation currentAnimationEyes;
         private Animation movingAnimationFeet;
         private Animation movingAnimationEyes;
+        public float invulnerabilityTimer = 0;
         public Character(float x, float y, float radius, int width, int height, int mass = 1, int ammo = 3)
         {
 
@@ -57,6 +58,7 @@ namespace MyGame
         }
         public void Update()
         {
+            invulnerabilityTimer += Program.DeltaTime;
             ShootController.ShootUpdate();
             InputCharacterController.InputUpdate();
             currentAnimationFeetArms.Update();
