@@ -95,10 +95,10 @@ namespace MyGame
             {
                 Vector2 position = new Vector2(character.Position.x - camera.Position.x,
                     character.Position.y - camera.Position.y);
-                character.Renderer.RenderImage(character.image, position);
+                character.Renderer.RenderImage(character.currentAnimationEyes.CurrentFrame, position);
                 Vector2 position2 = new Vector2(character.Position.x - 26 - camera.Position.x,
                     (character.Position.y + 56) - camera.Position.y);
-                character.Renderer.RenderImage(character.image2, position2);
+                character.Renderer.RenderImage(character.currentAnimationFeetArms.CurrentFrame, position2);
             }
         }
 
@@ -110,7 +110,7 @@ namespace MyGame
                 {
                     Vector2 position = new Vector2(enemy.Position.x - camera.Position.x,
                         enemy.Position.y - camera.Position.y);
-                    enemy.Renderer.RenderImage(enemy.image, position);
+                    enemy.Renderer.RenderImage(enemy.currentAnimation.CurrentFrame, position);
                 }
             }
         }

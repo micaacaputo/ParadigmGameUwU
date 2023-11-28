@@ -14,8 +14,8 @@ namespace MyGame
         public Renderer Renderer;
         public IntPtr image;
         public ICollider Collider;
-        //Animation currentAnimation;
-        //Animation idleAnimation;
+        public Animation currentAnimation;
+        private Animation moveAnimation;
         public Enemy(float x, float y, string image, bool isActive = true)
         {
             Position = new Vector2(x, y);
@@ -28,23 +28,23 @@ namespace MyGame
             this.isActive = isActive;
             Renderer = new Renderer();
             this.image = Engine.LoadImage(image);
-            //CreateAnimations();
-            //currentAnimation = idleAnimation;
+            CreateAnimations();
+            currentAnimation = moveAnimation;
         }
-        /*private void CreateAnimations()
+        private void CreateAnimations()
         {
             List<IntPtr> idleTextures = new List<IntPtr>();
-            for (int i = 0; i < 4; i++)
+            for (int i = 1; i < 3; i++)
             {
-                IntPtr frame = Engine.LoadImage($"assets/Ship/Idle/{i}.png");
+                IntPtr frame = Engine.LoadImage($"assets/Animation/enemies/{i}.png");
                 idleTextures.Add(frame);
             }
-            idleAnimation = new Animation("Idle", idleTextures, 0.1f, true);
+            moveAnimation = new Animation("Idle", idleTextures, 0.4f, true);
 
-        }*/
+        }
         public void Update()
         {
-            //currentAnimation.Update();
+            currentAnimation.Update();
             timer += Program.DeltaTime;
         }
         public void AssignDependencies(ICollider newCollider)

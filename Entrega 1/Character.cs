@@ -19,8 +19,10 @@ namespace MyGame
         public ICollider Collider;
         public IntPtr image;
         public IntPtr image2;
-        Animation currentAnimation;
-        Animation movingAnimation;
+        public Animation currentAnimationFeetArms;
+        public Animation currentAnimationEyes;
+        private Animation movingAnimationFeet;
+        private Animation movingAnimationEyes;
         public Character(float x, float y, float radius, int width, int height, int mass = 1, int ammo = 3)
         {
 
@@ -34,25 +36,35 @@ namespace MyGame
             Renderer = new Renderer();
             image = Engine.LoadImage("assets/Character/character.png");
             image2 = Engine.LoadImage("assets/Character/body.png");
-           CreateAnimations();
-           currentAnimation = movingAnimation;
+            CreateAnimations();
+            currentAnimationFeetArms = movingAnimationFeet;
+            currentAnimationEyes = movingAnimationEyes;
         }
        private void CreateAnimations()
         {
-            List<IntPtr> movingTextures = new List<IntPtr>();
-            for (int i = 1; i < 5; i++)
+            List<IntPtr> movingFeet = new List<IntPtr>();
+            for (int i = 1; i < 3; i++)
             {
                 IntPtr frame = Engine.LoadImage($"assets/Animation/character/{i}.png");
-                movingTextures.Add(frame);
+                movingFeet.Add(frame);
             }
-            movingAnimation = new Animation("Move", movingTextures, 1, true);
+            movingAnimationFeet = new Animation("Move feet and arms", movingFeet, 0.5f, true);
+            
+            List<IntPtr> movingEyes = new List<IntPtr>();
+            for (int i = 1; i < 7; i++)
+            {
+                IntPtr frame = Engine.LoadImage($"assets/Animation/character/eyes/{i}.png");
+                movingEyes.Add(frame);
+            }
+            movingAnimationEyes = new Animation("Move eyes", movingEyes, 0.4f, true);
 
         }
         public void Update()
         {
             ShootController.ShootUpdate();
             InputCharacterController.InputUpdate();
-            movingAnimation.Update();
+            currentAnimationFeetArms.Update();
+            currentAnimationEyes.Update();
         }
 
         public void AssignDependencies(IInputeable inputeable, IShooteable shooteable, IHealthControllerable healthControllerable, ICollider newCollider)
