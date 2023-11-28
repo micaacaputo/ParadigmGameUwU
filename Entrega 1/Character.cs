@@ -17,8 +17,6 @@ namespace MyGame
         public IHealthControllerable HealthController;
         public Renderer Renderer;
         public ICollider Collider;
-        public IntPtr image;
-        public IntPtr image2;
         public Animation currentAnimationFeetArms;
         public Animation currentAnimationEyes;
         private Animation movingAnimationFeet;
@@ -34,8 +32,6 @@ namespace MyGame
             this.ammo = ammo;
             health = 1;
             Renderer = new Renderer();
-            image = Engine.LoadImage("assets/Character/character.png");
-            image2 = Engine.LoadImage("assets/Character/body.png");
             CreateAnimations();
             currentAnimationFeetArms = movingAnimationFeet;
             currentAnimationEyes = movingAnimationEyes;
