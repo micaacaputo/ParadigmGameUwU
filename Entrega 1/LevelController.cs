@@ -56,6 +56,19 @@ namespace MyGame
             RenderBullets();
             RenderEnemies();
             RenderCharacter();
+            RenderTextUI();
+            RenderImagesUI();
+            RewardUIRender();
+        }
+
+        private static void RenderImagesUI()
+        {
+            Renderer.RenderImage(axeHud, 585, 20);
+            Renderer.RenderImage(healthHud, 735, 20);
+        }
+
+        private static void RenderTextUI()
+        {
             Engine.DrawText("Score: " + GameManager.Instance.score, 20, 20, 183, 90, 249, GameManager.gameFont);
             Engine.DrawText(": " + CharacterList[0].ammo, 635, 20, 183, 90, 249, GameManager.gameFont);
             Engine.DrawText(": " + CharacterList[0].health, 780, 20, 183, 90, 249, GameManager.gameFont);
@@ -64,9 +77,6 @@ namespace MyGame
             {
                 Engine.DrawText("Reload Ready", 1080, 720, 183, 90, 249, GameManager.gameFont);
             }
-            Renderer.RenderImage(axeHud, 585, 20);
-            Renderer.RenderImage(healthHud, 735, 20);
-            RewardUIRender();
         }
 
         private static void RewardUIRender()
@@ -171,7 +181,7 @@ namespace MyGame
                 Vector2 position = new Vector2(character.Position.x - camera.Position.x,
                     character.Position.y - camera.Position.y);
                 character.Renderer.RenderImage(character.currentAnimationEyes.CurrentFrame, position);
-                Vector2 position2 = new Vector2(character.Position.x - 26 - camera.Position.x,
+                Vector2 position2 = new Vector2(character.Position.x - 28 - camera.Position.x,
                     (character.Position.y + 56) - camera.Position.y);
                 character.Renderer.RenderImage(character.currentAnimationFeetArms.CurrentFrame, position2);
             }
