@@ -41,6 +41,8 @@ namespace MyGame
             RenderBullets();
             RenderEnemies();
             RenderCharacter();
+            Engine.DrawText($"Axes: {CharacterList[0].ammo}", 30, 20, 183, 90, 249, GameManager.gameFont);
+            Engine.DrawText($"Health: {CharacterList[0].health}", 160, 20, 183, 90, 249, GameManager.gameFont);
         }
         
         

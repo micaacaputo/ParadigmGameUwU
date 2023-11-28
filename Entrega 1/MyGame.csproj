@@ -85,7 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="Fonts\Fredoka-SemiBold.ttf">
+    <None Include="Fonts\Cute Love.ttf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
