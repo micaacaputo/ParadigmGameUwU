@@ -7,7 +7,7 @@ namespace MyGame
         private Character character;
         private IShooteable shootController;
         private int moveSpeed = 850;
-        private float timer2 = 1;
+        public float reloadTimer { get; set;}
 
         public InputCharacterController(Character character, IShooteable shootController)
         {
@@ -17,7 +17,7 @@ namespace MyGame
         public void InputUpdate()
         {
             
-            timer2 += Program.DeltaTime;
+            reloadTimer += Program.DeltaTime;
             if (Engine.KeyPress(Engine.KEY_LEFT)) 
             {
                 Physics.AddForce(character , new Vector2(-moveSpeed,0));
@@ -40,9 +40,9 @@ namespace MyGame
 
             if (Engine.KeyPress(Engine.KEY_ESP))
             {
-                if (timer2 > 3)
+                if (reloadTimer > 3)
                 {
-                    timer2 = 0;
+                    reloadTimer = 0;
                     shootController.Reload();
                 }
                 

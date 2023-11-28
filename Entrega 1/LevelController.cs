@@ -60,6 +60,10 @@ namespace MyGame
             Engine.DrawText(": " + CharacterList[0].ammo, 635, 20, 183, 90, 249, GameManager.gameFont);
             Engine.DrawText(": " + CharacterList[0].health, 780, 20, 183, 90, 249, GameManager.gameFont);
             Engine.DrawText("Wave: " + WaveController.Wave, 1200, 20, 183, 90, 249, GameManager.gameFont);
+            if (CharacterList[0].InputCharacterController.reloadTimer > 3)
+            {
+                Engine.DrawText("Reload Ready", 1080, 720, 183, 90, 249, GameManager.gameFont);
+            }
             Renderer.RenderImage(axeHud, 585, 20);
             Renderer.RenderImage(healthHud, 735, 20);
             RewardUIRender();
@@ -141,15 +145,15 @@ namespace MyGame
             EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(0, 1026, "assets/Enemy/enemy1.png"));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 513, "assets/Enemy/enemy1.png"));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 1026, "assets/Enemy/enemy1.png"));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 1026, "assets/Enemy/enemy1.png"));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 1026, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2000, 0, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(1000, 1538, "assets/Enemy/enemy1.png"));
 
             EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(0, 769, "assets/Enemy/enemy1.png", false));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(2720, 769, "assets/Enemy/enemy1.png", false));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 0, "assets/Enemy/enemy1.png", false));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 1538, "assets/Enemy/enemy1.png", false));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 1538, "assets/Enemy/enemy1.png", false));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 1538, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(700, 0, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1900, 1538, "assets/Enemy/enemy1.png", false));
 
             foreach (var enemy in EnemyPool.allList)
             {
@@ -226,14 +230,14 @@ namespace MyGame
         //Metodos de Restart
         private static void Restart()
         {
-            RelocateFirstFour();
+            RelocateFirstSix();
 
-            RelocateLastFour();
+            RelocateLastSix();
 
             CharacterList[0].Position = new Vector2(1360, 768);
             CharacterList[0].Velocity = new Vector2(0, 0);
             CharacterList[0].ammo = 3;
-            CharacterList[0].health = 1;
+            CharacterList[0].health = 5;
 
             AllBulletsNotActive();
 
@@ -241,20 +245,24 @@ namespace MyGame
             WaveController.Wave = 1;
         }
 
-        public static void RelocateLastFour()
+        public static void RelocateLastSix()
         {
-            Relocate(4, false, 0, 769);
-            Relocate(5, false, 2720, 769);
-            Relocate(6, false, 1360, 0);
-            Relocate(7, false, 1360, 1538);
+            Relocate(6, false, 0, 769);
+            Relocate(7, false, 2720, 769);
+            Relocate(8, false, 1360, 0);
+            Relocate(9, false, 1360, 1538);
+            Relocate(10, false, 2000, 0);
+            Relocate(11, false, 1000, 1538);
         }
 
-        public static void RelocateFirstFour()
+        public static void RelocateFirstSix()
         {
             Relocate(0, true, 0, 513);
             Relocate(1, true, 0, 1026);
             Relocate(2, true, 2720, 513);
             Relocate(3, true, 2720, 1026);
+            Relocate(4, false, 700, 0);
+            Relocate(5, false, 1900, 1538);
         }
 
         private static void AllBulletsNotActive()

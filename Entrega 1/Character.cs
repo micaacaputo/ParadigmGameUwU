@@ -12,7 +12,7 @@ namespace MyGame
     {
         public int health { get; set; }
         public int ammo { get; set; }
-        private IInputeable InputCharacterController;
+        public IInputeable InputCharacterController;
         private IShooteable ShootController;
         public IHealthControllerable HealthController;
         public Renderer Renderer;
