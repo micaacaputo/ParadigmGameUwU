@@ -6,6 +6,7 @@ namespace MyGame
     {
         private Character character;
         private IShooteable shootController;
+        private int moveSpeed = 850;
         private float timer2 = 1;
 
         public InputCharacterController(Character character, IShooteable shootController)
@@ -19,22 +20,22 @@ namespace MyGame
             timer2 += Program.DeltaTime;
             if (Engine.KeyPress(Engine.KEY_LEFT)) 
             {
-                Physics.AddForce(character , new Vector2(-400,0));
+                Physics.AddForce(character , new Vector2(-moveSpeed,0));
             }
 
             if (Engine.KeyPress(Engine.KEY_RIGHT)) 
             {
-                Physics.AddForce(character, new Vector2(400,0));
+                Physics.AddForce(character, new Vector2(moveSpeed,0));
             }
 
             if (Engine.KeyPress(Engine.KEY_UP)) 
             {
-                Physics.AddForce(character, new Vector2(0,-400));
+                Physics.AddForce(character, new Vector2(0,-moveSpeed));
             }
 
             if (Engine.KeyPress(Engine.KEY_DOWN)) 
             {
-                Physics.AddForce(character, new Vector2(0,400));
+                Physics.AddForce(character, new Vector2(0,moveSpeed));
             }
 
             if (Engine.KeyPress(Engine.KEY_ESP))

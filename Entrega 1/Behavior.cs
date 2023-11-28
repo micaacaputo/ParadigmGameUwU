@@ -18,7 +18,7 @@ namespace MyGame
         {
             var vec = Physics.Res(character.Position, enemy.Position);
             var vecNor = Physics.Nor(vec);
-            if (enemy.impulseTimer > 1.6f)
+            if (enemy.impulseTimer > 1.0f)
             {
                 Physics.AddImpulse(enemy,Physics.Mul(vecNor,fuerza));
                 enemy.impulseTimer = 0;

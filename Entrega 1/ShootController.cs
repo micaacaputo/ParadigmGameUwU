@@ -68,7 +68,7 @@ namespace MyGame
                 }
                 bullet.isActive = true;
                 bullet.Position = newPosition;
-                bullet.Velocity = Physics.Mul(dir, 500);
+                bullet.Velocity = Physics.Mul(dir, 650);
                 LevelController.BulletListActive.Add(bullet);
                 LevelController.BulletListNotActive.Remove(bullet);
             }

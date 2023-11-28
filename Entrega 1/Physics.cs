@@ -9,6 +9,9 @@ namespace MyGame
 {
     public static class Physics
     {
+        private static int frictionValue = 550;
+
+        private static float maxSpeed = 600;
         //multiply
         public static Vector2 Mul(Vector2 vector,float num)
         {
@@ -57,6 +60,11 @@ namespace MyGame
         {
             //MRUV
             character.Velocity = Sum(character.Velocity, Mul(character.Aceleration, Program.DeltaTime));
+            if (Mag(character.Velocity) > maxSpeed)
+            {
+                var vel = Nor(character.Velocity);
+                character.Velocity = new Vector2(vel.x * maxSpeed, vel.y * maxSpeed);
+            }
             character.Position = Sum(character.Position,Sum(Mul(character.Velocity, Program.DeltaTime),Mul(character.Aceleration,(0.5f * Program.DeltaTime * Program.DeltaTime)))); 
             
             character.Aceleration = new Vector2(0, 0);
@@ -66,6 +74,11 @@ namespace MyGame
         {
             //MRUV
             character.Velocity = Sum(character.Velocity, Mul(character.Aceleration, Program.DeltaTime));
+            if (Mag(character.Velocity) > maxSpeed + 100)
+            {
+                var vel = Nor(character.Velocity);
+                character.Velocity = new Vector2(vel.x * (maxSpeed + 100), vel.y * (maxSpeed + 100));
+            }
             character.Position = Sum(character.Position,Sum(Mul(character.Velocity, Program.DeltaTime),Mul(character.Aceleration,(0.5f * Program.DeltaTime * Program.DeltaTime)))); 
          
             character.Aceleration = new Vector2(0, 0);
@@ -113,7 +126,7 @@ namespace MyGame
             var mag = Mag(nor);
             if (mag > 0.1)
             {
-                AddForce(character, Mul(nor, -200));
+                AddForce(character, Mul(nor, -frictionValue));
             }
             else
             {
@@ -126,7 +139,7 @@ namespace MyGame
             var mag = Mag(nor);
             if (mag > 0.1)
             {
-                AddForce(character, Mul(nor, -300));
+                AddForce(character, Mul(nor, -750));
             }
         }
     }

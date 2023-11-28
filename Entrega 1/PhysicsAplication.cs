@@ -27,13 +27,14 @@ namespace MyGame
                     Collision.CollisionPlayerEnemy(LevelController.CharacterList[0], enemy);
                     if (enemy.EnemyType == EnemyType.Smart)
                     {
-                        Behavior.SmartFollow(LevelController.CharacterList[0], (EnemySmart)enemy, 750);
+                        Behavior.SmartFollow(LevelController.CharacterList[0], (EnemySmart)enemy, 1000);
                     }
                     else
                     {
-                        Behavior.Follow(LevelController.CharacterList[0], enemy, 480);  
+                        Behavior.Follow(LevelController.CharacterList[0], enemy, 1400);
+                        Physics.Friction(enemy);
                     }
-                    Physics.Friction(enemy);
+                    
                     Physics.PhysicsCalculate(enemy);
                 }
             }

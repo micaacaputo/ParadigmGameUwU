@@ -23,7 +23,7 @@ namespace MyGame
         public static void Update()
         {
             timer += Program.DeltaTime;
-            if (timer> 12)
+            if (timer> 10)
             {
                 Wave++;
                 if (CantidaPorOleada <= 10)
