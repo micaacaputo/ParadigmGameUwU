@@ -14,7 +14,7 @@ namespace MyGame
         public bool isRight { get; set; }
 
         public bool isActive { get; set; }
-        private int speed = 400;
+        private int speed => 400;
         private IBulletBehavioreable BulletBehavior{ get; set; }
         public ICollider Collider{ get; set; }
         public Renderer Renderer{ get; }

@@ -9,10 +9,10 @@ namespace MyGame
 {
     public static class Collision
     {
-        private static int widthCollision = 2720;
-        private static int heigthCollision = 1538;
-        private static int correction = 27;
-        public static Action OnEnemyDesable;
+        private static int widthCollision => 2720;
+        private static int heigthCollision => 1538;
+        private static int correction => 27;
+        public static Action OnEnemyDesable { get; set; }
 
         public static void WallsCollision(Character character)
         {
