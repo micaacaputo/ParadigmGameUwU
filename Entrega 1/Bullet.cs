@@ -15,17 +15,17 @@ namespace MyGame
 
         public bool isActive { get; set; }
         private int speed = 400;
-        public IBulletBehavioreable BulletBehavior;
-        public ICollider Collider;
-        public Renderer Renderer;
-        public Animation currentAnimation;
-        public Animation moovingAnimationL;
-        public Animation moovingAnimationR;
-        public Animation backAnimationR;
-        public Animation backAnimationL;
+        private IBulletBehavioreable BulletBehavior{ get; set; }
+        public ICollider Collider{ get; set; }
+        public Renderer Renderer{ get; }
+        public Animation currentAnimation{ get; set; }
+        public Animation moovingAnimationL{ get; set; }
+        public Animation moovingAnimationR{ get; set; }
+        public Animation backAnimationR{ get; set; }
+        public Animation backAnimationL{ get; set; }
         
-        public IntPtr image2;
-        public IntPtr image3;
+        public IntPtr image2{ get; }
+        public IntPtr image3{ get; }
 
         public Bullet(Vector2 position, Vector2 dir)
         {

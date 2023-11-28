@@ -11,11 +11,11 @@ namespace MyGame
     {
         public float timer { get; set; }
         public bool isActive { get; set; }
-        public EnemyType EnemyType;
-        public Renderer Renderer;
-        public ICollider Collider;
-        public Animation currentAnimation;
-        protected Animation moveAnimation;
+        public EnemyType EnemyType{ get; }
+        public Renderer Renderer{ get; }
+        public ICollider Collider{ get; private set; }
+        public Animation currentAnimation{ get; }
+        protected Animation moveAnimation{ get; set; }
         public Enemy(float x, float y, string image,EnemyType enemyType, bool isActive = true)
         {
             Position = new Vector2(x, y);

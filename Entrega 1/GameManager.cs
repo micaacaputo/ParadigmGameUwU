@@ -17,14 +17,14 @@ namespace MyGame
 
     public class GameManager
     {
-        private static GameManager instance;
+        private static GameManager instance{ get; set; }
         private IntPtr menu = Engine.LoadImage("assets/Screen/menu.png");
         private IntPtr victory = Engine.LoadImage("assets/Screen/victory.png");
         private IntPtr defeat = Engine.LoadImage("assets/Screen/defeat.png");
         private GameCondition gameCondition = GameCondition.MainMenu;
-        public int score;
-        public int MaxScore = 50;
-        public static IntPtr gameFont;
+        public int score{ get; private set; }
+        private int MaxScore = 50;
+        public static IntPtr gameFont{ get; private set; }
 
         public Action OnRestart;
 

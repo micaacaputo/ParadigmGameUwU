@@ -4,7 +4,7 @@ class Font
 {
     // Atributos
 
-    IntPtr pointer;
+    IntPtr pointer{ get; set; }
 
     // Operaciones
 

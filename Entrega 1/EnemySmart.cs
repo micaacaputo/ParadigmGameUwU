@@ -5,7 +5,7 @@ namespace MyGame
 {
     public class EnemySmart : Enemy
     {
-        public float impulseTimer;
+        public float impulseTimer{ get; set; }
         public EnemySmart(float x, float y, string image, EnemyType enemyType, bool isActive = true) : base(x, y, image, enemyType, isActive)
         {
         }

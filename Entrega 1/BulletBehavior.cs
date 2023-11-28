@@ -2,7 +2,7 @@
 {
     public class BulletBehavior : IBulletBehavioreable
     {
-        private Bullet bullet;
+        private Bullet bullet{ get; }
 
         public BulletBehavior(Bullet bul)
         {
