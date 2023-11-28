@@ -23,9 +23,10 @@ namespace MyGame
 
         public static void Initialize()
         {
+            Collision.OnEnemyDesable += DecreaseEnemyNumber;
             GameManager.Instance.OnRestart += Restart;
             camera.Position = new Vector2(1360, 769);
-            WaveController.Enemies = true;
+            WaveController.Wave = 1;
             Engine.Initialize();
             
             CreateCharacter();
@@ -159,15 +160,9 @@ namespace MyGame
         //Metodos de Restart
         private static void Restart()
         {
-            Relocate(0, true, 0, 513);
-            Relocate(1, true, 0, 1026);
-            Relocate(2, true, 2720, 513);
-            Relocate(3, true, 2720, 1026);
+            RelocateFirstFour();
 
-            Relocate(4, false, 0, 769);
-            Relocate(5, false, 2720, 769);
-            Relocate(6, false, 1360, 0);
-            Relocate(7, false, 1360, 1538);
+            RelocateLastFour();
 
             CharacterList[0].Position = new Vector2(1360, 768);
             CharacterList[0].Velocity = new Vector2(0, 0);
@@ -177,7 +172,23 @@ namespace MyGame
             AllBulletsNotActive();
 
             WaveController.timer = 0;
-            WaveController.Enemies = true;
+            WaveController.Wave = 1;
+        }
+
+        public static void RelocateLastFour()
+        {
+            Relocate(4, false, 0, 769);
+            Relocate(5, false, 2720, 769);
+            Relocate(6, false, 1360, 0);
+            Relocate(7, false, 1360, 1538);
+        }
+
+        public static void RelocateFirstFour()
+        {
+            Relocate(0, true, 0, 513);
+            Relocate(1, true, 0, 1026);
+            Relocate(2, true, 2720, 513);
+            Relocate(3, true, 2720, 1026);
         }
 
         private static void AllBulletsNotActive()
@@ -204,11 +215,16 @@ namespace MyGame
             Bullets.Clear();
         }
 
-        private static void Relocate(int index, bool active, int x, int y)
+        public static void Relocate(int index, bool active, int x, int y)
         {
             EnemyPool.allList[index].Position = new Vector2(x, y);
             EnemyPool.allList[index].isActive = active;
             EnemyPool.allList[index].Velocity = new Vector2(0, 0);
+        }
+
+        public static void DecreaseEnemyNumber()
+        {
+            WaveController.EnemyCounter--;
         }
     }
 }

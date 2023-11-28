@@ -11,30 +11,39 @@ namespace MyGame
     {
         // Falta todo el sistema de waves
         public static float timer;
-        public static bool Enemies;
-
+        public static int EnemyCounter = 0;
+        public static int CantidaPorOleada = 4;
+        public static int Wave = 1;
+        public static List<Enemy> ListaEnemigosAInstanciar = new List<Enemy>();
+        
 
 
         public static void Update()
         {
             timer += Program.DeltaTime;
-
-            Wave2();
-        }
-
-        private static void Wave2()
-        {
-            if (Enemies && timer > 10)
+            foreach (var enemy in LevelController.EnemyPool.allList)
             {
-                Enemies = false;
-                for (int i = 4; i < 8; i++)
+                if (!enemy.isActive)
                 {
-                    LevelController.EnemyPool.allList[i].isActive = true;
+                    ListaEnemigosAInstanciar.Add(enemy);
+                }
+                else
+                {
+                    EnemyCounter++;
                 }
             }
+
+            if (EnemyCounter < CantidaPorOleada * Wave)
+            {
+                ListaEnemigosAInstanciar[0].isActive = true;
+                LevelController.EnemyPool.allList[0].Position = new Vector2(2720, 769);
+                LevelController.EnemyPool.allList[0].Velocity = new Vector2(0, 0);
+                ListaEnemigosAInstanciar.RemoveAt(0);
+            }
+            if (GameManager.Instance.score > CantidaPorOleada * Wave)
+            {
+                Wave++;
+            }
         }
-
-        
-
     }
 }

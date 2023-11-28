@@ -14,7 +14,8 @@ namespace MyGame
         private IntPtr victory = Engine.LoadImage("assets/Screen/victory.png");
         private IntPtr defeat = Engine.LoadImage("assets/Screen/defeat.png");
         private int gameCondition = 0;
-        private int score;
+        public int score;
+        public int MaxScore = 20;
         public static IntPtr gameFont;
         
         public Action OnRestart;
@@ -104,7 +105,7 @@ namespace MyGame
        private void ScoreUp()
        {
            score++;
-           if (score == LevelController.EnemyPool.allList.Count())
+           if (score == MaxScore)
            {
                ChangeCondition(2);
            }
