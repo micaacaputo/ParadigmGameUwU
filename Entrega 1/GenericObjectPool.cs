@@ -6,6 +6,7 @@ namespace MyGame
     {
         public List<T> activeList = new List<T>();
         public List<T> notActiveList = new List<T>();
+        public List<T> allList = new List<T>();
 
         public T GetNotActiveOrNew(T tBasic)
         {
@@ -23,7 +24,7 @@ namespace MyGame
             return newT;
         }
 
-        public void RecycleT (T tParameter)
+        public void Desactivate (T tParameter)
         {
             activeList.Remove(tParameter);
             notActiveList.Add(tParameter);

@@ -102,7 +102,7 @@ namespace MyGame
        private void ScoreUp()
        {
            score++;
-           if (score == LevelController.EnemyList.Count())
+           if (score == LevelController.EnemyPool.allList.Count())
            {
                ChangeCondition(2);
            }

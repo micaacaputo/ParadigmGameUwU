@@ -29,7 +29,7 @@ namespace MyGame
                 Enemies = false;
                 for (int i = 4; i < 8; i++)
                 {
-                    LevelController.EnemyList[i].isActive = true;
+                    LevelController.EnemyPool.allList[i].isActive = true;
                 }
             }
         }

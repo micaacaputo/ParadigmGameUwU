@@ -29,7 +29,7 @@ namespace MyGame
         }
         public void Shooting()
         {
-            foreach (Enemy enemy in LevelController.EnemyList)
+            foreach (Enemy enemy in LevelController.EnemyPool.allList)
             {
                 if (enemy.isActive)
                 {

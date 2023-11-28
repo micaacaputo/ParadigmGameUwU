@@ -18,7 +18,7 @@ namespace MyGame
                 Physics.PhysicsCalculate(character);
                 Physics.Friction(character);
             }
-            foreach (Enemy enemy in LevelController.EnemyList)
+            foreach (Enemy enemy in LevelController.EnemyPool.allList)
             {
                 if (enemy.isActive)
                 {

@@ -11,7 +11,7 @@ namespace MyGame
     {
         static IntPtr image = Engine.LoadImage("assets/fondoPoo.png");
         public static List<Character> CharacterList = new List<Character>();
-        public static List<Enemy> EnemyList = new List<Enemy>();
+        public static GenericObjectPool<Enemy> EnemyPool= new GenericObjectPool<Enemy>();
         public static List<Bullet> BulletListActive = new List<Bullet>();
         public static List<Bullet> BulletListNotActive = new List<Bullet>();
         public static List<Bullet> Bullets = new List<Bullet>();
@@ -21,7 +21,6 @@ namespace MyGame
 
         public static void Initialize()
         {
-            
             GameManager.Instance.OnRestart += Restart;
             camera.Position = new Vector2(1360, 769);
             WaveController.Enemies = true;
@@ -42,7 +41,6 @@ namespace MyGame
             RenderBullets();
             RenderEnemies();
             RenderCharacter();
-
         }
         
         
@@ -70,17 +68,17 @@ namespace MyGame
 
         private static void CreateEnemies()
         {
-            EnemyList.Add(EnemyFactory.CreateEnemy(0, 513, "assets/Enemy/enemy1.png"));
-            EnemyList.Add(EnemyFactory.CreateEnemy(0, 1026, "assets/Enemy/enemy1.png"));
-            EnemyList.Add(EnemyFactory.CreateEnemy(2720, 513, "assets/Enemy/enemy1.png"));
-            EnemyList.Add(EnemyFactory.CreateEnemy(2720, 1026, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(0, 513, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(0, 1026, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(2720, 513, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(2720, 1026, "assets/Enemy/enemy1.png"));
 
-            EnemyList.Add(EnemyFactory.CreateEnemy(0, 769, "assets/Enemy/enemy1.png", false));
-            EnemyList.Add(EnemyFactory.CreateEnemy(2720, 769, "assets/Enemy/enemy1.png", false));
-            EnemyList.Add(EnemyFactory.CreateEnemy(1360, 0, "assets/Enemy/enemy1.png", false));
-            EnemyList.Add(EnemyFactory.CreateEnemy(1360, 1538, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(0, 769, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(2720, 769, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(1360, 0, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(1360, 1538, "assets/Enemy/enemy1.png", false));
 
-            foreach (var enemy in EnemyList)
+            foreach (var enemy in EnemyPool.allList)
             {
                 ICollider collider = new Collider2D();
                 enemy.AssignDependencies(collider);
@@ -104,7 +102,7 @@ namespace MyGame
 
         private static void RenderEnemies()
         {
-            foreach (Enemy enemy in EnemyList)
+            foreach (Enemy enemy in EnemyPool.allList)
             {
                 if (enemy.isActive)
                 {
@@ -202,9 +200,9 @@ namespace MyGame
 
         private static void Relocate(int index, bool active, int x, int y)
         {
-            EnemyList[index].Position = new Vector2(x, y);
-            EnemyList[index].isActive = active;
-            EnemyList[index].Velocity = new Vector2(0, 0);
+            EnemyPool.allList[index].Position = new Vector2(x, y);
+            EnemyPool.allList[index].isActive = active;
+            EnemyPool.allList[index].Velocity = new Vector2(0, 0);
         }
     }
 }
