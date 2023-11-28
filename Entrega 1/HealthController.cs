@@ -23,7 +23,7 @@
         {
             if (Character.health <= 0)
             {
-                GameManager.Instance.ChangeCondition(3);
+                GameManager.Instance.ChangeCondition(GameCondition.Defeat);
             }
             
         }

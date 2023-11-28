@@ -7,23 +7,32 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
+    public enum GameCondition
+    {
+        MainMenu = 0,
+        InGame = 1,
+        Victory = 2,
+        Defeat = 3
+    }
+
     public class GameManager
     {
         private static GameManager instance;
         private IntPtr menu = Engine.LoadImage("assets/Screen/menu.png");
         private IntPtr victory = Engine.LoadImage("assets/Screen/victory.png");
         private IntPtr defeat = Engine.LoadImage("assets/Screen/defeat.png");
-        private int gameCondition = 0;
+        private GameCondition gameCondition = GameCondition.MainMenu;
         public int score;
         public int MaxScore = 50;
         public static IntPtr gameFont;
-        
+
         public Action OnRestart;
+
         public static GameManager Instance
         {
             get
             {
-                if(instance == null)
+                if (instance == null)
                 {
                     instance = new GameManager();
                 }
@@ -31,9 +40,9 @@ namespace MyGame
             }
         }
 
-        public void ChangeCondition(int cc)
+        public void ChangeCondition(GameCondition newCondition)
         {
-            gameCondition = cc;
+            gameCondition = newCondition;
         }
 
         public void Initialize()
@@ -42,74 +51,63 @@ namespace MyGame
             Collision.OnEnemyDesable += ScoreUp;
             gameFont = Engine.LoadFont("Fonts/digital-7.ttf", 50);
         }
+
         public void Update()
-       {
-            switch(gameCondition)
+        {
+            switch (gameCondition)
             {
-                case 0:
+                case GameCondition.MainMenu:
                     if (Engine.KeyPress(Engine.KEY_S))
                     {
-                        ChangeCondition(1);
+                        ChangeCondition(GameCondition.InGame);
                     }
                     break;
-                case 1:
+                case GameCondition.InGame:
                     LevelController.Update();
                     break;
-                case 2:
+                case GameCondition.Victory:
+                case GameCondition.Defeat:
                     if (Engine.KeyPress(Engine.KEY_R))
                     {
                         OnRestart?.Invoke();
                         score = 0;
-                        ChangeCondition(0);
-
-                    }
-                    break;
-                case 3:
-                    if (Engine.KeyPress(Engine.KEY_R))
-                    {
-                        OnRestart?.Invoke();
-                        score = 0;
-                        ChangeCondition(0);
-
+                        ChangeCondition(GameCondition.MainMenu);
                     }
                     break;
             }
-
-
         }
 
-       public void Render()
-       {
+        public void Render()
+        {
             Engine.Clear();
 
             switch (gameCondition)
             {
-                case 0:
+                case GameCondition.MainMenu:
                     Engine.Draw(menu, 0, 0);
                     break;
-                case 1:
+                case GameCondition.InGame:
                     LevelController.Render();
                     break;
-                case 2:
+                case GameCondition.Victory:
                     Engine.Draw(victory, 0, 0);
                     break;
-                case 3:
+                case GameCondition.Defeat:
                     Engine.Draw(defeat, 0, 0);
                     break;
-
             }
+
             Engine.Show();
         }
 
-       private void ScoreUp()
-       {
-           score++;
-           if (score == MaxScore)
-           {
-               ChangeCondition(2);
-           }
-       }
-
+        private void ScoreUp()
+        {
+            score++;
+            if (score == MaxScore)
+            {
+                ChangeCondition(GameCondition.Victory);
+            }
+        }
     }
-
 }
+
