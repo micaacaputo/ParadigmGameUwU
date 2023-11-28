@@ -8,6 +8,7 @@
         {
             this.Character = character;
         }
+
         public void HealthDown()
         {
             Character.health--;

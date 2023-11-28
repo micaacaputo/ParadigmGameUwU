@@ -44,7 +44,6 @@ namespace MyGame
         }
         public void Update()
        {
-
             switch(gameCondition)
             {
                 case 0:

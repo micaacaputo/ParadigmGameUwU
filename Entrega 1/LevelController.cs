@@ -12,6 +12,8 @@ namespace MyGame
         static IntPtr image = Engine.LoadImage("assets/fondoPoo.png");
         static IntPtr axeHud = Engine.LoadImage("assets/HUD/axehud.png");
         static IntPtr healthHud = Engine.LoadImage("assets/HUD/healthhud.png");
+        static IntPtr extraLife = Engine.LoadImage("assets/Screen/extralife.png");
+        static IntPtr extraAxe = Engine.LoadImage("assets/Screen/extraaxe.png");
         public static List<Character> CharacterList = new List<Character>();
         public static GenericObjectPool<Enemy> EnemyPool= new GenericObjectPool<Enemy>();
         public static List<Bullet> BulletListActive = new List<Bullet>();
@@ -63,11 +65,13 @@ namespace MyGame
             RenderBullets();
             RenderEnemies();
             RenderCharacter();
-            Engine.DrawText($": {CharacterList[0].ammo}", 635, 20, 183, 90, 249, GameManager.gameFont);
-            Engine.DrawText($": {CharacterList[0].health}", 780, 20, 183, 90, 249, GameManager.gameFont);
-            Engine.DrawText($"Wave: " + WaveController.Wave, 1200, 20, 183, 90, 249, GameManager.gameFont);
+            Engine.DrawText("Score: " + GameManager.Instance.score, 20, 20, 183, 90, 249, GameManager.gameFont);
+            Engine.DrawText(": " + CharacterList[0].ammo, 635, 20, 183, 90, 249, GameManager.gameFont);
+            Engine.DrawText(": " + CharacterList[0].health, 780, 20, 183, 90, 249, GameManager.gameFont);
+            Engine.DrawText("Wave: " + WaveController.Wave, 1200, 20, 183, 90, 249, GameManager.gameFont);
             Renderer.RenderImage(axeHud, 585, 20);
             Renderer.RenderImage(healthHud, 735, 20);
+            
         }
         
         
