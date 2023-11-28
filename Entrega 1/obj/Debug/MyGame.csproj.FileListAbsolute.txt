@@ -355,3 +355,5 @@ C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animat
 C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\Enemies\Smart\1.png
 C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\Enemies\Smart\2.png
 C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\Fonts\Cute Love.ttf
+C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\HUD\axehud.png
+C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\HUD\healthHud.png

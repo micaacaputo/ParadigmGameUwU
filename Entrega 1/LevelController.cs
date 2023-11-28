@@ -10,6 +10,8 @@ namespace MyGame
     public static class LevelController
     {
         static IntPtr image = Engine.LoadImage("assets/fondoPoo.png");
+        static IntPtr axeHud = Engine.LoadImage("assets/HUD/axehud.png");
+        static IntPtr healthHud = Engine.LoadImage("assets/HUD/healthHud.png");
         public static List<Character> CharacterList = new List<Character>();
         public static GenericObjectPool<Enemy> EnemyPool= new GenericObjectPool<Enemy>();
         public static List<Bullet> BulletListActive = new List<Bullet>();
@@ -41,8 +43,10 @@ namespace MyGame
             RenderBullets();
             RenderEnemies();
             RenderCharacter();
-            Engine.DrawText($"Axes: {CharacterList[0].ammo}", 30, 20, 183, 90, 249, GameManager.gameFont);
-            Engine.DrawText($"Health: {CharacterList[0].health}", 160, 20, 183, 90, 249, GameManager.gameFont);
+            Engine.DrawText($": {CharacterList[0].ammo}", 30, 20, 183, 90, 249, GameManager.gameFont);
+            Engine.DrawText($": {CharacterList[0].health}", 160, 20, 183, 90, 249, GameManager.gameFont);
+            Renderer.RenderImage(axeHud, 10, 20);
+            Renderer.RenderImage(healthHud, 120, 20);
         }
         
         
