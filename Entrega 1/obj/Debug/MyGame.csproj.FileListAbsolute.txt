@@ -352,3 +352,4 @@ C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\ass
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\character\eyes\6.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\Enemies\1.png
 C:\Users\funda\OneDrive\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\assets\Animation\Enemies\2.png
+C:\Users\Mica\Documents\GitHub\ParadigmGameUwU\Entrega 1\bin\Debug\Fonts\Fredoka-SemiBold.ttf

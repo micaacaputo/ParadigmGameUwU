@@ -15,6 +15,7 @@ namespace MyGame
         private IntPtr defeat = Engine.LoadImage("assets/Screen/defeat.png");
         private int gameCondition = 0;
         private int score;
+        public static IntPtr gameFont;
         
         public Action OnRestart;
         public static GameManager Instance
@@ -38,6 +39,7 @@ namespace MyGame
         {
             LevelController.Initialize();
             Collision.OnEnemyDesable += ScoreUp;
+            gameFont = Engine.LoadFont("Fonts/Fredoka-SemiBold.ttf", 30);
         }
         public void Update()
        {
