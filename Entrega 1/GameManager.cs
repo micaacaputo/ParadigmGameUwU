@@ -40,7 +40,7 @@ namespace MyGame
         {
             LevelController.Initialize();
             Collision.OnEnemyDesable += ScoreUp;
-            gameFont = Engine.LoadFont("Fonts/Cute Love.ttf", 40);
+            gameFont = Engine.LoadFont("Fonts/digital-7.ttf", 50);
         }
         public void Update()
        {
