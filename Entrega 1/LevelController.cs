@@ -239,6 +239,7 @@ namespace MyGame
         //Metodos de Restart
         private static void Restart()
         {
+            ContadorRecompensas = EnemigosParaRecompensa;
             RelocateFirstSix();
 
             RelocateLastSix();

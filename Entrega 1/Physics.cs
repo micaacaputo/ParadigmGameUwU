@@ -77,7 +77,7 @@ namespace MyGame
             if (Mag(character.Velocity) > maxSpeed + 100)
             {
                 var vel = Nor(character.Velocity);
-                character.Velocity = new Vector2(vel.x * (maxSpeed + 100), vel.y * (maxSpeed + 100));
+                character.Velocity = new Vector2(vel.x * (maxSpeed + 50), vel.y * (maxSpeed + 50));
             }
             character.Position = Sum(character.Position,Sum(Mul(character.Velocity, Program.DeltaTime),Mul(character.Aceleration,(0.5f * Program.DeltaTime * Program.DeltaTime)))); 
          

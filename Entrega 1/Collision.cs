@@ -73,7 +73,7 @@ namespace MyGame
                 if (Mag < character.Collider.radius + enemy.Collider.radius) {
 
                 
-                    if (enemy.timer > 0.25 && character.invulnerabilityTimer > 0.25)
+                    if (enemy.timer > 0.6 && character.invulnerabilityTimer > 0.6)
                     {
                         character.HealthController.HealthDown();
                         enemy.timer = 0;
