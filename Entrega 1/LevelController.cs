@@ -33,7 +33,6 @@ namespace MyGame
         public static void Initialize()
         {
             rewardUIPosition = new Vector2(680 - 207, 768 - 117);
-            Collision.OnEnemyDesable += DecreaseEnemyNumber;
             GameManager.Instance.OnRestart += Restart;
             camera.Position = new Vector2(1360, 769);
             WaveController.Wave = 1;
@@ -305,11 +304,7 @@ namespace MyGame
             EnemyPool.allList[index].isActive = active;
             EnemyPool.allList[index].Velocity = new Vector2(0, 0);
         }
-
-        public static void DecreaseEnemyNumber()
-        {
-            WaveController.EnemyCounter--;
-        }
+        
     }
 }
 

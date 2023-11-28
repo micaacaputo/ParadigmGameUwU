@@ -12,16 +12,16 @@ namespace MyGame
     {
         public int health { get; set; }
         public int ammo { get; set; }
-        public IInputeable InputCharacterController;
-        private IShooteable ShootController;
-        public IHealthControllerable HealthController;
-        public Renderer Renderer;
-        public ICollider Collider;
-        public Animation currentAnimationFeetArms;
-        public Animation currentAnimationEyes;
-        private Animation movingAnimationFeet;
-        private Animation movingAnimationEyes;
-        public float invulnerabilityTimer = 0;
+        public IInputeable InputCharacterController{ get; private set; }
+        private IShooteable ShootController{ get; set; }
+        public IHealthControllerable HealthController{ get; private set; }
+        public Renderer Renderer{ get; }
+        public ICollider Collider{ get; set; }
+        public Animation currentAnimationFeetArms{ get; }
+        public Animation currentAnimationEyes{ get; }
+        private Animation movingAnimationFeet{ get; set; }
+        private Animation movingAnimationEyes{ get; set; }
+        public float invulnerabilityTimer { get; set; }
         public Character(float x, float y, float radius, int width, int height, int mass = 1, int ammo = 3)
         {
 
@@ -36,6 +36,7 @@ namespace MyGame
             CreateAnimations();
             currentAnimationFeetArms = movingAnimationFeet;
             currentAnimationEyes = movingAnimationEyes;
+            invulnerabilityTimer = 0;
         }
        private void CreateAnimations()
         {
