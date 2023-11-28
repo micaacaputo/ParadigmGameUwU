@@ -58,6 +58,8 @@
     <Compile Include="Behavior.cs" />
     <Compile Include="Enemy.cs" />
     <Compile Include="EnemyFactory.cs" />
+    <Compile Include="EnemyMele.cs" />
+    <Compile Include="EnemySmart.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="Engine.cs" />
     <Compile Include="GameManager.cs" />
@@ -109,10 +111,10 @@
     <Content Include="assets\Animation\character\eyes\6.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\Animation\Enemies\1.png">
+    <Content Include="assets\Animation\Enemies\Mele\1.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="assets\Animation\Enemies\2.png">
+    <Content Include="assets\Animation\Enemies\Mele\2.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="assets\Bullet\axeFloorL.png">
@@ -254,6 +256,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="assets\Animation\Enemies\Shot\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

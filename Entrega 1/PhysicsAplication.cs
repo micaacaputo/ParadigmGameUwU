@@ -25,13 +25,18 @@ namespace MyGame
                     enemy.Update();
                     Collision.WallsCollisionEnemy(enemy);
                     Collision.CollisionPlayerEnemy(LevelController.CharacterList[0], enemy);
-                    Behavior.Follow(LevelController.CharacterList[0], enemy, 480);
+                    if (enemy.EnemyType == EnemyType.Smart)
+                    {
+                        Behavior.SmartFollow(LevelController.CharacterList[0], (EnemySmart)enemy, 750);
+                    }
+                    else
+                    {
+                        Behavior.Follow(LevelController.CharacterList[0], enemy, 480);  
+                    }
                     Physics.Friction(enemy);
                     Physics.PhysicsCalculate(enemy);
                 }
-
             }
-
             foreach (Bullet bullet in LevelController.BulletListActive)
             {
                 bullet.Update();

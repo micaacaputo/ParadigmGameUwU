@@ -7,16 +7,27 @@ using System.Threading.Tasks;
 
 namespace MyGame
 {
-    public static class EnemyFactory
+    public static class EnemyFactory 
     {
-        public static Enemy CreateEnemy(Vector2 position, string image, bool isActive = true)
+        public static EnemyMele CreateEnemyMele(Vector2 position, string image, bool isActive = true)
         {
-            var enemy = new Enemy(position.x,position.y,image,isActive);
+            var enemy = new EnemyMele(position.x,position.y,image,EnemyType.Mele,isActive);
             return enemy;
         }
-        public static Enemy CreateEnemy(int positionX, int positionY, string image, bool isActive = true)
+        public static EnemyMele CreateEnemyMele(int positionX, int positionY, string image, bool isActive = true)
         {
-            var enemy = new Enemy(positionX, positionY, image, isActive);
+            var enemy = new EnemyMele(positionX, positionY, image,EnemyType.Mele, isActive);
+            return enemy;
+        }
+        
+        public static EnemySmart CreateEnemySmart(Vector2 position, string image, bool isActive = true)
+        {
+            var enemy = new EnemySmart(position.x,position.y,image,EnemyType.Smart,isActive);
+            return enemy;
+        }
+        public static EnemySmart CreateEnemySmart(int positionX, int positionY, string image, bool isActive = true)
+        {
+            var enemy = new EnemySmart(positionX, positionY, image,EnemyType.Smart, isActive);
             return enemy;
         }
     }

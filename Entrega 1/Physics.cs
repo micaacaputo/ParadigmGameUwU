@@ -102,6 +102,11 @@ namespace MyGame
         {
             character.Aceleration = Sum(character.Aceleration, Div(force, character.mass));
         }
+        
+        public static void AddImpulse(Enemy character, Vector2 force)
+        {
+            character.Velocity = Sum(character.Aceleration, Div(force, character.mass));
+        }
         public static void Friction(Character character)
         {
             var nor = Nor(character.Velocity);

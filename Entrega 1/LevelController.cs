@@ -68,15 +68,15 @@ namespace MyGame
 
         private static void CreateEnemies()
         {
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(0, 513, "assets/Enemy/enemy1.png"));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(0, 1026, "assets/Enemy/enemy1.png"));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(2720, 513, "assets/Enemy/enemy1.png"));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(2720, 1026, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(0, 513, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(0, 1026, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 513, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 1026, "assets/Enemy/enemy1.png"));
 
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(0, 769, "assets/Enemy/enemy1.png", false));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(2720, 769, "assets/Enemy/enemy1.png", false));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(1360, 0, "assets/Enemy/enemy1.png", false));
-            EnemyPool.allList.Add(EnemyFactory.CreateEnemy(1360, 1538, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(0, 769, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(2720, 769, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 0, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 1538, "assets/Enemy/enemy1.png", false));
 
             foreach (var enemy in EnemyPool.allList)
             {
