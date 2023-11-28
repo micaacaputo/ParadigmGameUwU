@@ -13,9 +13,9 @@ namespace MyGame
 
     class Program
     {
-        private static DateTime _startTime;
-        private static float _lastTimeFrame;
-        public static float DeltaTime;
+        private static DateTime _startTime{ get; set; }
+        private static float _lastTimeFrame{ get; set; }
+        public static float DeltaTime{ get; set; }
 
         private static void Main(string[] args)
         {

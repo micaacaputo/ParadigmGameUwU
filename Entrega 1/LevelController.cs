@@ -9,24 +9,24 @@ namespace MyGame
 {
     public static class LevelController
     {
-        static IntPtr image = Engine.LoadImage("assets/fondoPoo.png");
-        static IntPtr axeHud = Engine.LoadImage("assets/HUD/axehud.png");
-        static IntPtr healthHud = Engine.LoadImage("assets/HUD/healthhud.png");
-        static IntPtr extraLife = Engine.LoadImage("assets/Screen/extralife.png");
-        static IntPtr extraAxe = Engine.LoadImage("assets/Screen/extraaxe.png");
-        public static List<Character> CharacterList = new List<Character>();
-        public static GenericObjectPool<Enemy> EnemyPool= new GenericObjectPool<Enemy>();
-        public static List<Bullet> BulletListActive = new List<Bullet>();
-        public static List<Bullet> BulletListNotActive = new List<Bullet>();
-        public static List<Bullet> Bullets = new List<Bullet>();
-        public static Camera camera = new Camera();
-        private static Renderer Renderer = new Renderer();
-        private static int EnemigosParaRecompensa = 5;
-        private static int ContadorRecompensas = EnemigosParaRecompensa;
-        private static Random random = new Random();
-        private static bool lifeEarned = false;
-        private static bool axeEarned = false;
-        private static float rewardUITimer = 0;
+        static IntPtr image { get; }= Engine.LoadImage("assets/fondoPoo.png");
+        static IntPtr axeHud { get; }= Engine.LoadImage("assets/HUD/axehud.png");
+        static IntPtr healthHud { get; }= Engine.LoadImage("assets/HUD/healthhud.png");
+        static IntPtr extraLife { get; }= Engine.LoadImage("assets/Screen/extralife.png");
+        static IntPtr extraAxe { get; }= Engine.LoadImage("assets/Screen/extraaxe.png");
+        public static List<Character> CharacterList { get; }= new List<Character>();
+        public static GenericObjectPool<Enemy> EnemyPool { get; }= new GenericObjectPool<Enemy>();
+        public static List<Bullet> BulletListActive { get; }= new List<Bullet>();
+        public static List<Bullet> BulletListNotActive { get; }= new List<Bullet>();
+        public static List<Bullet> Bullets { get; }= new List<Bullet>();
+        public static Camera camera { get; }= new Camera();
+        private static Renderer Renderer { get; }= new Renderer();
+        private static int EnemigosParaRecompensa => 5;
+        private static int ContadorRecompensas { get; set; }= EnemigosParaRecompensa;
+        private static Random random { get; }= new Random();
+        private static bool lifeEarned { get; set; }= false;
+        private static bool axeEarned { get; set; }= false;
+        private static float rewardUITimer { get; set; }= 0;
         private static Vector2 rewardUIPosition { get; set; }
         
 

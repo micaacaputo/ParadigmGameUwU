@@ -6,7 +6,7 @@ namespace MyGame
     {
         private Character character { get; }
         private IShooteable shootController { get; }
-        private int moveSpeed = 850;
+        private int moveSpeed => 850;
         public float reloadTimer { get; set;}
 
         public InputCharacterController(Character character, IShooteable shootController)

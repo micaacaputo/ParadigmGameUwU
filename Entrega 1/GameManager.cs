@@ -18,10 +18,10 @@ namespace MyGame
     public class GameManager
     {
         private static GameManager instance{ get; set; }
-        private IntPtr menu = Engine.LoadImage("assets/Screen/menu.png");
-        private IntPtr victory = Engine.LoadImage("assets/Screen/victory.png");
-        private IntPtr defeat = Engine.LoadImage("assets/Screen/defeat.png");
-        private GameCondition gameCondition = GameCondition.MainMenu;
+        private IntPtr menu { get; }= Engine.LoadImage("assets/Screen/menu.png");
+        private IntPtr victory { get; }= Engine.LoadImage("assets/Screen/victory.png");
+        private IntPtr defeat { get; }= Engine.LoadImage("assets/Screen/defeat.png");
+        private GameCondition gameCondition { get; set; }= GameCondition.MainMenu;
         public int score{ get; private set; }
         private int MaxScore = 50;
         public static IntPtr gameFont{ get; private set; }

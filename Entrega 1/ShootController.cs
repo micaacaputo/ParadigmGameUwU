@@ -5,7 +5,7 @@ namespace MyGame
 {
     public class ShootController : IShooteable
     {
-        private float timer = 1;
+        private float timer { get; set; }= 1;
         private Character character { get; }
 
         public ShootController(Character chara)

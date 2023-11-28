@@ -9,9 +9,10 @@ namespace MyGame
 {
     public static class Physics
     {
-        private static int frictionValue = 550;
+        private static int frictionValue => 550;
 
-        private static float maxSpeed = 600;
+        private static float maxSpeed => 600;
+
         //multiply
         public static Vector2 Mul(Vector2 vector,float num)
         {

@@ -10,11 +10,11 @@ namespace MyGame
     public static class WaveController
     {
         public static float timer { get; set; }
-        private static int EnemiesPerWave = 4;
+        private static int EnemiesPerWave { get; set; }= 4;
         public static int Wave = 1;
-        private static List<Enemy> EnemiesToActivateList = new List<Enemy>();
-        private static bool Wave2Passed = false;
-        private static Random random = new Random();
+        private static List<Enemy> EnemiesToActivateList { get; set; }= new List<Enemy>();
+        private static bool Wave2Passed { get; set; }= false;
+        private static Random random { get; }= new Random();
         
         public static void Update()
         {
