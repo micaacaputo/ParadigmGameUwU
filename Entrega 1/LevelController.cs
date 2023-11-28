@@ -19,6 +19,9 @@ namespace MyGame
         public static List<Bullet> Bullets = new List<Bullet>();
         public static Camera camera = new Camera();
         private static Renderer Renderer = new Renderer();
+        private static int EnemigosParaRecompensa = 5;
+        private static int ContadorRecompensas = EnemigosParaRecompensa;
+        
         
 
         public static void Initialize()
@@ -37,6 +40,22 @@ namespace MyGame
         {
             PhysicsAplication.Update();
             WaveController.Update();
+            if (GameManager.Instance.score > ContadorRecompensas)
+            {
+                ContadorRecompensas += EnemigosParaRecompensa;
+                
+                Random random = new Random();
+                double probabilidad = random.NextDouble();
+                switch (probabilidad <= 0.5)
+                {
+                    case true:
+                        CharacterList[0].HealthController.HealthUp();
+                        break;
+                    case false:
+                        CharacterList[0].ammo++;
+                        break;
+                }
+            }
         }
         public static void Render()
         {
@@ -46,7 +65,7 @@ namespace MyGame
             RenderCharacter();
             Engine.DrawText($": {CharacterList[0].ammo}", 635, 20, 183, 90, 249, GameManager.gameFont);
             Engine.DrawText($": {CharacterList[0].health}", 780, 20, 183, 90, 249, GameManager.gameFont);
-            Engine.DrawText($"Wave: 1", 1200, 20, 183, 90, 249, GameManager.gameFont);
+            Engine.DrawText($"Wave: " + WaveController.Wave, 1200, 20, 183, 90, 249, GameManager.gameFont);
             Renderer.RenderImage(axeHud, 585, 20);
             Renderer.RenderImage(healthHud, 735, 20);
         }
@@ -65,7 +84,7 @@ namespace MyGame
 
         private static void CreateBullets()
         {
-            BulletListNotActive.AddRange(BulletFactory.InitialBullets()); 
+            BulletListNotActive.AddRange(BulletFactory.InitialBullets());  
             foreach (var bullet in BulletListNotActive)
             {
                 IBulletBehavioreable bulletBehavioreable = new BulletBehavior(bullet);
@@ -80,10 +99,14 @@ namespace MyGame
             EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(0, 1026, "assets/Enemy/enemy1.png"));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 513, "assets/Enemy/enemy1.png"));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 1026, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 1026, "assets/Enemy/enemy1.png"));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemyMele(2720, 1026, "assets/Enemy/enemy1.png"));
 
             EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(0, 769, "assets/Enemy/enemy1.png", false));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(2720, 769, "assets/Enemy/enemy1.png", false));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 0, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 1538, "assets/Enemy/enemy1.png", false));
+            EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 1538, "assets/Enemy/enemy1.png", false));
             EnemyPool.allList.Add(EnemyFactory.CreateEnemySmart(1360, 1538, "assets/Enemy/enemy1.png", false));
 
             foreach (var enemy in EnemyPool.allList)

@@ -15,7 +15,7 @@ namespace MyGame
         private IntPtr defeat = Engine.LoadImage("assets/Screen/defeat.png");
         private int gameCondition = 0;
         public int score;
-        public int MaxScore = 20;
+        public int MaxScore = 50;
         public static IntPtr gameFont;
         
         public Action OnRestart;

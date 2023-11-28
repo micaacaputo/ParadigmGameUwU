@@ -72,6 +72,14 @@ namespace MyGame
                 LevelController.BulletListActive.Add(bullet);
                 LevelController.BulletListNotActive.Remove(bullet);
             }
+            else
+            {
+                var bullet = BulletFactory.CreateBullet(new Vector2(0, 0), new Vector2(0, 0));
+                LevelController.BulletListNotActive.Add(bullet);
+                IBulletBehavioreable bulletBehavioreable = new BulletBehavior(bullet);
+                ICollider collider = new Collider2D();
+                bullet.AssignDependencies(bulletBehavioreable, collider);
+            }
         }
     }
 }

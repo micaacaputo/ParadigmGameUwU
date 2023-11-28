@@ -30,7 +30,7 @@ namespace MyGame
             this.height = height;
             this.mass = mass;
             this.ammo = ammo;
-            health = 1;
+            health = 100;
             Renderer = new Renderer();
             CreateAnimations();
             currentAnimationFeetArms = movingAnimationFeet;
