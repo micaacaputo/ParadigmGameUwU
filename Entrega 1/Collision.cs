@@ -40,22 +40,22 @@ namespace MyGame
 
         public static void WallsCollisionEnemy(Enemy enemy)
         {
-            if (enemy.Position.x < 0) //left wall
+            if (enemy.Position.x < 0) 
             {
                 enemy.Position = new Vector2(0 + 1, enemy.Position.y);
                 enemy.Velocity = new Vector2(0, enemy.Velocity.y);
             }
-            if (enemy.Position.x > widthCollision - enemy.Collider.width) //right wall
+            if (enemy.Position.x > widthCollision - enemy.Collider.width) 
             {
                 enemy.Position = new Vector2(widthCollision - enemy.Collider.width - 1, enemy.Position.y);
                 enemy.Velocity = new Vector2(0, enemy.Velocity.y);
             }
-            if (enemy.Position.y < 0) //up wall
+            if (enemy.Position.y < 0) 
             {
                 enemy.Position = new Vector2(enemy.Position.x, 0 + 1);
                 enemy.Velocity = new Vector2(enemy.Velocity.x, 0);
             }
-            if (enemy.Position.y > heigthCollision - enemy.Collider.height) //down wall
+            if (enemy.Position.y > heigthCollision - enemy.Collider.height) 
             {
                 enemy.Position = new Vector2(enemy.Position.x, heigthCollision - enemy.Collider.height - 1);
                 enemy.Velocity = new Vector2(enemy.Velocity.x, 0);
@@ -88,22 +88,22 @@ namespace MyGame
 
         public static void WallsCollisionBullet(Bullet bullet)
         {
-            if (bullet.Position.x < 0) //left wall
+            if (bullet.Position.x < 0) 
             {
                 bullet.Position = new Vector2(0, bullet.Position.y);
                 bullet.Velocity = new Vector2(0, 0);
             }
-            if (bullet.Position.x > widthCollision - 58) //right wall
+            if (bullet.Position.x > widthCollision - 58) 
             {
                 bullet.Position = new Vector2(widthCollision - 58, bullet.Position.y);
                 bullet.Velocity = new Vector2(0, 0);
             }
-            if (bullet.Position.y < 0) //up wall
+            if (bullet.Position.y < 0) 
             {
                 bullet.Position = new Vector2(bullet.Position.x, 0);
                 bullet.Velocity = new Vector2(0, 0);
             }
-            if (bullet.Position.y > heigthCollision - 75) //down wall
+            if (bullet.Position.y > heigthCollision - 75) 
             {
                 bullet.Position = new Vector2(bullet.Position.x, heigthCollision - 75);
                 bullet.Velocity = new Vector2(0, 0);

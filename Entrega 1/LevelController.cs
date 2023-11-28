@@ -21,8 +21,8 @@ namespace MyGame
         public static List<Bullet> Bullets { get; }= new List<Bullet>();
         public static Camera camera { get; }= new Camera();
         private static Renderer Renderer { get; }= new Renderer();
-        private static int EnemigosParaRecompensa => 5;
-        private static int ContadorRecompensas { get; set; }= EnemigosParaRecompensa;
+        private static int EnemiesReward => 5;
+        private static int ContadorRecompensas { get; set; }= EnemiesReward;
         private static Random random { get; }= new Random();
         private static bool lifeEarned { get; set; }= false;
         private static bool axeEarned { get; set; }= false;
@@ -109,9 +109,9 @@ namespace MyGame
         {
             if (GameManager.Instance.score > ContadorRecompensas)
             {
-                ContadorRecompensas += EnemigosParaRecompensa;
-                double probabilidad = random.NextDouble();
-                switch (probabilidad <= 0.5)
+                ContadorRecompensas += EnemiesReward;
+                double probability = random.NextDouble();
+                switch (probability <= 0.5)
                 {
                     case true:
                         CharacterList[0].HealthController.HealthUp();
@@ -239,7 +239,7 @@ namespace MyGame
         //Metodos de Restart
         private static void Restart()
         {
-            ContadorRecompensas = EnemigosParaRecompensa;
+            ContadorRecompensas = EnemiesReward;
             RelocateFirstSix();
 
             RelocateLastSix();
