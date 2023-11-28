@@ -9,7 +9,7 @@ namespace MyGame
 {
     public static class WaveController
     {
-        public static float timer;
+        public static float timer { get; set; }
         private static int EnemiesPerWave = 4;
         public static int Wave = 1;
         private static List<Enemy> EnemiesToActivateList = new List<Enemy>();

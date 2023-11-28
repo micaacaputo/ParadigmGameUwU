@@ -2,7 +2,7 @@
 {
     public interface IInputeable
     {
-        float reloadTimer{ get; set;}
+        float reloadTimer{ get; }
         void InputUpdate();
     }
 }

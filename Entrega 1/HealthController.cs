@@ -2,7 +2,7 @@
 {
     public class HealthController : IHealthControllerable
     {
-        public Character Character;
+        public Character Character { get; }
 
         public HealthController(Character character)
         {

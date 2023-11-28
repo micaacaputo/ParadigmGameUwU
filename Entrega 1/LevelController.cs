@@ -27,7 +27,7 @@ namespace MyGame
         private static bool lifeEarned = false;
         private static bool axeEarned = false;
         private static float rewardUITimer = 0;
-        private static Vector2 rewardUIPosition;
+        private static Vector2 rewardUIPosition { get; set; }
         
 
         public static void Initialize()

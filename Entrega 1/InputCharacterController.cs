@@ -4,8 +4,8 @@ namespace MyGame
 {
     public class InputCharacterController : IInputeable
     {
-        private Character character;
-        private IShooteable shootController;
+        private Character character { get; }
+        private IShooteable shootController { get; }
         private int moveSpeed = 850;
         public float reloadTimer { get; set;}
 
